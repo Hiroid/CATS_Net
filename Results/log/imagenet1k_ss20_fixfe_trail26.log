@@ -1,0 +1,46 @@
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] dataset          : imagenet1k
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] data_root        : /data0/user/lxguo/Data
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] model_name       : resnet50
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] num_epochs       : 5
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] learning_rate    : 0.001
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] batch_size       : 512
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] optimizer_type   : Adam
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] momentum         : 0.9
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] print_frequency  : 1
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] weight_decay     : 0.0001
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] load_model       : None
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] symbol_size      : 20
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] num_classes      : 1000
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] p                : 0.5
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] use_orthg        : False
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] cntrst           : None
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] worst_neg        : False
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] metric           : euclidean
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] fix_fe           : True
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] loss_type        : CrossEntropyLoss
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] no_train         : False
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] use_pretrain     : True
+[2024-04-07 22:41:17,652][argument.py][line:35][INFO] exp_prefix       : None
+[2024-04-07 22:41:17,652][main.py][line:30][INFO] Device is cuda
+[2024-04-07 22:41:20,744][main.py][line:34][INFO] length of train is 1281167, length of test is 50000
+[2024-04-08 01:21:15,971][utils.py][line:226][INFO] epoch 1, network phase, loss 0.2235, train acc 0.9067, test acc given symbol 0.9275
+[2024-04-08 01:21:15,971][utils.py][line:227][INFO] total time 9593.368sec, IO 440.259sec, make batch 0.779sec, forward 16.039sec, backward 6.111sec, grad step 1.611sec, others stat 883.465sec, eval 361.841sec
+[2024-04-08 03:48:55,197][utils.py][line:285][INFO] epoch 1, network phase, loss 0.1273, train acc 0.9525, test acc given symbol 0.9483
+[2024-04-08 03:48:55,198][utils.py][line:286][INFO] total time 8859.226sec, IO 439.699sec, make batch 1.132sec, forward 14.326sec, backward 6.084sec, grad step 0.822sec, others stat 883.187sec, eval 363.832sec
+[2024-04-08 06:16:35,097][utils.py][line:226][INFO] epoch 2, network phase, loss 0.1121, train acc 0.9589, test acc given symbol 0.9446
+[2024-04-08 06:16:35,097][utils.py][line:227][INFO] total time 8859.309sec, IO 418.483sec, make batch 0.762sec, forward 13.995sec, backward 6.331sec, grad step 1.560sec, others stat 882.689sec, eval 363.411sec
+[2024-04-08 08:44:04,944][utils.py][line:285][INFO] epoch 2, network phase, loss 0.1074, train acc 0.9611, test acc given symbol 0.9574
+[2024-04-08 08:44:04,945][utils.py][line:286][INFO] total time 8849.848sec, IO 418.983sec, make batch 1.119sec, forward 13.992sec, backward 6.231sec, grad step 0.815sec, others stat 883.308sec, eval 358.899sec
+[2024-04-08 11:18:08,178][utils.py][line:226][INFO] epoch 3, network phase, loss 0.0974, train acc 0.9648, test acc given symbol 0.9502
+[2024-04-08 11:18:08,179][utils.py][line:227][INFO] total time 9242.673sec, IO 449.047sec, make batch 0.785sec, forward 14.457sec, backward 6.246sec, grad step 1.625sec, others stat 882.767sec, eval 361.382sec
+[2024-04-08 14:01:51,962][utils.py][line:285][INFO] epoch 3, network phase, loss 0.1029, train acc 0.9630, test acc given symbol 0.9604
+[2024-04-08 14:01:51,962][utils.py][line:286][INFO] total time 9823.784sec, IO 536.423sec, make batch 1.233sec, forward 15.096sec, backward 4.737sec, grad step 0.983sec, others stat 884.482sec, eval 366.008sec
+[2024-04-08 16:33:50,462][utils.py][line:226][INFO] epoch 4, network phase, loss 0.0917, train acc 0.9671, test acc given symbol 0.9523
+[2024-04-08 16:33:50,462][utils.py][line:227][INFO] total time 9117.985sec, IO 452.941sec, make batch 0.796sec, forward 14.679sec, backward 6.333sec, grad step 1.729sec, others stat 882.973sec, eval 371.589sec
+[2024-04-08 19:05:31,363][utils.py][line:285][INFO] epoch 4, network phase, loss 0.0970, train acc 0.9652, test acc given symbol 0.9618
+[2024-04-08 19:05:31,363][utils.py][line:286][INFO] total time 9100.901sec, IO 436.868sec, make batch 1.155sec, forward 14.385sec, backward 5.773sec, grad step 0.868sec, others stat 884.540sec, eval 364.644sec
+[2024-04-08 21:36:52,541][utils.py][line:226][INFO] epoch 5, network phase, loss 0.0871, train acc 0.9690, test acc given symbol 0.9571
+[2024-04-08 21:36:52,541][utils.py][line:227][INFO] total time 9080.661sec, IO 417.106sec, make batch 0.760sec, forward 14.003sec, backward 5.825sec, grad step 1.534sec, others stat 884.576sec, eval 448.867sec
+[2024-04-09 00:22:48,817][utils.py][line:285][INFO] epoch 5, network phase, loss 0.0947, train acc 0.9663, test acc given symbol 0.9617
+[2024-04-09 00:22:48,817][utils.py][line:286][INFO] total time 9956.276sec, IO 525.460sec, make batch 1.226sec, forward 15.165sec, backward 5.414sec, grad step 0.967sec, others stat 883.733sec, eval 392.881sec
+[2024-04-09 00:22:49,897][main.py][line:60][INFO] Training done!

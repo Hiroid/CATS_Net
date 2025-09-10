@@ -3,6 +3,9 @@ import torch.utils
 import torch.utils.data
 import torchvision
 import torchvision.transforms as transforms
+import glob
+import os
+import webdataset as wds
 
 # CIFAR10 train
 mean_cifar10_train = [x / 255 for x in [125.30691805, 122.95039414, 113.86538318]]
@@ -50,19 +53,22 @@ def mkdataset(args):
             root = args.data_root, train = False, download = True, transform = transform_cifar('cifar100')
         )
     elif args.dataset == 'imagenet1k':
-        data_train = torchvision.datasets.ImageFolder(
-            root = args.data_root + '/ImageNet/train', transform = transform_imagenet1k('train')
-        )
-        data_test = torchvision.datasets.ImageFolder(
-            root = args.data_root + '/ImageNet/val', transform = transform_imagenet1k('test')
-        )
-    elif args.dataset == 'imagenet100':
-        data_train = torchvision.datasets.ImageFolder(
-            root = args.data_root + '/ImageNet-100/train', transform = transform_imagenet1k('train')
-        )
-        data_test = torchvision.datasets.ImageFolder(
-            root = args.data_root + '/ImageNet-100/val', transform = transform_imagenet1k('test')
-        )
+        local_data_train_path = "/data/ImageNet-WebDataset/train"
+        num_train_shards = len(glob.glob(os.path.join(local_data_train_path, '*.tar')))
+        urls_train = f"{local_data_train_path}/imagenet-train-{{000000..{num_train_shards-1:06d}}}.tar"
+        data_train = wds.WebDataset(urls_train, shardshuffle=True)
+        data_train = data_train.shuffle(1000)
+        data_train = data_train.decode("pil")
+        data_train = data_train.to_tuple("jpg", "cls")
+        data_train = data_train.map_tuple(transform_imagenet1k('train'))
+
+        local_data_test_path = "/data/ImageNet-WebDataset/val"
+        num_test_shards = len(glob.glob(os.path.join(local_data_test_path, '*.tar')))
+        urls_test = f"{local_data_test_path}/imagenet-val-{{000000..{num_test_shards-1:06d}}}.tar"
+        data_test = wds.WebDataset(urls_test)
+        data_test = data_test.decode("pil")
+        data_test = data_test.to_tuple("jpg", "cls")
+        data_test = data_test.map_tuple(transform_imagenet1k('test'))
     return data_train, data_test
 
 def transform_cifar(type):

@@ -182,7 +182,7 @@ def train(
     logger = None, 
     ckpt = None,
 ):
-    train_iter = torch.utils.data.DataLoader(train_set, batch_size = args.batch_size, num_workers = 8, shuffle = True)
+    train_iter = torch.utils.data.DataLoader(train_set, batch_size = args.batch_size, num_workers = 8, shuffle = False)
     net.to(device)
     batch_ckpt_count = 0
 

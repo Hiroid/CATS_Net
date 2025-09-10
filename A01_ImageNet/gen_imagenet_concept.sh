@@ -9,10 +9,9 @@
 #SBATCH --array=0%1
 
 cmdlines=(
-    "python main.py -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain"
+    "python -m A01_ImageNet.main -ne 5 -bs 2048 -lr 0.001 -nc 1000 -ss 100 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain"
 
-    # "python main.py -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --bidir"
-    # "python main.py -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name vit_b_16 --fix_fe --use_pretrain"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name vit_b_16 --fix_fe --use_pretrain"
 )
 cmd=${cmdlines[SLURM_ARRAY_TASK_ID]}
 $cmd
