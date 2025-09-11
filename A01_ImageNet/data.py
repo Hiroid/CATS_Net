@@ -5,7 +5,6 @@ import torchvision
 import torchvision.transforms as transforms
 import glob
 import os
-import webdataset as wds
 
 # CIFAR10 train
 mean_cifar10_train = [x / 255 for x in [125.30691805, 122.95039414, 113.86538318]]
