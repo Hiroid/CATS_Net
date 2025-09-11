@@ -10,7 +10,7 @@ import logging
 import os
 from pathlib import Path
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '2'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 script_dir = Path(__file__).parent
 project_root = Path(__file__).resolve().parent.parent
 

@@ -3,7 +3,7 @@ import argparse
 def parser():
     parser = argparse.ArgumentParser(description = 'CATS-Net on ImageNet1k concept abstraction task')
     parser.add_argument('--dataset', type = str, default = 'imagenet1k', choices = ['cifar10', 'cifar100', 'imagenet1k', 'imagenet100'], help = 'Which dataset to be used')
-    parser.add_argument('-data_root', type = str, default = '/data0/share/datasets', help = 'the directory to save the dataset')
+    parser.add_argument('-data_root', type = str, default = '/data', help = 'the directory to save the dataset')
 
     # parameters for training 
     parser.add_argument('--model_name', '-mn', type = str, default = 'resnet50', choices = ['resnet50', 'resnet18', 'vit_b_16'])

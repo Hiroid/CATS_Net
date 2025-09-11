@@ -182,7 +182,7 @@ def train(
     logger = None, 
     ckpt = None,
 ):
-    train_iter = torch.utils.data.DataLoader(train_set, batch_size = args.batch_size, num_workers = 8, shuffle = False)
+    train_iter = torch.utils.data.DataLoader(train_set, batch_size = args.batch_size, num_workers = 4, shuffle = True)
     net.to(device)
     batch_ckpt_count = 0
 
@@ -205,7 +205,7 @@ def train(
                 
                 time2 = time.time()
                 y_binary, symbol_batch = get_batch_fast(y, net.symbol_set, negative = True, p = args.p)
-                
+
                 time3 = time.time()
                 y_hat = net(X, symbol_batch)
                 l = loss(y_hat, y_binary)
@@ -323,7 +323,7 @@ def train_concept_first(
     logger = None, 
     ckpt = None,
 ):
-    train_iter = torch.utils.data.DataLoader(train_set, batch_size = args.batch_size, num_workers = 8, shuffle = True)
+    train_iter = torch.utils.data.DataLoader(train_set, batch_size = args.batch_size, num_workers = 4, shuffle = True)
     net.to(device)
     batch_ckpt_count = 0
 
