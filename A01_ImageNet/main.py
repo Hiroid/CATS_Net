@@ -10,7 +10,7 @@ import logging
 import os
 from pathlib import Path
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['CUDA_VISIBLE_DEVICES'] = '6'
 script_dir = Path(__file__).parent
 project_root = Path(__file__).resolve().parent.parent
 
@@ -22,7 +22,7 @@ def main(args):
     log_dir.mkdir(parents=True, exist_ok=True)
     model_dir.mkdir(parents=True, exist_ok=True)
 
-    base_file_name = f"{args.dataset}_ss{args.symbol_size}_fixfe_{args.model_name}_{str_time}"
+    base_file_name = f"{args.dataset}_ss{args.symbol_size}_fixfe_{args.model_name}_mlp{args.mlp_layers}_hidden{args.hidden_dim}_{str_time}"
     model_file_name = f"{base_file_name}.pt"
 
     if args.exp_prefix is None:
@@ -53,6 +53,8 @@ def main(args):
 
     net = model.cats_net(
         symbol_size = args.symbol_size, 
+        mlp_layers = args.mlp_layers,
+        hidden_dim = args.hidden_dim,
         num_classes = args.num_classes, 
         fix_fe = args.fix_fe, 
         fe_type = args.model_name,

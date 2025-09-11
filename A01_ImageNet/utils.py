@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 def get_optimizer(net, optimizer_type, lr, momentum, wd, random_ts = False):
     if random_ts:
-        param_list = [param for name, param in net.named_parameters() if 'cdp_' in name]
+        param_list = [param for name, param in net.named_parameters() if 'ca_' in name]
     else:
         param_list = [param for name, param in net.named_parameters() if 'symbol_set' not in name]
 
