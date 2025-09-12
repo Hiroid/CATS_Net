@@ -34,6 +34,7 @@ def parser():
     parser.add_argument('--fix_symbol_set', '-fss', default = False, action = 'store_true', help = 'whether to fix symbol_set during training')
     parser.add_argument('--symbol_init_type', '-sit', type = str, default = 'random', choices = ['random', 'one_hot'], help = 'symbol_set initialization type')
     parser.add_argument('--custom_symbol_path', '-csp', type = str, default = None, help = 'path to custom symbol_set file')
+    parser.add_argument('--joint_training', '-jt', default = False, action = 'store_true', help = 'whether to train symbol_set and network parameters jointly')
     return parser.parse_args()
 
 def print_args(args, logger=None):

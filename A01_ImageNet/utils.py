@@ -187,7 +187,70 @@ def train(
     batch_ckpt_count = 0
 
     for epoch in range(args.num_epochs):
-        if not args.fix_ts_ca:
+        # Joint training mode: train both symbol_set and network parameters together
+        if args.joint_training:
+            train_l_sum, train_acc_sum, n, batch_count, start = 0.0, 0.0, 0, 0, time.time()
+            cpu_gpu_time = 0.0
+            make_batch_time = 0.0
+            forward_time = 0.0
+            backward_time = 0.0
+            grad_step_time = 0.0
+            other_stat_tims = 0.0
+            for tmp in tqdm(train_iter):
+                time1 = time.time()
+                X_ = tmp[0] 
+                y = tmp[1]
+                net.train()
+                X = X_.to(device)
+                y = y.to(device)
+                
+                time2 = time.time()
+                y_binary, symbol_batch = get_batch_fast(y, net.symbol_set, negative = True, p = args.p)
+
+                time3 = time.time()
+                y_hat = net(X, symbol_batch)
+                l = loss(y_hat, y_binary)
+                if args.use_orthg: l += net.symbol_orthg()
+                
+                time4 = time.time()
+                param_opti.zero_grad()
+                symbol_opti.zero_grad()
+                l.backward()
+                
+                time5 = time.time()
+                # Joint training: update both param and symbol optimizers
+                param_opti.step()
+                symbol_opti.step()
+
+                time6 = time.time()
+                train_l_sum += l.cpu().item()
+                idx = (y_hat.argmax(dim = 1) == y_binary.argmax(dim = 1))
+                train_acc_sum += idx.sum().cpu().item()
+                n += y.shape[0] if args.cntrst is None else y.shape[0] * (args.cntrst + 1)
+                batch_count += 1
+                
+                cpu_gpu_time += time2 - time1
+                make_batch_time += time3 - time2
+                forward_time += time4 - time3
+                backward_time += time5 - time4
+                grad_step_time += time6 - time5
+                time7 = time.time()
+                other_stat_tims += time7 - time6
+
+            if args.print_frequency != 0 and (epoch + 1) % args.print_frequency == 0:
+                time8 = time.time()
+                test_acc = evaluate_accuracy(test_set, net, batch_size = args.batch_size) if test_set != None else 0
+                time9 = time.time()
+                eval_time = time9 - time8
+                if logger is None:
+                    print('epoch %d, joint training phase, loss %.4f, train acc %.4f, test acc %.4f, time %.2f sec'
+                        % (epoch + 1, train_l_sum / batch_count, train_acc_sum / n, test_acc, time.time() - start))
+                else:
+                    logger.info(f'epoch {epoch + 1}, joint training phase, loss {(train_l_sum / batch_count):.4f}, train acc {(train_acc_sum / n):.4f}, test acc given symbol {test_acc:.4f}')
+                    logger.info(f'total time {(time.time() - start):.3f}sec, IO {cpu_gpu_time:.3f}sec, make batch {make_batch_time:.3f}sec, forward {forward_time:.3f}sec, backward {backward_time:.3f}sec, grad step {grad_step_time:.3f}sec, others stat {other_stat_tims:.3f}sec, eval {eval_time:.3f}sec')
+        
+        # Original two-stage training mode
+        elif not args.fix_ts_ca:
             train_l_sum, train_acc_sum, n, batch_count, start = 0.0, 0.0, 0, 0, time.time()
             cpu_gpu_time = 0.0
             make_batch_time = 0.0
@@ -249,8 +312,8 @@ def train(
                     logger.info(f'epoch {epoch + 1}, network phase, loss {(train_l_sum / batch_count):.4f}, train acc {(train_acc_sum / n):.4f}, test acc given symbol {test_acc:.4f}')
                     logger.info(f'total time {(time.time() - start):.3f}sec, IO {cpu_gpu_time:.3f}sec, make batch {make_batch_time:.3f}sec, forward {forward_time:.3f}sec, backward {backward_time:.3f}sec, grad step {grad_step_time:.3f}sec, others stat {other_stat_tims:.3f}sec, eval {eval_time:.3f}sec')
         
-        # Skip second iteration if symbol_set is fixed, but continue to checkpoint saving
-        if not args.fix_symbol_set:
+        # Skip second iteration if symbol_set is fixed or in joint training mode, but continue to checkpoint saving
+        if not args.fix_symbol_set and not args.joint_training:
             train_l_sum, train_acc_sum, n, batch_count, start = 0.0, 0.0, 0, 0, time.time()
             cpu_gpu_time = 0.0
             make_batch_time = 0.0
