@@ -6,8 +6,8 @@ from sklearn.metrics.pairwise import cosine_similarity, pairwise_distances
 import copy
 from tqdm import tqdm
 
-def get_optimizer(net, optimizer_type, lr, momentum, wd, random_ts = False):
-    if random_ts:
+def get_optimizer(net, optimizer_type, lr, momentum, wd, fix_ts = False):
+    if fix_ts:
         param_list = [param for name, param in net.named_parameters() if 'ca_' in name]
     else:
         param_list = [param for name, param in net.named_parameters() if 'symbol_set' not in name]
@@ -187,7 +187,7 @@ def train(
     batch_ckpt_count = 0
 
     for epoch in range(args.num_epochs):
-        if not args.random_ts_cdp:
+        if not args.fix_ts_ca:
             train_l_sum, train_acc_sum, n, batch_count, start = 0.0, 0.0, 0, 0, time.time()
             cpu_gpu_time = 0.0
             make_batch_time = 0.0
@@ -249,145 +249,8 @@ def train(
                     logger.info(f'epoch {epoch + 1}, network phase, loss {(train_l_sum / batch_count):.4f}, train acc {(train_acc_sum / n):.4f}, test acc given symbol {test_acc:.4f}')
                     logger.info(f'total time {(time.time() - start):.3f}sec, IO {cpu_gpu_time:.3f}sec, make batch {make_batch_time:.3f}sec, forward {forward_time:.3f}sec, backward {backward_time:.3f}sec, grad step {grad_step_time:.3f}sec, others stat {other_stat_tims:.3f}sec, eval {eval_time:.3f}sec')
         
-        train_l_sum, train_acc_sum, n, batch_count, start = 0.0, 0.0, 0, 0, time.time()
-        cpu_gpu_time = 0.0
-        make_batch_time = 0.0
-        forward_time = 0.0
-        backward_time = 0.0
-        grad_step_time = 0.0
-        other_stat_tims = 0.0
-        for tmp in tqdm(train_iter):
-            time1 = time.time()
-            X_ = tmp[0] 
-            y = tmp[1]
-            net.train()
-            X = X_.to(device)
-            y = y.to(device)
-            
-            time2 = time.time()
-            y_binary, symbol_batch = get_batch_fast(y, net.symbol_set, negative = True, p = args.p)
-            with torch.no_grad(): symbol_batch.data += torch.empty(symbol_batch.shape).uniform_(-0.1, 0.1).to(device)
-            
-            time3 = time.time()
-            y_hat = net(X, symbol_batch)
-            l = loss(y_hat, y_binary)
-            if args.use_orthg: l += net.symbol_orthg()
-            
-            time4 = time.time()
-            param_opti.zero_grad()
-            symbol_opti.zero_grad()
-            l.backward()
-            
-            time5 = time.time()
-            symbol_opti.step()
-
-            time6 = time.time()
-            train_l_sum += l.cpu().item()
-            idx = (y_hat.argmax(dim = 1) == y_binary.argmax(dim = 1))
-            train_acc_sum += idx.sum().cpu().item()
-            n += y.shape[0] if args.cntrst is None else y.shape[0] * (args.cntrst + 1)
-            batch_count += 1
-            
-            cpu_gpu_time += time2 - time1
-            make_batch_time += time3 - time2
-            forward_time += time4 - time3
-            backward_time += time5 - time4
-            grad_step_time += time6 - time5
-            time7 = time.time()
-            other_stat_tims += time7 - time6
-
-        if args.print_frequency != 0 and (epoch + 1) % args.print_frequency == 0:
-            time8 = time.time()
-            test_acc = evaluate_accuracy(test_set, net, batch_size = args.batch_size) if test_set != None else 0
-            time9 = time.time()
-            eval_time = time9 - time8
-            if logger is None:
-                print('epoch %d, concept phase, loss %.4f, train acc %.4f, test acc %.4f, time %.2f sec'
-                    % (epoch + 1, train_l_sum / batch_count, train_acc_sum / n, test_acc, time.time() - start))
-            else:
-                logger.info(f'epoch {epoch + 1}, concept phase, loss {(train_l_sum / batch_count):.4f}, train acc {(train_acc_sum / n):.4f}, test acc given symbol {test_acc:.4f}')
-                logger.info(f'total time {(time.time() - start):.3f}sec, IO {cpu_gpu_time:.3f}sec, make batch {make_batch_time:.3f}sec, forward {forward_time:.3f}sec, backward {backward_time:.3f}sec, grad step {grad_step_time:.3f}sec, others stat {other_stat_tims:.3f}sec, eval {eval_time:.3f}sec')
-        
-        if ckpt is not None:
-            if (epoch + 1) % 1 == 0: torch.save(net.state_dict(), ckpt)
-
-def train_concept_first(
-    net, 
-    loss, 
-    train_set, 
-    test_set, 
-    param_opti, 
-    symbol_opti, 
-    device, 
-    args, 
-    logger = None, 
-    ckpt = None,
-):
-    train_iter = torch.utils.data.DataLoader(train_set, batch_size = args.batch_size, num_workers = 4, shuffle = True)
-    net.to(device)
-    batch_ckpt_count = 0
-
-    for epoch in range(args.num_epochs):
-        train_l_sum, train_acc_sum, n, batch_count, start = 0.0, 0.0, 0, 0, time.time()
-        cpu_gpu_time = 0.0
-        make_batch_time = 0.0
-        forward_time = 0.0
-        backward_time = 0.0
-        grad_step_time = 0.0
-        other_stat_tims = 0.0
-        for tmp in tqdm(train_iter):
-            time1 = time.time()
-            X_ = tmp[0] 
-            y = tmp[1]
-            net.train()
-            X = X_.to(device)
-            y = y.to(device)
-            
-            time2 = time.time()
-            y_binary, symbol_batch = get_batch_fast(y, net.symbol_set, negative = True, p = args.p)
-            with torch.no_grad(): symbol_batch.data += torch.empty(symbol_batch.shape).uniform_(-0.1, 0.1).to(device)
-            
-            time3 = time.time()
-            y_hat = net(X, symbol_batch)
-            l = loss(y_hat, y_binary)
-            if args.use_orthg: l += net.symbol_orthg()
-            
-            time4 = time.time()
-            param_opti.zero_grad()
-            symbol_opti.zero_grad()
-            l.backward()
-            
-            time5 = time.time()
-            symbol_opti.step()
-
-            time6 = time.time()
-            train_l_sum += l.cpu().item()
-            idx = (y_hat.argmax(dim = 1) == y_binary.argmax(dim = 1))
-            train_acc_sum += idx.sum().cpu().item()
-            n += y.shape[0] if args.cntrst is None else y.shape[0] * (args.cntrst + 1)
-            batch_count += 1
-            
-            cpu_gpu_time += time2 - time1
-            make_batch_time += time3 - time2
-            forward_time += time4 - time3
-            backward_time += time5 - time4
-            grad_step_time += time6 - time5
-            time7 = time.time()
-            other_stat_tims += time7 - time6
-
-        if args.print_frequency != 0 and (epoch + 1) % args.print_frequency == 0:
-            time8 = time.time()
-            test_acc = evaluate_accuracy(test_set, net, batch_size = args.batch_size) if test_set != None else 0
-            time9 = time.time()
-            eval_time = time9 - time8
-            if logger is None:
-                print('epoch %d, concept phase, loss %.4f, train acc %.4f, test acc %.4f, time %.2f sec'
-                    % (epoch + 1, train_l_sum / batch_count, train_acc_sum / n, test_acc, time.time() - start))
-            else:
-                logger.info(f'epoch {epoch + 1}, concept phase, loss {(train_l_sum / batch_count):.4f}, train acc {(train_acc_sum / n):.4f}, test acc given symbol {test_acc:.4f}')
-                logger.info(f'total time {(time.time() - start):.3f}sec, IO {cpu_gpu_time:.3f}sec, make batch {make_batch_time:.3f}sec, forward {forward_time:.3f}sec, backward {backward_time:.3f}sec, grad step {grad_step_time:.3f}sec, others stat {other_stat_tims:.3f}sec, eval {eval_time:.3f}sec')
-                
-        if not args.random_ts_cdp:
+        # Skip second iteration if symbol_set is fixed, but continue to checkpoint saving
+        if not args.fix_symbol_set:
             train_l_sum, train_acc_sum, n, batch_count, start = 0.0, 0.0, 0, 0, time.time()
             cpu_gpu_time = 0.0
             make_batch_time = 0.0
@@ -405,6 +268,7 @@ def train_concept_first(
                 
                 time2 = time.time()
                 y_binary, symbol_batch = get_batch_fast(y, net.symbol_set, negative = True, p = args.p)
+                with torch.no_grad(): symbol_batch.data += torch.empty(symbol_batch.shape).uniform_(-0.1, 0.1).to(device)
                 
                 time3 = time.time()
                 y_hat = net(X, symbol_batch)
@@ -417,7 +281,7 @@ def train_concept_first(
                 l.backward()
                 
                 time5 = time.time()
-                param_opti.step()
+                symbol_opti.step()
 
                 time6 = time.time()
                 train_l_sum += l.cpu().item()
@@ -434,44 +298,18 @@ def train_concept_first(
                 time7 = time.time()
                 other_stat_tims += time7 - time6
 
-                # torch.save(net.state_dict(), f"./param/sea-net_imagenet1k_ne5_trail5_ckpt{batch_ckpt_count}.pt")
-                # batch_ckpt_count += 1
-
             if args.print_frequency != 0 and (epoch + 1) % args.print_frequency == 0:
                 time8 = time.time()
                 test_acc = evaluate_accuracy(test_set, net, batch_size = args.batch_size) if test_set != None else 0
                 time9 = time.time()
                 eval_time = time9 - time8
                 if logger is None:
-                    print('epoch %d, network training phase, loss %.4f, train acc %.4f, test acc %.4f, time %.2f sec'
+                    print('epoch %d, concept phase, loss %.4f, train acc %.4f, test acc %.4f, time %.2f sec'
                         % (epoch + 1, train_l_sum / batch_count, train_acc_sum / n, test_acc, time.time() - start))
                 else:
-                    logger.info(f'epoch {epoch + 1}, network phase, loss {(train_l_sum / batch_count):.4f}, train acc {(train_acc_sum / n):.4f}, test acc given symbol {test_acc:.4f}')
+                    logger.info(f'epoch {epoch + 1}, concept phase, loss {(train_l_sum / batch_count):.4f}, train acc {(train_acc_sum / n):.4f}, test acc given symbol {test_acc:.4f}')
                     logger.info(f'total time {(time.time() - start):.3f}sec, IO {cpu_gpu_time:.3f}sec, make batch {make_batch_time:.3f}sec, forward {forward_time:.3f}sec, backward {backward_time:.3f}sec, grad step {grad_step_time:.3f}sec, others stat {other_stat_tims:.3f}sec, eval {eval_time:.3f}sec')
         
+        # Save checkpoint after each epoch
         if ckpt is not None:
             if (epoch + 1) % 1 == 0: torch.save(net.state_dict(), ckpt)
-
-def eval_dataload_time(net, loss, train_set, test_set, param_opti, symbol_opti, device, args, logger = None, ckpt = None):
-    train_iter = torch.utils.data.DataLoader(train_set, batch_size = args.batch_size, num_workers = 4, shuffle = True)
-    net.to(device)
-
-    cpu_gpu_time = 0.0
-    make_batch_time = 0.0
-    for tmp in tqdm(train_iter):
-        
-        time1 = time.time()
-        X = tmp[0].to(device)
-        y = tmp[1].to(device)
-        
-        time2 = time.time()
-        
-        y_binary, symbol_batch = get_batch_fast(y, net.symbol_set, negative = True, p = args.p)
-
-        time3 = time.time()
-
-        cpu_gpu_time += time2 - time1
-
-        make_batch_time += time3 - time2
-
-    logger.info(f'Transfer tensor from CPU to GPU: {cpu_gpu_time}sec, make batch: {make_batch_time}sec')

@@ -97,10 +97,51 @@ class cats_net(nn.Module):
         self.ts_afun = nn.ReLU()
         self.ca_afun = nn.Sigmoid()
 
+        # Initialize symbol_set with default random values
         self.symbol_set = nn.Parameter(torch.rand((num_classes, symbol_size), requires_grad=True))
 
         self.t = nn.Parameter(torch.rand(1, requires_grad=True))
         self.new_symbol = nn.Parameter(torch.rand((num_new, symbol_size), requires_grad=True))
+    
+    def init_symbol_set(self, init_type='random', custom_path=None):
+        """Initialize symbol_set with different methods
+        
+        Args:
+            init_type (str): 'random', 'one_hot', or 'custom'
+            custom_path (str): path to custom symbol_set file (for 'custom' type)
+        """
+        num_classes, symbol_size = self.symbol_set.shape
+        
+        if init_type == 'random':
+            # Already initialized with random values, no need to change
+            pass
+        elif init_type == 'one_hot':
+            # Initialize with one-hot vectors
+            if symbol_size < num_classes:
+                raise ValueError(f"Symbol size ({symbol_size}) must be >= num_classes ({num_classes}) for one-hot initialization")
+            
+            one_hot_matrix = torch.zeros((num_classes, symbol_size))
+            for i in range(num_classes):
+                one_hot_matrix[i, i] = 1.0
+            
+            with torch.no_grad():
+                self.symbol_set.data = one_hot_matrix
+        elif init_type == 'custom':
+            if custom_path is None:
+                raise ValueError("custom_path must be provided for custom initialization")
+            
+            # Load custom symbol_set from file
+            try:
+                custom_symbols = torch.load(custom_path)
+                if custom_symbols.shape != (num_classes, symbol_size):
+                    raise ValueError(f"Custom symbol shape {custom_symbols.shape} doesn't match expected shape {(num_classes, symbol_size)}")
+                
+                with torch.no_grad():
+                    self.symbol_set.data = custom_symbols
+            except Exception as e:
+                raise ValueError(f"Failed to load custom symbol_set from {custom_path}: {e}")
+        else:
+            raise ValueError(f"Unknown init_type: {init_type}. Must be 'random', 'one_hot', or 'custom'")
     
     def _fe(self, x):
         if 'resnet' in self.fe_type:

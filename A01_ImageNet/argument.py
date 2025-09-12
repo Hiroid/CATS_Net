@@ -28,9 +28,12 @@ def parser():
     parser.add_argument('--loss_type', type = str, default = 'CrossEntropyLoss', choices = ['CrossEntropyLoss', 'MSELoss'])
     parser.add_argument('--use_pretrain', '-up', default = False, action = 'store_true')
     parser.add_argument('--bidir', '-bi', default = False, action = 'store_true', help = 'use the concept flow from the other direction')
-    parser.add_argument('--random_ts', '-rt', default = False, action = 'store_true')
-    parser.add_argument('--random_ts_cdp', '-rtc', default = False, action = 'store_true')
+    parser.add_argument('--fix_ts', '-rt', default = False, action = 'store_true')
+    parser.add_argument('--fix_ts_ca', '-rtc', default = False, action = 'store_true')
     parser.add_argument('--exp_prefix', '-ep', type = str, default = None, help = 'prefix of the exp')
+    parser.add_argument('--fix_symbol_set', '-fss', default = False, action = 'store_true', help = 'whether to fix symbol_set during training')
+    parser.add_argument('--symbol_init_type', '-sit', type = str, default = 'random', choices = ['random', 'one_hot'], help = 'symbol_set initialization type')
+    parser.add_argument('--custom_symbol_path', '-csp', type = str, default = None, help = 'path to custom symbol_set file')
     return parser.parse_args()
 
 def print_args(args, logger=None):

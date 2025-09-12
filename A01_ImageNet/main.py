@@ -10,11 +10,15 @@ import logging
 import os
 from pathlib import Path
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '6'
+os.environ['CUDA_VISIBLE_DEVICES'] = '7'
 script_dir = Path(__file__).parent
 project_root = Path(__file__).resolve().parent.parent
 
 def main(args):
+    # Adjust args if using one-hot initialization
+    if args.symbol_init_type == 'one_hot':
+        args.symbol_size = args.num_classes  # Set to num_classes for Dataset
+    
     str_time = gettime(time.localtime(time.time()))
     log_dir = project_root / "Results" / "log"
     model_dir = project_root / "Results" / "param"
@@ -22,7 +26,15 @@ def main(args):
     log_dir.mkdir(parents=True, exist_ok=True)
     model_dir.mkdir(parents=True, exist_ok=True)
 
-    base_file_name = f"{args.dataset}_ss{args.symbol_size}_fixfe_{args.model_name}_mlp{args.mlp_layers}_hidden{args.hidden_dim}_{str_time}"
+    fix_str = ""
+    if args.fix_ts:
+        fix_str += "_fixtsTrue"
+    if args.fix_ts_ca:
+        fix_str += "_fixtscaTrue"
+    if args.fix_symbol_set:
+        fix_str += "_fixsymbolTrue"
+
+    base_file_name = f"{args.dataset}_ss{args.symbol_size}_fixfe_{args.model_name}_mlp{args.mlp_layers}_hidden{args.hidden_dim}{fix_str}_init{args.symbol_init_type}_{str_time}"
     model_file_name = f"{base_file_name}.pt"
 
     if args.exp_prefix is None:
@@ -60,11 +72,27 @@ def main(args):
         fe_type = args.model_name,
         pretrain = args.use_pretrain,
     )
+    
+    # Initialize symbol_set based on the specified type
+    init_type = args.symbol_init_type
+    if args.custom_symbol_path is not None:
+        init_type = 'custom'
+    
+    net.init_symbol_set(init_type=init_type, custom_path=args.custom_symbol_path)
+    logger.info(f'Symbol set initialized with type: {init_type}')
+    
     if args.load_model != None: net.load_state_dict(torch.load(args.load_model))
     loss = nn.__dict__[args.loss_type]()
 
     ### optimizer
-    param_opti, symbol_opti = utils.get_optimizer(net, args.optimizer_type, args.learning_rate, args.momentum, args.weight_decay, args.random_ts)
+    param_opti, symbol_opti = utils.get_optimizer(
+        net, 
+        args.optimizer_type, 
+        args.learning_rate, 
+        args.momentum, 
+        args.weight_decay, 
+        args.fix_ts
+    )
 
     utils.train(
         net, 
