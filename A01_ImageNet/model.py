@@ -107,8 +107,8 @@ class cats_net(nn.Module):
         """Initialize symbol_set with different methods
         
         Args:
-            init_type (str): 'random', 'one_hot', or 'custom'
-            custom_path (str): path to custom symbol_set file (for 'custom' type)
+            init_type (str): 'random', 'one_hot', or 'word2vec'
+            custom_path (str): path to word2vec symbol_set file (for 'word2vec' type)
         """
         num_classes, symbol_size = self.symbol_set.shape
         
@@ -126,7 +126,7 @@ class cats_net(nn.Module):
             
             with torch.no_grad():
                 self.symbol_set.data = one_hot_matrix
-        elif init_type == 'custom':
+        elif init_type == 'word2vec':
             if custom_path is None:
                 raise ValueError("custom_path must be provided for custom initialization")
             
@@ -141,7 +141,7 @@ class cats_net(nn.Module):
             except Exception as e:
                 raise ValueError(f"Failed to load custom symbol_set from {custom_path}: {e}")
         else:
-            raise ValueError(f"Unknown init_type: {init_type}. Must be 'random', 'one_hot', or 'custom'")
+            raise ValueError(f"Unknown init_type: {init_type}. Must be 'random', 'one_hot', or 'word2vec'")
     
     def _fe(self, x):
         if 'resnet' in self.fe_type:

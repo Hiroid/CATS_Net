@@ -24,6 +24,10 @@ def main(args):
         args.fix_ts_ca = False
         args.fix_symbol_set = False
     
+    # Initialize symbol_set based on the specified type
+    if args.custom_symbol_path is not None:
+        args.symbol_init_type = 'word2vec'
+
     str_time = gettime(time.localtime(time.time()))
     log_dir = project_root / "Results" / "log"
     model_dir = project_root / "Results" / "param"
@@ -80,13 +84,8 @@ def main(args):
         pretrain = args.use_pretrain,
     )
     
-    # Initialize symbol_set based on the specified type
-    init_type = args.symbol_init_type
-    if args.custom_symbol_path is not None:
-        init_type = 'custom'
-    
-    net.init_symbol_set(init_type=init_type, custom_path=args.custom_symbol_path)
-    logger.info(f'Symbol set initialized with type: {init_type}')
+    net.init_symbol_set(init_type=args.symbol_init_type, custom_path=args.custom_symbol_path)
+    logger.info(f'Symbol set initialized with type: {args.symbol_init_type}')
     
     if args.load_model != None: net.load_state_dict(torch.load(args.load_model))
     loss = nn.__dict__[args.loss_type]()

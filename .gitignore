@@ -1,4 +1,4 @@
-Deps/corpora/wordnet.zip
+Deps/corpora/*
 Deps/pretrained_fe/resnet18-f37072fd.pth
 Deps/pretrained_fe/resnet50-0676ba61.pth
 Deps/pretrained_fe/vit_b_16-c867db91.pth

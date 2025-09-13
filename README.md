@@ -95,13 +95,29 @@ cd CATS-Net
 ### 2. Set Up Python Environment
 
 ```bash
-# Create virtual environment
-python -m venv cats_env
-source cats_env/bin/activate  # On Windows: cats_env\Scripts\activate
+# 1. Install UV if not already installed
+# macOS and Linux
+curl -LsSf https://astral.sh/uv/0.8.5/install.sh | sh
+# Windows
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/0.8.5/install.ps1 | iex"
 
-# Install core dependencies
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
-pip install numpy scipy matplotlib seaborn pandas tqdm nltk pillow
+# testing uv installation, version should be 0.8.5
+uv --version
+
+# 2. Install the python 3.9
+uv python install 3.9.16
+
+# 3. Create a virtual environment
+uv venv -p 3.9.16
+
+# 4. Activate the virtual environment
+# macOS and Linux
+source .venv/bin/activate
+# Windows
+.venv\Scripts\activate
+
+# 5. Install dependencies (using locked versions)
+uv sync
 ```
 
 ### 3. Download Required Assets

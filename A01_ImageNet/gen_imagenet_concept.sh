@@ -21,6 +21,7 @@ cmdlines=(
     # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --fix_ts_ca"
     # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --fix_ts"
     # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --joint_training"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --custom_symbol_path ./Results/word2vec/ImageNet1k_FirstEmbeddings_Tensor.pt --fix_symbol_set"
 )
 cmd=${cmdlines[SLURM_ARRAY_TASK_ID]}
 $cmd
