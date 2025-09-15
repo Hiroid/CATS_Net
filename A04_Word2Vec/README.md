@@ -90,6 +90,11 @@ python B01_Word2Vec_CIFAR100_main.py \
     --noise_intensity 0.05 \
     --end_epoch 500 \
     --batch_size_train 128
+
+python B01_THINGS_main.py \
+    --train_mode True \
+    --noise_intensity 0.1 \
+    --end_epoch 100 \
 ```
 
 ## Testing

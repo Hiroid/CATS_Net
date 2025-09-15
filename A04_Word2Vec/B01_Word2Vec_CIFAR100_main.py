@@ -1,5 +1,4 @@
 import sys
-sys.path.append("../../Deps/CustomFuctions")
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -9,10 +8,14 @@ import torchvision.models as models
 from models import *
 import scipy.io as io
 import os
+from pathlib import Path
 import argparse
 import scipy.stats as stats
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "4"
+script_dir = Path(__file__).parent
+project_root = Path(__file__).resolve().parent.parent
+sys.path.append(os.path.join(project_root, "Deps", "CustomFuctions"))
 
 import MixDataLoader, SeparatedDataLoader
 import SEAnet,  AccracyTest
@@ -28,9 +31,8 @@ parser.add_argument('--num_class', type=int, default=100, help='number of total 
 # parser.add_argument('--test_id', type=int, nargs='+', default=[0], help='the ids of the classes used to test')
 parser.add_argument('--test_id', type=list, default=list(range(100)), help='the ids of the classes used to test')
 parser.add_argument('--start_epoch', type=int, default=0, help='epoch number to start with')
-parser.add_argument('--end_epoch', type=int, default=1000, help='eppch number to end with')
+parser.add_argument('--end_epoch', type=int, default=1000, help='epoch number to end with')
 parser.add_argument('--context_dim', type=int, default=20, help='context dimension')
-parser.add_argument('--source_path', type=str, default='./data/2021-07-23/', help='dpth data store path')
 parser.add_argument('--noise_intensity', type=float, nargs='+', default=[0.05], help='intensity of noises added to the contexts')
 parser.add_argument('--train_mode', type=bool, default=False, help='set TRUE to train the network, FALSE to test the network')
 parser.add_argument('--drop_probility', type=float, default=0.2, help='drop probility for CDP network 3 to avoid over-fitting')
@@ -49,9 +51,13 @@ dataloader_cifar100 = MixDataLoader.DLTrain_part(list(range(100)), args.batch_si
 name_vecs = torch.from_numpy(io.loadmat(args.wordvec_path)['wv_d_%d' % (args.context_dim)]) 
 
 # neural network model
-pretrained_classifier_cnn = models.resnet18(pretrained=True)
+pretrained_classifier_cnn = models.resnet18()
+pretrained_classifier_cnn.load_state_dict(
+    torch.load(
+        os.path.join(project_root, "Deps", "pretrained_fe", "resnet18-f37072fd.pth")
+    )
+)
 pretrained_classifier_cnn.fc = nn.Identity()
-pretrained_cdp_cnn = VGG('VGG11')
 
 def train(epoch, ni, trainloader_cifar100, my_extended_model, optimizer_net, contexts, criterion, target_extend, train_id, test_id, id_location):
     print('\nEpoch: %d' % epoch)
@@ -170,8 +176,10 @@ def model_training(test_id, ni):
                 'tested_idx': np.array(test_id)})
 
     # structure and parameter setting
-    my_extended_model = SEAnet.Net2(my_pretrained_classifier=pretrained_classifier_cnn,
-                                         my_pretrained_cdp=pretrained_cdp_cnn, context_dim=args.context_dim).to(args.device)
+    my_extended_model = SEAnet.Net2(
+        my_pretrained_classifier=pretrained_classifier_cnn,
+        context_dim=args.context_dim
+    ).to(args.device)
     criterion = nn.CrossEntropyLoss()
     optimizer_net = optim.Adam(my_extended_model.parameters(), lr=0.0001)
 
@@ -219,9 +227,10 @@ def wordvector_test():
             checkpoint = torch.load(checkpoint_path, map_location=args.device)
             
             # Reconstruct model
-            my_extended_model = SEAnet.Net2(my_pretrained_classifier=pretrained_classifier_cnn,
-                                           my_pretrained_cdp=pretrained_cdp_cnn, 
-                                           context_dim=args.context_dim).to(args.device)
+            my_extended_model = SEAnet.Net2(
+                my_pretrained_classifier=pretrained_classifier_cnn,
+                context_dim=args.context_dim
+            ).to(args.device)
             my_extended_model.load_state_dict(checkpoint['net'])
             
             # Load contexts and class information

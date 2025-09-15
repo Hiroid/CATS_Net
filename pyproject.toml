@@ -20,6 +20,7 @@ dependencies = [
     "nltk==3.8.1",
     "webdataset>=0.2.100",
     "fasttext>=0.9.3",
+    "ipykernel>=6.30.1",
 ]
 [tool.uv]
 index-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
