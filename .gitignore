@@ -21,6 +21,8 @@ A03_Communications/B02_Communication_Game/Testing_Symbols_of_Speaker
 
 A04_Word2Vec/ni=5.00e-02/checkpoint/
 A04_Word2Vec/ni=5.00e-02/contexts/
+A04_Word2Vec/THINGS_results/*/checkpoint/
+A04_Word2Vec/THINGS_results/*/contexts/
 
 
 Results/entropy_stat/Imagenet1k_test_stat_seanet50_trainedConfig.pt
