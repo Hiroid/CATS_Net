@@ -176,11 +176,11 @@ print(f"Final embeddings shape: {embeddings.shape}")
 # Construct output filenames based on model and split
 output_embeddings_file = os.path.join(
     output_dir, 
-    f"ImageNet1k_{args.split}_{args.model_name}_embeddings.pt"
+    f"imagenet1k_{args.split}_{args.model_name}_embeddings.pt"
 )
 output_indices_file = os.path.join(
     output_dir, 
-    f"ImageNet1k_{args.split}_{args.model_name}_indices.pt"
+    f"imagenet1k_{args.split}_{args.model_name}_indices.pt"
 )
 
 print(f"Saving embeddings to: {output_embeddings_file}")

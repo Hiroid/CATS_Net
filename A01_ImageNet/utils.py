@@ -5,6 +5,7 @@ import time
 from sklearn.metrics.pairwise import cosine_similarity, pairwise_distances
 import copy
 from tqdm import tqdm
+from .model import cats_net
 
 def get_optimizer(net, optimizer_type, lr, momentum, wd, fix_ts = False):
     if fix_ts:
@@ -103,7 +104,7 @@ def get_batch_fast(y, symbol_set, negative = False, p = 0.5):
         symbol_batch = symbol_set[y]
     return y_binary, symbol_batch
 
-def evaluate_accuracy(eval_set, net, batch_size = 128, stat = False, use_feature = False, use_iter = False):
+def evaluate_accuracy(eval_set, net: cats_net, batch_size = 128, stat = False, use_feature = False, use_iter = False):
     device = list(net.parameters())[0].device
     num_symbols = net.symbol_set.shape[0] # 10
     if use_iter == True:
