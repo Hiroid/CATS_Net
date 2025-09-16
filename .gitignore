@@ -30,5 +30,4 @@ Results/entropy_stat/Imagenet1k_test_stat_tsnet_randomConfig.pt
 Results/entropy_stat/seanet_init_onehotconcept_waffle.pt
 Results/entropy_stat/seanet50_onehotconcept_waffle.pt
 
-Results/FeatureData/ImageNet1k_test_embeddings.pt
-Results/FeatureData/ImageNet1k_test_indices.pt
+Results/FeatureData/*
