@@ -11,6 +11,7 @@ import re
 import glob
 from pathlib import Path
 import numpy as np
+import pandas as pd
 from typing import List, Dict, Tuple, Optional
 
 
@@ -45,6 +46,160 @@ def extract_final_accuracy(log_file_path: str) -> Optional[float]:
     except Exception as e:
         print(f"Error reading {log_file_path}: {e}")
         return None
+
+
+def create_detailed_results_dataframe(all_results: List[Dict]) -> pd.DataFrame:
+    """
+    Create a detailed DataFrame from all experiment results.
+    
+    Args:
+        all_results: List of experiment analysis results
+        
+    Returns:
+        DataFrame with detailed results for each experiment and training run
+    """
+    detailed_rows = []
+    
+    for result in all_results:
+        experiment_name = result['folder_name']
+        
+        # Add rows for each completed training run
+        for i, (log_file, accuracy) in enumerate(zip(result['completed_logs'], result['accuracies'])):
+            # Extract class ID from log filename if possible
+            class_match = re.search(r'class_(\d+)', log_file)
+            class_id = int(class_match.group(1)) if class_match else i + 1
+            
+            detailed_rows.append({
+                'experiment_name': experiment_name,
+                'log_file': log_file,
+                'class_id': class_id,
+                'accuracy': accuracy,
+                'status': 'completed'
+            })
+        
+        # Add rows for incomplete training runs
+        for log_file in result['incomplete_logs']:
+            class_match = re.search(r'class_(\d+)', log_file)
+            class_id = int(class_match.group(1)) if class_match else None
+            
+            detailed_rows.append({
+                'experiment_name': experiment_name,
+                'log_file': log_file,
+                'class_id': class_id,
+                'accuracy': None,
+                'status': 'incomplete'
+            })
+    
+    return pd.DataFrame(detailed_rows)
+
+
+def create_summary_dataframe(all_results: List[Dict]) -> pd.DataFrame:
+    """
+    Create a summary DataFrame with statistics for each experiment.
+    
+    Args:
+        all_results: List of experiment analysis results
+        
+    Returns:
+        DataFrame with summary statistics for each experiment
+    """
+    summary_rows = []
+    
+    for result in all_results:
+        stats = result.get('statistics', {})
+        
+        summary_rows.append({
+            'experiment_name': result['folder_name'],
+            'total_logs': result['total_logs'],
+            'completed_count': result['completed_count'],
+            'incomplete_count': result['incomplete_count'],
+            'completion_rate': result['completed_count'] / result['total_logs'] * 100 if result['total_logs'] > 0 else 0,
+            'mean_accuracy': stats.get('mean', None),
+            'std_accuracy': stats.get('std', None),
+            'variance_accuracy': stats.get('variance', None),
+            'min_accuracy': stats.get('min', None),
+            'max_accuracy': stats.get('max', None),
+            'median_accuracy': stats.get('median', None)
+        })
+    
+    return pd.DataFrame(summary_rows)
+
+
+def save_results_to_files(all_results: List[Dict], output_dir: str = "/workspace/Results"):
+    """
+    Save analysis results to CSV and Excel files.
+    
+    Args:
+        all_results: List of experiment analysis results
+        output_dir: Directory to save output files
+    """
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Create detailed and summary DataFrames
+    detailed_df = create_detailed_results_dataframe(all_results)
+    summary_df = create_summary_dataframe(all_results)
+    
+    # Calculate overall statistics
+    all_accuracies = []
+    total_completed = 0
+    total_logs = 0
+    
+    for result in all_results:
+        all_accuracies.extend(result['accuracies'])
+        total_completed += result['completed_count']
+        total_logs += result['total_logs']
+    
+    # Create overall summary
+    overall_stats = {}
+    if all_accuracies:
+        overall_stats = {
+            'total_experiments': len(all_results),
+            'total_logs': total_logs,
+            'total_completed': total_completed,
+            'total_incomplete': total_logs - total_completed,
+            'overall_completion_rate': total_completed / total_logs * 100 if total_logs > 0 else 0,
+            'overall_mean_accuracy': np.mean(all_accuracies),
+            'overall_std_accuracy': np.std(all_accuracies, ddof=1) if len(all_accuracies) > 1 else 0.0,
+            'overall_variance_accuracy': np.var(all_accuracies, ddof=1) if len(all_accuracies) > 1 else 0.0,
+            'overall_min_accuracy': np.min(all_accuracies),
+            'overall_max_accuracy': np.max(all_accuracies),
+            'overall_median_accuracy': np.median(all_accuracies),
+            'overall_25th_percentile': np.percentile(all_accuracies, 25),
+            'overall_75th_percentile': np.percentile(all_accuracies, 75),
+            'sample_size': len(all_accuracies)
+        }
+    
+    overall_df = pd.DataFrame([overall_stats])
+    
+    # Save to CSV files
+    detailed_csv_path = os.path.join(output_dir, "THINGS_detailed_results.csv")
+    summary_csv_path = os.path.join(output_dir, "THINGS_summary_results.csv")
+    overall_csv_path = os.path.join(output_dir, "THINGS_overall_stats.csv")
+    
+    detailed_df.to_csv(detailed_csv_path, index=False)
+    summary_df.to_csv(summary_csv_path, index=False)
+    overall_df.to_csv(overall_csv_path, index=False)
+    
+    # Save to Excel file with multiple sheets
+    excel_path = os.path.join(output_dir, "THINGS_results.xlsx")
+    with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
+        detailed_df.to_excel(writer, sheet_name='Detailed_Results', index=False)
+        summary_df.to_excel(writer, sheet_name='Summary_by_Experiment', index=False)
+        overall_df.to_excel(writer, sheet_name='Overall_Statistics', index=False)
+    
+    print(f"\n📁 Results saved to:")
+    print(f"   📄 Detailed results: {detailed_csv_path}")
+    print(f"   📄 Summary by experiment: {summary_csv_path}")
+    print(f"   📄 Overall statistics: {overall_csv_path}")
+    print(f"   📊 Excel file (all sheets): {excel_path}")
+    
+    return {
+        'detailed_csv': detailed_csv_path,
+        'summary_csv': summary_csv_path,
+        'overall_csv': overall_csv_path,
+        'excel_file': excel_path
+    }
 
 
 def analyze_experiment_folder(folder_path: str) -> Dict:
@@ -121,6 +276,7 @@ def main():
     all_accuracies = []
     total_completed = 0
     total_logs = 0
+    all_results = []  # Store all results for saving to files
     
     # Analyze each experiment folder
     for folder_path in experiment_folders:
@@ -149,6 +305,7 @@ def main():
         
         total_completed += result['completed_count']
         total_logs += result['total_logs']
+        all_results.append(result)  # Store result for file export
         print()
     
     # Overall statistics
@@ -177,6 +334,13 @@ def main():
         print(f"   75th percentile: {np.percentile(all_accuracies, 75):.2f}%")
     
     print("=" * 80)
+    
+    # Save results to files
+    if all_results:
+        print("\n💾 SAVING RESULTS TO FILES")
+        print("=" * 80)
+        saved_files = save_results_to_files(all_results)
+        print("=" * 80)
 
 
 if __name__ == "__main__":
