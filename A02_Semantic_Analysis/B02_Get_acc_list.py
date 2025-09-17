@@ -159,7 +159,7 @@ def get_feature_dataset_path(settings):
     return embeddings_path, indices_path
 
 # --- Argument Parsing ---
-parser = argparse.ArgumentParser(description='Evaluate SeaNet accuracy with optional random symbol set.')
+parser = argparse.ArgumentParser(description='Evaluate CATSNet accuracy with optional random symbol set.')
 parser.add_argument('--random_symbol_set', action='store_true',
                     help='Initialize symbol_set with random values.')
 parser.add_argument('--exp_prefix', type=str, default='imagenet1k_ss10_fixfe_resnet50_mlp3_hidden100_initrandom',
