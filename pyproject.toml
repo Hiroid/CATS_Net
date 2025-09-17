@@ -21,6 +21,9 @@ dependencies = [
     "webdataset>=0.2.100",
     "fasttext>=0.9.3",
     "ipykernel>=6.30.1",
+    "pywaffle>=1.1.1",
+    "pypalettes>=0.1.4",
+    "openpyxl>=3.1.5",
 ]
 [tool.uv]
 index-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
