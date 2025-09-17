@@ -1,6 +1,17 @@
 # add the path of custom functions
 import sys
-sys.path.append("../../Deps/CustomFuctions")
+from pathlib import Path
+import os
+script_dir = Path(__file__).parent
+project_root = script_dir
+while not (project_root / 'Deps').exists() and project_root.parent != project_root:
+    project_root = project_root.parent
+
+# Add project root to the Python path if it's not already there
+if str(project_root) not in sys.path:
+    sys.path.append(str(project_root))
+
+sys.path.append(os.path.join(project_root, "Deps", "CustomFuctions"))
 
 # add necessary modules
 import torch
@@ -11,7 +22,6 @@ from datetime import datetime
 import torchvision.models as models
 from models import *
 import scipy.io as io
-import os
 import argparse
 import multiprocessing
 import MixDataLoader, SeparatedDataLoader, SEAnet
@@ -43,9 +53,12 @@ testloader_cifar100 = SeparatedDataLoader.DLTest(class_idxs, args.batch_size_tes
 
 # load pretrained module
 pretrained_classifier_cnn = models.resnet18(weights=None)
-pretrained_classifier_cnn.load_state_dict(torch.load('../../Deps/pretrained_fe/resnet18-f37072fd.pth'))
+pretrained_classifier_cnn.load_state_dict(
+    torch.load(
+        os.path.join(project_root, "Deps", "pretrained_fe", "resnet18-f37072fd.pth")
+    )
+)
 pretrained_classifier_cnn.fc = nn.Identity()
-pretrained_cdp_cnn = VGG('VGG11')
 
 def train(round, epoch, ni, target_extend, sea_net, optimizer_net, optimizer_symbol, criterion, contexts, path):
     sea_net.train()
@@ -155,8 +168,10 @@ def context_search(round, ni):
 
 
     # structure and parameter setting
-    sea_net = SEAnet.Net2(my_pretrained_classifier=pretrained_classifier_cnn,
-                                         my_pretrained_cdp=pretrained_cdp_cnn, context_dim=args.context_dim).to(args.device)
+    sea_net = SEAnet.Net2(
+        my_pretrained_classifier=pretrained_classifier_cnn,
+        context_dim=args.context_dim
+    ).to(args.device)
     criterion = nn.CrossEntropyLoss()
     optimizer_net = optim.Adam(sea_net.parameters(), lr=0.0001)
     optimizer_symbol = optim.Adam(contexts, lr=0.0001)
@@ -178,7 +193,7 @@ def context_search(round, ni):
                     'epoch': epoch,
                 }
             torch.save(state, './' + path + '/checkpoint/ckpt_dim_%d.pth' % (args.context_dim))
-            torch.save(sea_net, './' + path + '/checkpoint/ckpt_dim_%d_whole.pth' % (args.context_dim))
+            torch.save(sea_net.state_dict(), './' + path + '/checkpoint/ckpt_dim_%d_whole.pth' % (args.context_dim))
 
 def context_test(round, ni):
 
@@ -205,7 +220,14 @@ def context_test(round, ni):
     if not os.path.exists(model_path):
         print(f"Model file not found: {model_path}")
         return
-    sea_net = torch.load(model_path, map_location=args.device)
+    
+    # Create a new SEAnet model instance
+    sea_net = SEAnet.Net2(pretrained_classifier_cnn, args.context_dim)
+    sea_net = sea_net.to(args.device)
+    
+    # Load the state_dict
+    checkpoint = torch.load(model_path, map_location=args.device)
+    sea_net.load_state_dict(checkpoint)
     sea_net.eval() # Set model to evaluation mode
 
     criterion = nn.CrossEntropyLoss()

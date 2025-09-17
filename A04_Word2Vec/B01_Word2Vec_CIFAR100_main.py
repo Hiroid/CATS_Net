@@ -1,4 +1,16 @@
 import sys
+import os
+from pathlib import Path
+script_dir = Path(__file__).parent
+project_root = script_dir
+while not (project_root / 'Deps').exists() and project_root.parent != project_root:
+    project_root = project_root.parent
+
+# Add project root to the Python path if it's not already there
+if str(project_root) not in sys.path:
+    sys.path.append(str(project_root))
+
+sys.path.append(os.path.join(project_root, "Deps", "CustomFuctions"))
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -7,15 +19,10 @@ from datetime import datetime
 import torchvision.models as models
 from models import *
 import scipy.io as io
-import os
-from pathlib import Path
 import argparse
 import scipy.stats as stats
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "4"
-script_dir = Path(__file__).parent
-project_root = Path(__file__).resolve().parent.parent
-sys.path.append(os.path.join(project_root, "Deps", "CustomFuctions"))
 
 import MixDataLoader, SeparatedDataLoader
 import SEAnet,  AccracyTest

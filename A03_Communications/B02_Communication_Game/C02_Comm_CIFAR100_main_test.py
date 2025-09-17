@@ -1,6 +1,17 @@
 # add the path of custom functions
 import sys
-sys.path.append("../../Deps/CustomFuctions")
+from pathlib import Path
+import os
+script_dir = Path(__file__).parent
+project_root = script_dir
+while not (project_root / 'Deps').exists() and project_root.parent != project_root:
+    project_root = project_root.parent
+
+# Add project root to the Python path if it's not already there
+if str(project_root) not in sys.path:
+    sys.path.append(str(project_root))
+
+sys.path.append(os.path.join(project_root, "Deps", "CustomFuctions"))
 
 import torch
 import torch.nn as nn
@@ -71,9 +82,13 @@ save_path_cp = path + '/checkpoint'
 save_path_ct = path + '/contexts'
 
 # load the pretrained models. pretrained_cdp_cnn was not used in the task.
-pretrained_classifier_cnn = models.resnet18(pretrained=True)
+pretrained_classifier_cnn = models.resnet18(weights=None)
+pretrained_classifier_cnn.load_state_dict(
+    torch.load(
+        os.path.join(project_root, "Deps", "pretrained_fe", "resnet18-f37072fd.pth")
+    )
+)
 pretrained_classifier_cnn.fc = nn.Identity()
-pretrained_cdp_cnn = VGG('VGG11')
 
 
 print("\n" + "="*80)
@@ -109,8 +124,10 @@ for test_id in args.class_id_unaligned:
     TInet_test.load_state_dict(saved_state['net'])
     
     # Load corresponding SEAnet model
-    sea_net_test = SEAnet.Net2(my_pretrained_classifier=pretrained_classifier_cnn,
-                             my_pretrained_cdp=pretrained_cdp_cnn, context_dim=args.context_dim).to(args.device)
+    sea_net_test = SEAnet.Net2(
+        my_pretrained_classifier=pretrained_classifier_cnn,
+        context_dim=args.context_dim
+    ).to(args.device)
     model_ckpt = torch.load(args.listener_model_path + '/ckpt_dim_%d_id_%d.pth' % (args.context_dim, test_id))
     sea_net_test.load_state_dict(model_ckpt['net'])
     
