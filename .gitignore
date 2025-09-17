@@ -24,7 +24,4 @@ A04_Word2Vec/ni=5.00e-02/contexts/
 A04_Word2Vec/THINGS_results/*/checkpoint/
 A04_Word2Vec/THINGS_results/*/contexts/
 
-
-Results/entropy_stat/*
-
 Results/FeatureData/*
