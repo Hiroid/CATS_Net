@@ -25,9 +25,6 @@ A04_Word2Vec/THINGS_results/*/checkpoint/
 A04_Word2Vec/THINGS_results/*/contexts/
 
 
-Results/entropy_stat/Imagenet1k_test_stat_seanet50_trainedConfig.pt
-Results/entropy_stat/Imagenet1k_test_stat_tsnet_randomConfig.pt
-Results/entropy_stat/seanet_init_onehotconcept_waffle.pt
-Results/entropy_stat/seanet50_onehotconcept_waffle.pt
+Results/entropy_stat/*
 
 Results/FeatureData/*
