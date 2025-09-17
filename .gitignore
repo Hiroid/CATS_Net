@@ -25,3 +25,5 @@ A04_Word2Vec/THINGS_results/*/checkpoint/
 A04_Word2Vec/THINGS_results/*/contexts/
 
 Results/FeatureData/*
+
+Deps/CustomFuctions/Pretrained Model/*
