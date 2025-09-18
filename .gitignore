@@ -8,21 +8,11 @@ Results/param/*
 
 **/datafile/
 **/__pycache__/
+**/checkpoint/
+**/contexts/
 
-A03_Communications/B01_SEA_Net/ni=1.00e-01_r=0/checkpoint/ckpt_dim_20_whole.pth
-A03_Communications/B01_SEA_Net/ni=1.00e-01_r=0/contexts/context_r_0_e_1999.mat
-
-A03_Communications/B02_Communication_Game/2025-06-02/checkpoint/
-A03_Communications/B02_Communication_Game/2025-06-02/contexts/
-A03_Communications/B02_Communication_Game/Symbol_and_Model_of_Listener/checkpoint/
-A03_Communications/B02_Communication_Game/Symbol_and_Model_of_Listener/contexts/
 A03_Communications/B02_Communication_Game/Symbols_of_Speaker
 A03_Communications/B02_Communication_Game/Testing_Symbols_of_Speaker
-
-A04_Word2Vec/ni=5.00e-02/checkpoint/
-A04_Word2Vec/ni=5.00e-02/contexts/
-A04_Word2Vec/THINGS_results/*/checkpoint/
-A04_Word2Vec/THINGS_results/*/contexts/
 
 Results/FeatureData/*
 
