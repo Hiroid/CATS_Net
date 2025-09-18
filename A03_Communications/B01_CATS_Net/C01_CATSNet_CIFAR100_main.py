@@ -60,8 +60,8 @@ pretrained_classifier_cnn.load_state_dict(
 )
 pretrained_classifier_cnn.fc = nn.Identity()
 
-def train(round, epoch, ni, target_extend, sea_net, optimizer_net, optimizer_symbol, criterion, contexts, path):
-    sea_net.train()
+def train(round, epoch, ni, target_extend, cats_net, optimizer_net, optimizer_symbol, criterion, contexts, path):
+    cats_net.train()
     train_loss = 0
     correct = 0
     total = 0
@@ -79,7 +79,7 @@ def train(round, epoch, ni, target_extend, sea_net, optimizer_net, optimizer_sym
             context = context.to(args.device)
             binary_labels = binary_labels.to(args.device)
 
-            output = sea_net(inputs, context)
+            output = cats_net(inputs, context)
             loss = criterion(output, binary_labels)
             optimizer_symbol.zero_grad()
             optimizer_net.zero_grad()
@@ -100,8 +100,8 @@ def train(round, epoch, ni, target_extend, sea_net, optimizer_net, optimizer_sym
     print('%d, %d, %.3f, %.3f' % (round, epoch, train_loss / batch_idx, correct / total), file=DataLog)
     DataLog.close()
 
-def test(round, epoch, target_extend, sea_net, criterion, contexts, path):
-    sea_net.eval()
+def test(round, epoch, target_extend, cats_net, criterion, contexts, path):
+    cats_net.eval()
 
     test_loss_pos = 0
     predicted_pos = 0
@@ -124,8 +124,8 @@ def test(round, epoch, target_extend, sea_net, criterion, contexts, path):
             binary_labels_pos = torch.ones(targets.size(0), dtype=torch.long).to(args.device)
             binary_labels_neg = torch.zeros(targets.size(0), dtype=torch.long).to(args.device)
 
-            outputs_pos = sea_net(inputs, context_pos)
-            outputs_neg = sea_net(inputs, context_neg)
+            outputs_pos = cats_net(inputs, context_pos)
+            outputs_neg = cats_net(inputs, context_neg)
             loss_pos = criterion(outputs_pos, binary_labels_pos)
             loss_neg = criterion(outputs_neg, binary_labels_neg)
 
@@ -168,17 +168,17 @@ def context_search(round, ni):
 
 
     # structure and parameter setting
-    sea_net = CATSnet.Net2(
+    cats_net = CATSnet.Net2(
         my_pretrained_classifier=pretrained_classifier_cnn,
         context_dim=args.context_dim
     ).to(args.device)
     criterion = nn.CrossEntropyLoss()
-    optimizer_net = optim.Adam(sea_net.parameters(), lr=0.0001)
+    optimizer_net = optim.Adam(cats_net.parameters(), lr=0.0001)
     optimizer_symbol = optim.Adam(contexts, lr=0.0001)
 
     for epoch in range(args.start_epoch, args.end_epoch):
-        train(round, epoch, ni, target_extend, sea_net, optimizer_net, optimizer_symbol, criterion, contexts, path)
-        test(round, epoch, target_extend, sea_net, criterion, contexts, path)
+        train(round, epoch, ni, target_extend, cats_net, optimizer_net, optimizer_symbol, criterion, contexts, path)
+        test(round, epoch, target_extend, cats_net, criterion, contexts, path)
         if epoch in args.epoch_node:
             if not os.path.isdir(path + '/contexts'):
                 os.makedirs(path + '/contexts')
@@ -186,14 +186,14 @@ def context_search(round, ni):
                        {'context_%d_%d' % (round, epoch): np.array(contexts[0].cpu().detach())})
         if epoch == args.end_epoch-1:
             state = {
-                    'net': sea_net.state_dict(),
+                    'net': cats_net.state_dict(),
                     'context': contexts,
                     'opt_context': optimizer_symbol.state_dict(),
                     'opt_net': optimizer_net.state_dict(),
                     'epoch': epoch,
                 }
             torch.save(state, './' + path + '/checkpoint/ckpt_dim_%d.pth' % (args.context_dim))
-            torch.save(sea_net.state_dict(), './' + path + '/checkpoint/ckpt_dim_%d_whole.pth' % (args.context_dim))
+            torch.save(cats_net.state_dict(), './' + path + '/checkpoint/ckpt_dim_%d_whole.pth' % (args.context_dim))
 
 def context_test(round, ni):
 
@@ -215,20 +215,20 @@ def context_test(round, ni):
     contexts = [torch.tensor(mat_data['context_%d_%d' % (round, latest_epoch_to_load)], device=args.device)]
     # contexts[0].requires_grad = True # Not needed for testing
 
-    # Load pre-trained sea_net model
+    # Load pre-trained cats_net model
     model_path = './' + path + '/checkpoint/ckpt_dim_%d_whole.pth' % (args.context_dim)
     if not os.path.exists(model_path):
         print(f"Model file not found: {model_path}")
         return
     
     # Create a new CATSnet model instance
-    sea_net = CATSnet.Net2(pretrained_classifier_cnn, args.context_dim)
-    sea_net = sea_net.to(args.device)
+    cats_net = CATSnet.Net2(pretrained_classifier_cnn, args.context_dim)
+    cats_net = cats_net.to(args.device)
     
     # Load the state_dict
     checkpoint = torch.load(model_path, map_location=args.device)
-    sea_net.load_state_dict(checkpoint)
-    sea_net.eval() # Set model to evaluation mode
+    cats_net.load_state_dict(checkpoint)
+    cats_net.eval() # Set model to evaluation mode
 
     criterion = nn.CrossEntropyLoss()
 
@@ -236,7 +236,7 @@ def context_test(round, ni):
     # The original loop was for training epochs, which is not needed here.
     # We'll call test once, assuming epoch 0 for logging purposes, or use latest_epoch_to_load
     print(f"Testing with context from epoch {latest_epoch_to_load}")
-    test(round, latest_epoch_to_load, target_extend, sea_net, criterion, contexts, path)
+    test(round, latest_epoch_to_load, target_extend, cats_net, criterion, contexts, path)
 
 f_path = '.'
 for ni_idx, ni in enumerate(args.noise_intensity):

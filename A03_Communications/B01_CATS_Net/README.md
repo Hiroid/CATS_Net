@@ -1,5 +1,5 @@
 # CATS-Net on CIFAR-100
-This directory contains the code for training and evaluating CATS-Net models (named as `sea_net` in the code) on the CIFAR-100 dataset.
+This directory contains the code for training and evaluating CATS-Net models (named as `cats_net` in the code) on the CIFAR-100 dataset.
 
 ## Terminology Mapping
 

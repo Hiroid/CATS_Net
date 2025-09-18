@@ -139,12 +139,12 @@ for test_id in args.class_id_unaligned:
     criterion = nn.MSELoss()
     optimizer = optim.Adam(TInet.parameters(), lr=args.learning_rate)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=args.lr_sche_steps, gamma=args.lr_sche_gamma)
-    sea_net = CATSnet.Net2(
+    cats_net = CATSnet.Net2(
         my_pretrained_classifier=pretrained_classifier_cnn,
         context_dim=args.context_dim
     ).to(args.device)
     model_ckpt = torch.load(args.listener_model_path + '/ckpt_dim_%d_id_%d.pth' % (args.context_dim, test_id))                                   
-    sea_net.load_state_dict(model_ckpt['net'])
+    cats_net.load_state_dict(model_ckpt['net'])
 
     # load symbols of listener agent
     D99_id = Utiliz.generate_train_id(args.num_class, [test_id])
@@ -162,7 +162,7 @@ for test_id in args.class_id_unaligned:
             for round, output in enumerate(outputs):
                 symbol_listener_test = torch.from_numpy(listener_symbols['context_%d_%d' % (test_id, args.listener_symbols_saveTimePoint)]).to(args.device)
                 symbol_listener_test[test_id, :] = output
-                results_pos, results_neg = AccracyTest.Acc2([symbol_listener_test], sea_net, test_id, [test_id], D99_id, 50)
+                results_pos, results_neg = AccracyTest.Acc2([symbol_listener_test], cats_net, test_id, [test_id], D99_id, 50)
                 for i, idx in enumerate([test_id]):
                     print('%d, %d, %d, %.3f, %.3f, %.3f, %.3f' % (test_id, round, epoch, results_pos[0][i], results_pos[1][i] / results_pos[2][i], \
                         results_neg[0][i], results_neg[1][i] / results_neg[2][i]), file=testlog)  

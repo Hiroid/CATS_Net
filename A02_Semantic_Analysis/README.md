@@ -16,11 +16,11 @@ The semantic analysis tools provide multiple perspectives for understanding how 
 
 | Paper Term          | Code Implementation                                      |
 | :------------------ | :------------------------------------------------------- |
-| CATS-Net            | `sea_net` (referenced from `A01_ImageNet.model`)        |
+| CATS-Net            | `cats_net` (referenced from `A01_ImageNet.model`)        |
 | CA (Concept Abstraction) Module | Layers prefixed with `cdp_` (e.g., `cdp_fc1`, `cdp_bn1`) |
 | TS (Task-Solving) Module | Layers prefixed with `ts_` (e.g., `ts_fc1`, `ts_bn1`)   |
-| Concept Vectors     | `symbol_set` (learnable parameter in `sea_net`)         |
-| Feature Extractor   | `fe` (attribute within `sea_net`)                       |
+| Concept Vectors     | `symbol_set` (learnable parameter in `cats_net`)         |
+| Feature Extractor   | `fe` (attribute within `cats_net`)                       |
 
 ## Prerequisites
 

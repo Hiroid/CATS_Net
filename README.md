@@ -31,7 +31,7 @@ The framework addresses the challenge of learning meaningful concept representat
 * **A01_ImageNet/**: ImageNet-1K training and evaluation with ResNet50/ResNet18/ViT backbones
 * **A02_Semantic_Analysis/**: Comprehensive analysis tools for semantic understanding and model interpretability
 * **A03_Communications/**: Multi-agent communication experiments on CIFAR-100
-  * **B01_SEA_Net/**: CATS-Net implementation and training on CIFAR-100
+  * **B01_CATS_Net/**: CATS-Net implementation and training on CIFAR-100
   * **B02_Communication_Game/**: Translation-Interpretation module for Speaker-Listener communication
   * **B03_Internal_Structure/**: Internal representational structure analysis and network visualization
 * **A04_Word2Vec/**: Word2Vec-based context learning experiments on CIFAR-100
@@ -207,7 +207,7 @@ python B02_Get_acc_list.py
 
 **Purpose**: Study emergent communication between neural agents through concept-based symbolic exchange.
 
-#### B01_SEA_Net - CIFAR-100 Training
+#### B01_CATS_Net - CIFAR-100 Training
 - CATS-Net implementation on CIFAR-100
 - Binary classification with concept-context pairing
 - Noise injection for robust learning
@@ -224,7 +224,7 @@ python B02_Get_acc_list.py
 
 **Quick Start**:
 ```bash
-cd A03_Communications/B01_SEA_Net
+cd A03_Communications/B01_CATS_Net
 python C01_CATSNet_CIFAR100_main.py --mode train
 ```
 
@@ -309,7 +309,7 @@ jupyter notebook B05_functional_entropy.ipynb
 
 ```bash
 # Step 1: Train CATS-Net agents on CIFAR-100
-cd A03_Communications/B01_SEA_Net
+cd A03_Communications/B01_CATS_Net
 python C01_CATSNet_CIFAR100_main.py --mode train --end_epoch 2000
 
 # Step 2: Train Translation-Interpretation module

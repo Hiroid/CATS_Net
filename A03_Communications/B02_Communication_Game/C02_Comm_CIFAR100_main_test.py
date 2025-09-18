@@ -124,12 +124,12 @@ for test_id in args.class_id_unaligned:
     TInet_test.load_state_dict(saved_state['net'])
     
     # Load corresponding CATSnet model
-    sea_net_test = CATSnet.Net2(
+    cats_net_test = CATSnet.Net2(
         my_pretrained_classifier=pretrained_classifier_cnn,
         context_dim=args.context_dim
     ).to(args.device)
     model_ckpt = torch.load(args.listener_model_path + '/ckpt_dim_%d_id_%d.pth' % (args.context_dim, test_id))
-    sea_net_test.load_state_dict(model_ckpt['net'])
+    cats_net_test.load_state_dict(model_ckpt['net'])
     
     # Load listener symbols
     D99_id_test = Utiliz.generate_train_id(args.num_class, [test_id])
@@ -143,7 +143,7 @@ for test_id in args.class_id_unaligned:
     for round, output in enumerate(outputs):
         symbol_listener_test = torch.from_numpy(listener_symbols_test['context_%d_%d' % (test_id, args.listener_symbols_saveTimePoint)]).to(args.device)
         symbol_listener_test[test_id, :] = output
-        results_pos, results_neg = AccracyTest.Acc2([symbol_listener_test], sea_net_test, test_id, [test_id], D99_id_test, 50)
+        results_pos, results_neg = AccracyTest.Acc2([symbol_listener_test], cats_net_test, test_id, [test_id], D99_id_test, 50)
         
         for i, idx in enumerate([test_id]):
             acc_pos = results_pos[1][i] / results_pos[2][i] if results_pos[2][i] > 0 else 0
