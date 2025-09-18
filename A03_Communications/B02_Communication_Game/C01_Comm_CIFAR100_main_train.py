@@ -113,7 +113,7 @@ if not os.path.isdir(path):
 save_path_cp = path + '/checkpoint'
 save_path_ct = path + '/contexts'
 
-# load the pretrained models. pretrained_cdp_cnn was not used in the task.
+# load the pretrained models.
 pretrained_classifier_cnn = models.resnet18(weights=None)
 pretrained_classifier_cnn.load_state_dict(
     torch.load(
