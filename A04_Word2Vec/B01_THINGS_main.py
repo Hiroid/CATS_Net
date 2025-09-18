@@ -20,7 +20,7 @@ project_root = Path(__file__).resolve().parent.parent
 sys.path.append(os.path.join(project_root, "Deps", "CustomFuctions"))
 
 import MixDataLoader, SeparatedDataLoader
-import SEAnet
+import CATSnet
 
 # parameters
 parser = argparse.ArgumentParser(description='set parameters')
@@ -271,7 +271,7 @@ def model_training(test_id, ni, timestamp):
     pretrained_classifier_cnn.fc = nn.Identity()
     
     # Structure and parameter setting
-    my_extended_model = SEAnet.Net2(
+    my_extended_model = CATSnet.Net2(
         my_pretrained_classifier=pretrained_classifier_cnn,
         context_dim=args.context_dim
     ).to(args.device)
@@ -341,7 +341,7 @@ def things49dim_test(timestamp):
                 checkpoint = torch.load(str(checkpoint_path))
                 
                 # Recreate model
-                my_extended_model = SEAnet.Net2(
+                my_extended_model = CATSnet.Net2(
                     my_pretrained_classifier=pretrained_classifier_cnn,
                     context_dim=args.context_dim
                 ).to(args.device)

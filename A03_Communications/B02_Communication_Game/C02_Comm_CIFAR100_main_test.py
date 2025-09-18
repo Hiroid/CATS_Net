@@ -31,7 +31,7 @@ import scipy.io as io
 from models import *
 import scipy.stats as stats
 
-import Translators, AccracyTest, SEAnet,  Utiliz
+import Translators, AccracyTest, CATSnet,  Utiliz
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
@@ -123,8 +123,8 @@ for test_id in args.class_id_unaligned:
     saved_state = torch.load(model_path, map_location=args.device)
     TInet_test.load_state_dict(saved_state['net'])
     
-    # Load corresponding SEAnet model
-    sea_net_test = SEAnet.Net2(
+    # Load corresponding CATSnet model
+    sea_net_test = CATSnet.Net2(
         my_pretrained_classifier=pretrained_classifier_cnn,
         context_dim=args.context_dim
     ).to(args.device)

@@ -24,7 +24,7 @@ from models import *
 import scipy.io as io
 import argparse
 import multiprocessing
-import MixDataLoader, SeparatedDataLoader, SEAnet
+import MixDataLoader, SeparatedDataLoader, CATSnet
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
@@ -168,7 +168,7 @@ def context_search(round, ni):
 
 
     # structure and parameter setting
-    sea_net = SEAnet.Net2(
+    sea_net = CATSnet.Net2(
         my_pretrained_classifier=pretrained_classifier_cnn,
         context_dim=args.context_dim
     ).to(args.device)
@@ -221,8 +221,8 @@ def context_test(round, ni):
         print(f"Model file not found: {model_path}")
         return
     
-    # Create a new SEAnet model instance
-    sea_net = SEAnet.Net2(pretrained_classifier_cnn, args.context_dim)
+    # Create a new CATSnet model instance
+    sea_net = CATSnet.Net2(pretrained_classifier_cnn, args.context_dim)
     sea_net = sea_net.to(args.device)
     
     # Load the state_dict

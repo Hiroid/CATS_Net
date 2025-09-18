@@ -25,7 +25,7 @@ import scipy.stats as stats
 os.environ["CUDA_VISIBLE_DEVICES"] = "4"
 
 import MixDataLoader, SeparatedDataLoader
-import SEAnet,  AccracyTest
+import CATSnet,  AccracyTest
 
 # parameters
 parser = argparse.ArgumentParser(description='set parameters')
@@ -183,7 +183,7 @@ def model_training(test_id, ni):
                 'tested_idx': np.array(test_id)})
 
     # structure and parameter setting
-    my_extended_model = SEAnet.Net2(
+    my_extended_model = CATSnet.Net2(
         my_pretrained_classifier=pretrained_classifier_cnn,
         context_dim=args.context_dim
     ).to(args.device)
@@ -234,7 +234,7 @@ def wordvector_test():
             checkpoint = torch.load(checkpoint_path, map_location=args.device)
             
             # Reconstruct model
-            my_extended_model = SEAnet.Net2(
+            my_extended_model = CATSnet.Net2(
                 my_pretrained_classifier=pretrained_classifier_cnn,
                 context_dim=args.context_dim
             ).to(args.device)

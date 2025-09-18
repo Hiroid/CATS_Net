@@ -11,9 +11,9 @@ To help readers connect the concepts from the paper to the code implementation, 
 
 | Paper Term              | Code Implementation                                      |
 | :---------------------- | :------------------------------------------------------- |
-| CATS-Net            | `Net2` in `SEAnet.py`                               |
-| CA (Concept Abstraction) Module | Layers prefixed with `cdp_` (e.g., `cdp_fc1`, `cdp_bn1`) in `SEAnet.py` |
-| TS (Task-Solving) Module | Layers prefixed with `clf_` (e.g., `clf_fc1`, `clf_fc2`) in `SEAnet.py` |
+| CATS-Net            | `Net2` in `CATSnet.py`                               |
+| CA (Concept Abstraction) Module | Layers prefixed with `cdp_` (e.g., `cdp_fc1`) in `CATSnet.py` |
+| TS (Task-Solving) Module | Layers prefixed with `clf_` (e.g., `clf_fc1`) in `CATSnet.py` |
 | Feature Extractor   | `pretrained_classifier_cnn` (ResNet18)                 |
 | Word2Vec Context (Concept) Vectors| `name_vecs` loaded from `wordvector/embedding_dim_20.mat`, (keep fixed in training script) |
 | Binary Classification   | Distinguishing positive/negative class-context pairs    |
@@ -46,7 +46,7 @@ To help readers connect the concepts from the paper to the code implementation, 
 - `../../Deps/CustomFuctions/`: Parent directory containing custom modules.
   - `MixDataLoader.py`: Data loader for mixed training data.
   - `SeparatedDataLoader.py`: Data loader for separated test data.
-  - `SEAnet.py`: Contains the extended network model definition.
+  - `CATSnet.py`: Contains the extended network model definition.
   - `AccracyTest.py`: Accuracy testing utilities.
 
 ## Training

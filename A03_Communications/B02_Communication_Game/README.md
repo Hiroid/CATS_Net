@@ -12,8 +12,8 @@ To help readers connect the concepts from the paper to the code implementation, 
 | Paper Term                    | Code Implementation                                      |
 | :---------------------------- | :------------------------------------------------------- |
 | Translation-Interpretation Module | `TImodule` in `Translators.py`                     |
-| Speaker Agent                 | CATS-Net model (`Net2` in `SEAnet.py`) that learned all 100 categories |
-| Listener Agent               | CATS-Net model (`Net2` in `SEAnet.py`) that has learned 99 categories and processes translated concept vector |
+| Speaker Agent                 | CATS-Net model (`Net2` in `CATSnet.py`) that learned all 100 categories |
+| Listener Agent               | CATS-Net model (`Net2` in `CATSnet.py`) that has learned 99 categories and processes translated concept vector |
 | Concept (or symbol) Translation           | Process of converting Speaker symbols to Listener-compatible format |
 | Context Vectors              | Symbolic representations (`contexts`) used by agents    |
 | Communication Round          | Training iteration with specific leave-one-out sets            |

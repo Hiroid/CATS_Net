@@ -30,7 +30,7 @@ import argparse
 import scipy.io as io
 from models import *
 
-import Translators, AccracyTest, SEAnet,  Utiliz
+import Translators, AccracyTest, CATSnet,  Utiliz
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 # parameters
@@ -139,7 +139,7 @@ for test_id in args.class_id_unaligned:
     criterion = nn.MSELoss()
     optimizer = optim.Adam(TInet.parameters(), lr=args.learning_rate)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=args.lr_sche_steps, gamma=args.lr_sche_gamma)
-    sea_net = SEAnet.Net2(
+    sea_net = CATSnet.Net2(
         my_pretrained_classifier=pretrained_classifier_cnn,
         context_dim=args.context_dim
     ).to(args.device)

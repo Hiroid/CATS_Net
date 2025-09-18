@@ -7,9 +7,9 @@ To help readers connect the concepts from the paper to the code implementation, 
 
 | Paper Term          | Code Implementation                                      |
 | :------------------ | :------------------------------------------------------- |
-| CATS-Net            | `Net2` in `SEAnet.py`                               |
-| CA (Concept Abstraction) Module | Layers prefixed with `cdp_` (e.g., `cdp_fc1`, `cdp_bn1`) in `SEAnet.py` |
-| TS (Task-Solving) Module | Layers prefixed with `clf_` (e.g., `clf_fc1`, `clf_fc2`) in `SEAnet.py` |
+| CATS-Net            | `Net2` in `CATSnet.py`                               |
+| CA (Concept Abstraction) Module | Layers prefixed with `cdp_` (e.g., `cdp_fc1`, `cdp_bn1`) in `CATSnet.py` |
+| TS (Task-Solving) Module | Layers prefixed with `clf_` (e.g., `clf_fc1`, `clf_fc2`) in `CATSnet.py` |
 | Concept Vectors     | `contexts` (learnable parameter in training script)     |
 | Feature Extractor   | `pretrained_classifier_cnn` (ResNet18)                 |
 
@@ -36,7 +36,7 @@ To help readers connect the concepts from the paper to the code implementation, 
 - `../../Deps/CustomFuctions/`: Parent directory containing custom modules.
   - `MixDataLoader.py`: Data loader for mixed training data.
   - `SeparatedDataLoader.py`: Data loader for separated test data.
-  - `SEAnet.py`: Contains the CATS-Net model definition.
+  - `CATSnet.py`: Contains the CATS-Net model definition.
   - `models/`: Additional model definitions.
 - `../../Deps/pretrained_fe/`: Directory for pretrained feature extractor weights.
   - `resnet18-f37072fd.pth`: ResNet18 pretrained weights.

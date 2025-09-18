@@ -157,14 +157,14 @@ To help connect paper concepts with code implementation:
 
 | Paper Term | Code Implementation | Location |
 |:-----------|:-------------------|:---------|
-| CATS-Net | `sea_net` | A01_ImageNet/model.py |
-| CATS-Net | `Net2` | A03_Communications/Deps/CustomFunctions/SEAnet.py |
-| CA (Concept Abstraction) Module | Layers with `cdp_` prefix | Multiple locations |
+| CATS-Net | `cats_net` | A01_ImageNet/model.py |
+| CATS-Net | `Net2` | Deps/CustomFunctions/CATSnet.py |
+| CA (Concept Abstraction) Module | Layers with `cdp_` prefix | Deps/CustomFunctions/CATSnet.py |
 | TS (Task-Solving) Module | Layers with `ts_` prefix | A01_ImageNet/model.py |
-| TS (Task-Solving) Module | Layers with `clf_` prefix | A03_Communications |
+| TS (Task-Solving) Module | Layers with `clf_` prefix | Deps/CustomFunctions/CATSnet.py |
 | Concept Vectors | `symbol_set` | A01_ImageNet/model.py |
-| Concept Vectors | `contexts` | A03_Communications |
-| Feature Extractor | `fe` attribute | Multiple locations |
+| Concept Vectors | `contexts` | A03_Communications, A04_Word2Vec |
+| Feature Extractor | `fe` attribute | A01_ImageNet/model.py |
 | Translation-Interpretation Module | `TImodule` | A03_Communications/B02_Communication_Game |
 
 ## Component Descriptions
