@@ -17,3 +17,8 @@ A03_Communications/B02_Communication_Game/Testing_Symbols_of_Speaker
 Results/FeatureData/*
 
 Deps/CustomFuctions/Pretrained Model/*
+
+# Ignore all pair folders in semantic_analysis_results except pair_0 and pair_10
+A03_Communications/B02_Communication_Game/semantic_analysis_results/pair_*
+!A03_Communications/B02_Communication_Game/semantic_analysis_results/pair_0/
+!A03_Communications/B02_Communication_Game/semantic_analysis_results/pair_10/
