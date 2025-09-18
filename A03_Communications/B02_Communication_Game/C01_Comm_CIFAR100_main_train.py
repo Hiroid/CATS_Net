@@ -1,7 +1,10 @@
+# Set CUDA device BEFORE importing torch
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "7"
+
 # add the path of custom functions
 import sys
 from pathlib import Path
-import os
 script_dir = Path(__file__).parent
 project_root = script_dir
 while not (project_root / 'Deps').exists() and project_root.parent != project_root:
@@ -25,13 +28,19 @@ import torchvision.transforms as transforms
 import torchvision.models as models
 from datetime import datetime
 import random
-import os
 import argparse
 import scipy.io as io
 from models import *
 
 import Translators, AccracyTest, CATSnet,  Utiliz
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
+# Verify GPU setup
+print(f"CUDA_VISIBLE_DEVICES: {os.environ.get('CUDA_VISIBLE_DEVICES', 'Not set')}")
+print(f"CUDA available: {torch.cuda.is_available()}")
+if torch.cuda.is_available():
+    print(f"Number of GPUs: {torch.cuda.device_count()}")
+    print(f"Current GPU: {torch.cuda.current_device()}")
+    print(f"GPU name: {torch.cuda.get_device_name(0)}")
 
 # parameters
 parser = argparse.ArgumentParser(description='parameters setting')
