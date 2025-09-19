@@ -8,8 +8,14 @@ import argparse
 from collections import defaultdict
 
 # Add the parent directory to sys.path
-project_root = Path(__file__).resolve().parent.parent
-sys.path.append(project_root)
+script_dir = Path(__file__).parent
+project_root = script_dir
+while not (project_root / 'Deps').exists() and project_root.parent != project_root:
+    project_root = project_root.parent
+
+# Add project root to the Python path if it's not already there
+if str(project_root) not in sys.path:
+    sys.path.append(str(project_root))
 
 from A01_ImageNet import utils, model, data
 from torch.utils.data import DataLoader, SubsetRandomSampler
