@@ -22,3 +22,9 @@ Deps/CustomFuctions/Pretrained Model/*
 A03_Communications/B02_Communication_Game/semantic_analysis_results/pair_*
 !A03_Communications/B02_Communication_Game/semantic_analysis_results/pair_0/
 !A03_Communications/B02_Communication_Game/semantic_analysis_results/pair_10/
+
+# Ignore all files in manuscript folder except specified ones
+manuscript/*
+!manuscript/fig/
+!manuscript/sn-article.tex
+!manuscript/CA_TS_Net.bib
