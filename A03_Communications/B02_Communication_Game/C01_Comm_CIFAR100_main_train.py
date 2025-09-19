@@ -49,7 +49,7 @@ parser.add_argument('--worker', type=int, default=1, help='worker for data loade
 parser.add_argument('--ct_batch_size_train', type=int, default=96, help='batch size of symbols in D_99 when training TI module')
 parser.add_argument('--batch_size_test', type=int, default=100, help='batch size for testing dataset')
 parser.add_argument('--num_class', type=int, default=100, help='number of total classes')
-parser.add_argument('--class_id_unaligned', type=list, default=list(range(1,100)), help='the IDs of unaligned classes during the TI training')
+parser.add_argument('--class_id_unaligned', type=list, default=list(range(100)), help='the IDs of unaligned classes during the TI training')
 parser.add_argument('--start_epoch', type=int, default=0, help='epoch number to start with')
 parser.add_argument('--end_epoch', type=int, default=102, help='epoch number to end with')
 parser.add_argument('--context_dim', type=int, default=20, help='context dimension')
