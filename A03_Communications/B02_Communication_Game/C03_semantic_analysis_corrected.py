@@ -598,7 +598,7 @@ def comprehensive_semantic_analysis(teacher_symbols, test_id, excluded_class,
     print(f"Excluded class: {CIFAR100_CLASSES[excluded_class]}")
     
     # Create output directory
-    output_dir = f"./semantic_analysis_results/pair_{test_id}"
+    output_dir = os.path.join(project_root, "Results", "communication_semantic_analysis_results", f"pair_{test_id}")
     os.makedirs(output_dir, exist_ok=True)
     
     # Step 1: Perform hierarchical clustering on teacher symbols
@@ -813,7 +813,7 @@ def visualize_pair(teacher_symbols, student_symbols, class_indices, test_id, exc
     Create improved t-SNE visualization for a teacher-student pair
     """
     # Create output directory
-    output_dir = f'./semantic_analysis_results/pair_{test_id}'
+    output_dir = os.path.join(project_root, "Results", "communication_semantic_analysis_results", f"pair_{test_id}")
     os.makedirs(output_dir, exist_ok=True)
     
     # Prepare data for t-SNE
@@ -919,12 +919,29 @@ def global_analysis(all_results):
     plt.legend()
     
     plt.tight_layout()
-    plt.savefig('./semantic_analysis_results/global_analysis.png', dpi=300, bbox_inches='tight')
+    plt.savefig(
+        os.path.join(
+            project_root, 
+            "Results", 
+            "communication_semantic_analysis_results", 
+            'global_analysis.png'
+        ), 
+        dpi=300, 
+        bbox_inches='tight'
+    )
     plt.close()
     
     # Save detailed results
     df = pd.DataFrame([r for r in all_results if r is not None])
-    df.to_csv('./semantic_analysis_results/detailed_results.csv', index=False)
+    df.to_csv(
+        os.path.join(
+            project_root, 
+            "Results", 
+            "communication_semantic_analysis_results", 
+            'detailed_results.csv'
+        ), 
+        index=False
+    )
     
     return {
         'mean_rsa': mean_rsa,
@@ -955,7 +972,14 @@ def main():
     args = parser.parse_args()
     
     # Create output directory
-    os.makedirs('./semantic_analysis_results', exist_ok=True)
+    os.makedirs(
+        os.path.join(
+            project_root, 
+            "Results", 
+            "communication_semantic_analysis_results"
+        ), 
+        exist_ok=True
+    )
     
     # Load teacher symbols
     teacher_symbols = load_teacher_symbols()

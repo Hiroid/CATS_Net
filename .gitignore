@@ -18,10 +18,10 @@ Results/FeatureData/*
 
 Deps/CustomFuctions/Pretrained Model/*
 
-# Ignore all pair folders in semantic_analysis_results except pair_0 and pair_10
-A03_Communications/B02_Communication_Game/semantic_analysis_results/pair_*
-!A03_Communications/B02_Communication_Game/semantic_analysis_results/pair_0/
-!A03_Communications/B02_Communication_Game/semantic_analysis_results/pair_10/
+# Ignore all pair folders in communication_semantic_analysis_results except pair_0 and pair_10
+Results/communication_semantic_analysis_results/pair_*
+!Results/communication_semantic_analysis_results/pair_0/
+!Results/communication_semantic_analysis_results/pair_10/
 
 # Ignore all files in manuscript folder except specified ones
 manuscript/*
