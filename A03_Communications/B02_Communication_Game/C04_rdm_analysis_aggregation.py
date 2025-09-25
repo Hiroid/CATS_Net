@@ -158,13 +158,13 @@ def visualize_average_rdm(average_matrix, layer_names, output_dir):
     plt.figure(figsize=(10, 8))
     
     # Plot correlation matrix
-    im = plt.imshow(average_matrix, cmap='RdBu_r', aspect='auto', vmin=-1, vmax=1)
+    im = plt.imshow(average_matrix, cmap='RdBu_r', aspect='equal', vmin=-1, vmax=1)
     plt.colorbar(im, label='Average Spearman Correlation')
     
     # Add correlation values as text
     for i in range(n_layers):
         for j in range(n_layers):
-            text = plt.text(j, i, f'{average_matrix[i, j]:.3f}',
+            text = plt.text(j, i, f'{average_matrix[i, j]:.2f}',
                            ha="center", va="center", 
                            color="black" if abs(average_matrix[i, j]) < 0.5 else "white",
                            fontsize=8)
@@ -178,7 +178,9 @@ def visualize_average_rdm(average_matrix, layer_names, output_dir):
     
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'average_rdm_correlation_matrix.png'), 
-               dpi=300, bbox_inches='tight')
+               dpi=300, format="png", bbox_inches='tight')
+    plt.savefig(os.path.join(output_dir, 'average_rdm_correlation_matrix.eps'), 
+               dpi=300, format="eps", bbox_inches='tight')
     plt.close()
     
     print(f"Average RDM visualization saved to {output_dir}")
@@ -198,19 +200,19 @@ def visualize_ttest_results(t_stats, p_values, layer_names, output_dir, alpha=0.
     n_layers = len(layer_names)
     
     # Create t-statistics visualization
-    plt.figure(figsize=(12, 5))
+    plt.figure(figsize=(10, 8))
     
-    # Plot 1: T-statistics
-    plt.subplot(1, 2, 1)
-    im1 = plt.imshow(t_stats, cmap='RdBu_r', aspect='auto')
+    # # Plot 1: T-statistics
+    # plt.subplot(1, 2, 1)
+    im1 = plt.imshow(t_stats, cmap='RdBu_r', aspect='equal', vmin=-2000, vmax=2000)
     plt.colorbar(im1, label='T-statistic')
     
     # Add t-statistic values as text
     for i in range(n_layers):
         for j in range(n_layers):
-            color = "white" if abs(t_stats[i, j]) > 2 else "black"
+            color = "white" if abs(t_stats[i, j]) > 1000 else "black"
             plt.text(j, i, f'{t_stats[i, j]:.2f}',
-                    ha="center", va="center", color=color, fontsize=6)
+                    ha="center", va="center", color=color, fontsize=8)
     
     plt.xticks(range(n_layers), layer_names, rotation=45, ha='right')
     plt.yticks(range(n_layers), layer_names)
@@ -218,40 +220,42 @@ def visualize_ttest_results(t_stats, p_values, layer_names, output_dir, alpha=0.
     plt.ylabel('Layer')
     plt.title('T-statistics\n(One-sample t-test vs. 0)')
     
-    # Plot 2: Significance map
-    plt.subplot(1, 2, 2)
+    # # Plot 2: Significance map
+    # plt.subplot(1, 2, 2)
     
     # Create significance matrix (1 for significant, 0 for non-significant)
     sig_matrix = (p_values < alpha).astype(int)
     
-    im2 = plt.imshow(sig_matrix, cmap='RdYlBu_r', aspect='auto', vmin=0, vmax=1)
-    plt.colorbar(im2, label='Significant (p < 0.05)', ticks=[0, 1])
+    # im2 = plt.imshow(sig_matrix, cmap='RdYlBu_r', aspect='auto', vmin=0, vmax=1)
+    # plt.colorbar(im2, label='Significant (p < 0.05)', ticks=[0, 1])
     
-    # Add p-values as text
-    for i in range(n_layers):
-        for j in range(n_layers):
-            p_val = p_values[i, j]
-            if p_val < 0.001:
-                text = "***"
-            elif p_val < 0.01:
-                text = "**"
-            elif p_val < 0.05:
-                text = "*"
-            else:
-                text = f'{p_val:.3f}'
+    # # Add p-values as text
+    # for i in range(n_layers):
+    #     for j in range(n_layers):
+    #         p_val = p_values[i, j]
+    #         if p_val < 0.001:
+    #             text = "***"
+    #         elif p_val < 0.01:
+    #             text = "**"
+    #         elif p_val < 0.05:
+    #             text = "*"
+    #         else:
+    #             text = f'{p_val:.3f}'
             
-            color = "white" if sig_matrix[i, j] else "black"
-            plt.text(j, i, text, ha="center", va="center", color=color, fontsize=6)
+    #         color = "white" if sig_matrix[i, j] else "black"
+    #         plt.text(j, i, text, ha="center", va="center", color=color, fontsize=6)
     
-    plt.xticks(range(n_layers), layer_names, rotation=45, ha='right')
-    plt.yticks(range(n_layers), layer_names)
-    plt.xlabel('Layer')
-    plt.ylabel('Layer')
-    plt.title(f'Statistical Significance\n(p < {alpha})')
+    # plt.xticks(range(n_layers), layer_names, rotation=45, ha='right')
+    # plt.yticks(range(n_layers), layer_names)
+    # plt.xlabel('Layer')
+    # plt.ylabel('Layer')
+    # plt.title(f'Statistical Significance\n(p < {alpha})')
     
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'rdm_ttest_results.png'), 
-               dpi=300, bbox_inches='tight')
+               dpi=300, format="png", bbox_inches='tight')
+    plt.savefig(os.path.join(output_dir, 'rdm_ttest_results.eps'), 
+               dpi=300, format="eps", bbox_inches='tight')
     plt.close()
     
     print(f"T-test results visualization saved to {output_dir}")

@@ -11,6 +11,8 @@ Results/param/*
 **/checkpoint/
 **/contexts/
 
+*.eps
+
 A03_Communications/B02_Communication_Game/Symbols_of_Speaker
 A03_Communications/B02_Communication_Game/Testing_Symbols_of_Speaker
 

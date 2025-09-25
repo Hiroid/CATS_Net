@@ -436,7 +436,7 @@ def compute_rdm_with_reordering(features_dict, cluster_order, output_dir):
         plt.figure(figsize=(10, 8))
         
         # Plot percentile-normalized RDM
-        im = plt.imshow(rdm_percentile, cmap='viridis', aspect='auto', vmin=0, vmax=100)
+        im = plt.imshow(rdm_percentile, cmap='viridis', aspect='equal', vmin=0, vmax=100)
         plt.colorbar(im, label='Dissimilarity Percentile (%)')
         plt.title(f'RDM - {layer_name} (Cluster-ordered, Percentile-normalized)')
         plt.xlabel('Class Index (Cluster-ordered)')
@@ -446,7 +446,9 @@ def compute_rdm_with_reordering(features_dict, cluster_order, output_dir):
         
         plt.tight_layout()
         plt.savefig(os.path.join(rdm_dir, f'{layer_name}_rdm.png'), 
-                   dpi=300, bbox_inches='tight')
+                   dpi=300, format="png", bbox_inches='tight')
+        plt.savefig(os.path.join(rdm_dir, f'{layer_name}_rdm.eps'), 
+                   dpi=300, format="eps", bbox_inches='tight')
         plt.close()
     
     # Create comparison plot showing RDM evolution across layers
@@ -546,13 +548,13 @@ def create_rdm_correlation_matrix(rdms_raw, output_dir):
     plt.figure(figsize=(10, 8))
     
     # Plot correlation matrix
-    im = plt.imshow(correlation_matrix, cmap='RdBu_r', aspect='auto', vmin=-1, vmax=1)
+    im = plt.imshow(correlation_matrix, cmap='RdBu_r', aspect='equal', vmin=-1, vmax=1)
     plt.colorbar(im, label='Spearman Correlation')
     
     # Add correlation values as text
     for i in range(n_layers):
         for j in range(n_layers):
-            text = plt.text(j, i, f'{correlation_matrix[i, j]:.3f}',
+            text = plt.text(j, i, f'{correlation_matrix[i, j]:.2f}',
                            ha="center", va="center", color="black" if abs(correlation_matrix[i, j]) < 0.5 else "white",
                            fontsize=8)
     
@@ -565,7 +567,9 @@ def create_rdm_correlation_matrix(rdms_raw, output_dir):
     
     plt.tight_layout()
     plt.savefig(os.path.join(output_dir, 'rdm_correlation_matrix.png'), 
-               dpi=300, bbox_inches='tight')
+               dpi=300, format="png", bbox_inches='tight')
+    plt.savefig(os.path.join(output_dir, 'rdm_correlation_matrix.eps'), 
+               dpi=300, format="eps", bbox_inches='tight')
     plt.close()
     
     # Save correlation matrix as CSV for further analysis

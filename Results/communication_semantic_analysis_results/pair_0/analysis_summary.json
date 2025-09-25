@@ -109,7 +109,7 @@
       100
     ]
   },
-  "output_dir": "./semantic_analysis_results/pair_0",
+  "output_dir": "/workspace/Results/communication_semantic_analysis_results/pair_0",
   "cluster_distribution": {
     "cluster_1": 37,
     "cluster_2": 14,
