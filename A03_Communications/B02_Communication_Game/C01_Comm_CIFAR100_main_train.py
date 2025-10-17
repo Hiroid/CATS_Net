@@ -1,6 +1,20 @@
+# Set CUDA device BEFORE importing torch
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "7"
+
 # add the path of custom functions
 import sys
-sys.path.append("../../Deps/CustomFuctions")
+from pathlib import Path
+script_dir = Path(__file__).parent
+project_root = script_dir
+while not (project_root / 'Deps').exists() and project_root.parent != project_root:
+    project_root = project_root.parent
+
+# Add project root to the Python path if it's not already there
+if str(project_root) not in sys.path:
+    sys.path.append(str(project_root))
+
+sys.path.append(os.path.join(project_root, "Deps", "CustomFuctions"))
 
 import torch
 import torch.nn as nn
@@ -14,13 +28,19 @@ import torchvision.transforms as transforms
 import torchvision.models as models
 from datetime import datetime
 import random
-import os
 import argparse
 import scipy.io as io
 from models import *
 
-import Translators, AccracyTest, SEAnet,  Utiliz
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+import Translators, AccracyTest, CATSnet,  Utiliz
+
+# Verify GPU setup
+print(f"CUDA_VISIBLE_DEVICES: {os.environ.get('CUDA_VISIBLE_DEVICES', 'Not set')}")
+print(f"CUDA available: {torch.cuda.is_available()}")
+if torch.cuda.is_available():
+    print(f"Number of GPUs: {torch.cuda.device_count()}")
+    print(f"Current GPU: {torch.cuda.current_device()}")
+    print(f"GPU name: {torch.cuda.get_device_name(0)}")
 
 # parameters
 parser = argparse.ArgumentParser(description='parameters setting')
@@ -29,7 +49,7 @@ parser.add_argument('--worker', type=int, default=1, help='worker for data loade
 parser.add_argument('--ct_batch_size_train', type=int, default=96, help='batch size of symbols in D_99 when training TI module')
 parser.add_argument('--batch_size_test', type=int, default=100, help='batch size for testing dataset')
 parser.add_argument('--num_class', type=int, default=100, help='number of total classes')
-parser.add_argument('--class_id_unaligned', type=list, default=list(range(1,100)), help='the IDs of unaligned classes during the TI training')
+parser.add_argument('--class_id_unaligned', type=list, default=list(range(100)), help='the IDs of unaligned classes during the TI training')
 parser.add_argument('--start_epoch', type=int, default=0, help='epoch number to start with')
 parser.add_argument('--end_epoch', type=int, default=102, help='epoch number to end with')
 parser.add_argument('--context_dim', type=int, default=20, help='context dimension')
@@ -102,10 +122,14 @@ if not os.path.isdir(path):
 save_path_cp = path + '/checkpoint'
 save_path_ct = path + '/contexts'
 
-# load the pretrained models. pretrained_cdp_cnn was not used in the task.
-pretrained_classifier_cnn = models.resnet18(pretrained=True)
+# load the pretrained models.
+pretrained_classifier_cnn = models.resnet18(weights=None)
+pretrained_classifier_cnn.load_state_dict(
+    torch.load(
+        os.path.join(project_root, "Deps", "pretrained_fe", "resnet18-f37072fd.pth")
+    )
+)
 pretrained_classifier_cnn.fc = nn.Identity()
-pretrained_cdp_cnn = VGG('VGG11')
 
 symbollog = open(path + '/symbol_translation.log', mode='a', encoding='utf-8')
 symbollog.close()
@@ -124,10 +148,12 @@ for test_id in args.class_id_unaligned:
     criterion = nn.MSELoss()
     optimizer = optim.Adam(TInet.parameters(), lr=args.learning_rate)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=args.lr_sche_steps, gamma=args.lr_sche_gamma)
-    sea_net = SEAnet.Net2(my_pretrained_classifier=pretrained_classifier_cnn,
-                                        my_pretrained_cdp=pretrained_cdp_cnn, context_dim=args.context_dim).to(args.device)
+    cats_net = CATSnet.Net2(
+        my_pretrained_classifier=pretrained_classifier_cnn,
+        context_dim=args.context_dim
+    ).to(args.device)
     model_ckpt = torch.load(args.listener_model_path + '/ckpt_dim_%d_id_%d.pth' % (args.context_dim, test_id))                                   
-    sea_net.load_state_dict(model_ckpt['net'])
+    cats_net.load_state_dict(model_ckpt['net'])
 
     # load symbols of listener agent
     D99_id = Utiliz.generate_train_id(args.num_class, [test_id])
@@ -145,7 +171,7 @@ for test_id in args.class_id_unaligned:
             for round, output in enumerate(outputs):
                 symbol_listener_test = torch.from_numpy(listener_symbols['context_%d_%d' % (test_id, args.listener_symbols_saveTimePoint)]).to(args.device)
                 symbol_listener_test[test_id, :] = output
-                results_pos, results_neg = AccracyTest.Acc2([symbol_listener_test], sea_net, test_id, [test_id], D99_id, 50)
+                results_pos, results_neg = AccracyTest.Acc2([symbol_listener_test], cats_net, test_id, [test_id], D99_id, 50)
                 for i, idx in enumerate([test_id]):
                     print('%d, %d, %d, %.3f, %.3f, %.3f, %.3f' % (test_id, round, epoch, results_pos[0][i], results_pos[1][i] / results_pos[2][i], \
                         results_neg[0][i], results_neg[1][i] / results_neg[2][i]), file=testlog)  
@@ -163,7 +189,7 @@ for test_id in args.class_id_unaligned:
                         if not os.path.isdir(save_path_cp):
                             os.makedirs(save_path_cp)
                         torch.save(state, save_path_cp + '/TInet_testid_%d.pth' % (test_id))
-                        torch.save(TInet, save_path_cp + '/TInet_testid_%d_whole.pth' % (test_id))
+                        torch.save(TInet.state_dict(), save_path_cp + '/TInet_testid_%d_whole.pth' % (test_id))
                         if not os.path.isdir(save_path_ct):
                             os.makedirs(save_path_ct)
                         io.savemat(save_path_ct + '/context_pred_testid_%d.mat' % (test_id),

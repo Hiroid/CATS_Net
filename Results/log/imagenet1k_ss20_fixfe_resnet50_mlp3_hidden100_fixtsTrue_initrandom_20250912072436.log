@@ -1,0 +1,54 @@
+[2025-09-12 07:24:37,344][argument.py][line:42][INFO] dataset          : imagenet1k
+[2025-09-12 07:24:37,344][argument.py][line:42][INFO] data_root        : /data
+[2025-09-12 07:24:37,344][argument.py][line:42][INFO] model_name       : resnet50
+[2025-09-12 07:24:37,381][argument.py][line:42][INFO] num_epochs       : 5
+[2025-09-12 07:24:37,381][argument.py][line:42][INFO] learning_rate    : 0.001
+[2025-09-12 07:24:37,382][argument.py][line:42][INFO] batch_size       : 512
+[2025-09-12 07:24:37,382][argument.py][line:42][INFO] optimizer_type   : Adam
+[2025-09-12 07:24:37,383][argument.py][line:42][INFO] momentum         : 0.9
+[2025-09-12 07:24:37,383][argument.py][line:42][INFO] print_frequency  : 1
+[2025-09-12 07:24:37,383][argument.py][line:42][INFO] weight_decay     : 0.0001
+[2025-09-12 07:24:37,384][argument.py][line:42][INFO] load_model       : None
+[2025-09-12 07:24:37,384][argument.py][line:42][INFO] symbol_size      : 20
+[2025-09-12 07:24:37,384][argument.py][line:42][INFO] mlp_layers       : 3
+[2025-09-12 07:24:37,385][argument.py][line:42][INFO] hidden_dim       : 100
+[2025-09-12 07:24:37,385][argument.py][line:42][INFO] num_classes      : 1000
+[2025-09-12 07:24:37,386][argument.py][line:42][INFO] p                : 0.5
+[2025-09-12 07:24:37,386][argument.py][line:42][INFO] use_orthg        : False
+[2025-09-12 07:24:37,387][argument.py][line:42][INFO] cntrst           : None
+[2025-09-12 07:24:37,387][argument.py][line:42][INFO] worst_neg        : False
+[2025-09-12 07:24:37,389][argument.py][line:42][INFO] metric           : euclidean
+[2025-09-12 07:24:37,389][argument.py][line:42][INFO] fix_fe           : True
+[2025-09-12 07:24:37,390][argument.py][line:42][INFO] loss_type        : CrossEntropyLoss
+[2025-09-12 07:24:37,390][argument.py][line:42][INFO] use_pretrain     : True
+[2025-09-12 07:24:37,391][argument.py][line:42][INFO] bidir            : False
+[2025-09-12 07:24:37,391][argument.py][line:42][INFO] fix_ts           : True
+[2025-09-12 07:24:37,392][argument.py][line:42][INFO] fix_ts_ca        : False
+[2025-09-12 07:24:37,392][argument.py][line:42][INFO] exp_prefix       : None
+[2025-09-12 07:24:37,393][argument.py][line:42][INFO] fix_symbol_set   : False
+[2025-09-12 07:24:37,393][argument.py][line:42][INFO] symbol_init_type : random
+[2025-09-12 07:24:37,394][argument.py][line:42][INFO] custom_symbol_path : None
+[2025-09-12 07:24:37,394][main.py][line:53][INFO] Device is cuda
+[2025-09-12 07:24:41,075][main.py][line:62][INFO] length of train is 1281167, length of test is 50000
+[2025-09-12 07:24:41,539][main.py][line:82][INFO] Symbol set initialized with type: random
+[2025-09-12 07:52:33,427][utils.py][line:249][INFO] epoch 1, network phase, loss 0.6018, train acc 0.7202, test acc given symbol 0.7561
+[2025-09-12 07:52:33,428][utils.py][line:250][INFO] total time 1669.989sec, IO 451.360sec, make batch 0.915sec, forward 17.662sec, backward 5.223sec, grad step 1.432sec, others stat 884.619sec, eval 68.108sec
+[2025-09-12 08:20:01,325][utils.py][line:310][INFO] epoch 1, concept phase, loss 0.5085, train acc 0.8431, test acc given symbol 0.8731
+[2025-09-12 08:20:01,325][utils.py][line:311][INFO] total time 1647.898sec, IO 515.358sec, make batch 1.364sec, forward 15.620sec, backward 4.185sec, grad step 0.980sec, others stat 885.745sec, eval 67.765sec
+[2025-09-12 08:47:38,021][utils.py][line:249][INFO] epoch 2, network phase, loss 0.3967, train acc 0.9081, test acc given symbol 0.9032
+[2025-09-12 08:47:38,022][utils.py][line:250][INFO] total time 1656.224sec, IO 513.847sec, make batch 0.920sec, forward 15.604sec, backward 4.221sec, grad step 1.380sec, others stat 885.494sec, eval 70.343sec
+[2025-09-12 09:15:01,230][utils.py][line:310][INFO] epoch 2, concept phase, loss 0.3727, train acc 0.9197, test acc given symbol 0.9244
+[2025-09-12 09:15:01,230][utils.py][line:311][INFO] total time 1643.209sec, IO 537.335sec, make batch 1.387sec, forward 15.552sec, backward 4.004sec, grad step 0.974sec, others stat 886.133sec, eval 68.030sec
+[2025-09-12 09:43:06,729][utils.py][line:249][INFO] epoch 3, network phase, loss 0.3307, train acc 0.9370, test acc given symbol 0.9290
+[2025-09-12 09:43:06,729][utils.py][line:250][INFO] total time 1684.942sec, IO 522.103sec, make batch 1.230sec, forward 15.445sec, backward 4.078sec, grad step 1.387sec, others stat 954.014sec, eval 68.052sec
+[2025-09-12 10:09:08,683][utils.py][line:310][INFO] epoch 3, concept phase, loss 0.3392, train acc 0.9324, test acc given symbol 0.9318
+[2025-09-12 10:09:08,683][utils.py][line:311][INFO] total time 1561.954sec, IO 488.833sec, make batch 1.247sec, forward 14.843sec, backward 4.370sec, grad step 0.870sec, others stat 886.308sec, eval 65.086sec
+[2025-09-12 10:35:08,389][utils.py][line:249][INFO] epoch 4, network phase, loss 0.3126, train acc 0.9425, test acc given symbol 0.9355
+[2025-09-12 10:35:08,389][utils.py][line:250][INFO] total time 1555.623sec, IO 506.847sec, make batch 0.850sec, forward 14.875sec, backward 4.068sec, grad step 1.252sec, others stat 886.330sec, eval 63.715sec
+[2025-09-12 11:00:56,373][utils.py][line:310][INFO] epoch 4, concept phase, loss 0.3277, train acc 0.9359, test acc given symbol 0.9354
+[2025-09-12 11:00:56,373][utils.py][line:311][INFO] total time 1547.984sec, IO 529.284sec, make batch 1.280sec, forward 14.778sec, backward 3.802sec, grad step 0.867sec, others stat 886.892sec, eval 64.020sec
+[2025-09-12 11:27:02,328][utils.py][line:249][INFO] epoch 5, network phase, loss 0.3046, train acc 0.9446, test acc given symbol 0.9374
+[2025-09-12 11:27:02,329][utils.py][line:250][INFO] total time 1561.723sec, IO 507.675sec, make batch 0.866sec, forward 14.877sec, backward 3.531sec, grad step 1.283sec, others stat 886.912sec, eval 65.681sec
+[2025-09-12 11:53:25,574][utils.py][line:310][INFO] epoch 5, concept phase, loss 0.3219, train acc 0.9374, test acc given symbol 0.9385
+[2025-09-12 11:53:25,574][utils.py][line:311][INFO] total time 1583.246sec, IO 446.665sec, make batch 1.231sec, forward 14.793sec, backward 4.550sec, grad step 0.891sec, others stat 885.929sec, eval 64.883sec
+[2025-09-12 11:53:34,263][main.py][line:115][INFO] Training done!

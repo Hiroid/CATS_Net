@@ -15,7 +15,6 @@ idxs = list(range(num_class))
 trainloader_cifar100 = MixDataLoader.DLTrain_whole(batch_size_train, worker)
 testloader_mix_cifar100 = MixDataLoader.DLTest_whole(batch_size_test, worker)
 criterion = nn.CrossEntropyLoss()
-path = '../' + str(datetime.now().date())
 
 def Acc(contexts, my_extended_model, test_idxs, epoch_max):
     testloader_sep_cifar100 = SeparatedDataLoader.DLTest(test_idxs, batch_size_test, worker)

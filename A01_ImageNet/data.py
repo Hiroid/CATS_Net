@@ -3,6 +3,8 @@ import torch.utils
 import torch.utils.data
 import torchvision
 import torchvision.transforms as transforms
+import glob
+import os
 
 # CIFAR10 train
 mean_cifar10_train = [x / 255 for x in [125.30691805, 122.95039414, 113.86538318]]
@@ -55,13 +57,6 @@ def mkdataset(args):
         )
         data_test = torchvision.datasets.ImageFolder(
             root = args.data_root + '/ImageNet/val', transform = transform_imagenet1k('test')
-        )
-    elif args.dataset == 'imagenet100':
-        data_train = torchvision.datasets.ImageFolder(
-            root = args.data_root + '/ImageNet-100/train', transform = transform_imagenet1k('train')
-        )
-        data_test = torchvision.datasets.ImageFolder(
-            root = args.data_root + '/ImageNet-100/val', transform = transform_imagenet1k('test')
         )
     return data_train, data_test
 

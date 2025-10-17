@@ -1,0 +1,1348 @@
+{
+  "metadata": {
+    "description": "Matching WordNet IDs between ImageNet classes and THINGS concepts",
+    "index_start": 0,
+    "note": "Indices are 0-based. ImageNet indices from classes dictionary, THINGS indices from concepts TSV file (excluding header). Sorted by ImageNet index in ascending order.",
+    "total_matches": 334,
+    "imagenet_total_classes": 1000,
+    "things_total_concepts": 1854
+  },
+  "matches": {
+    "n01443537": {
+      "imagenet_index": 1,
+      "things_index": 688
+    },
+    "n01498041": {
+      "imagenet_index": 6,
+      "things_index": 1556
+    },
+    "n01518878": {
+      "imagenet_index": 9,
+      "things_index": 1084
+    },
+    "n01616318": {
+      "imagenet_index": 23,
+      "things_index": 1768
+    },
+    "n01677366": {
+      "imagenet_index": 39,
+      "things_index": 825
+    },
+    "n01770393": {
+      "imagenet_index": 71,
+      "things_index": 1384
+    },
+    "n01774750": {
+      "imagenet_index": 76,
+      "things_index": 1626
+    },
+    "n01776313": {
+      "imagenet_index": 78,
+      "things_index": 1656
+    },
+    "n01806143": {
+      "imagenet_index": 84,
+      "things_index": 1130
+    },
+    "n01833805": {
+      "imagenet_index": 94,
+      "things_index": 811
+    },
+    "n01843383": {
+      "imagenet_index": 96,
+      "things_index": 1690
+    },
+    "n01855672": {
+      "imagenet_index": 99,
+      "things_index": 693
+    },
+    "n01873310": {
+      "imagenet_index": 103,
+      "things_index": 1198
+    },
+    "n01882714": {
+      "imagenet_index": 105,
+      "things_index": 884
+    },
+    "n01910747": {
+      "imagenet_index": 107,
+      "things_index": 845
+    },
+    "n01944390": {
+      "imagenet_index": 113,
+      "things_index": 1476
+    },
+    "n01945685": {
+      "imagenet_index": 114,
+      "things_index": 1472
+    },
+    "n01985128": {
+      "imagenet_index": 124,
+      "things_index": 434
+    },
+    "n02007558": {
+      "imagenet_index": 130,
+      "things_index": 608
+    },
+    "n02051845": {
+      "imagenet_index": 144,
+      "things_index": 1140
+    },
+    "n02085620": {
+      "imagenet_index": 151,
+      "things_index": 326
+    },
+    "n02110341": {
+      "imagenet_index": 251,
+      "things_index": 471
+    },
+    "n02110958": {
+      "imagenet_index": 254,
+      "things_index": 1249
+    },
+    "n02114855": {
+      "imagenet_index": 272,
+      "things_index": 427
+    },
+    "n02117135": {
+      "imagenet_index": 276,
+      "things_index": 815
+    },
+    "n02125311": {
+      "imagenet_index": 286,
+      "things_index": 423
+    },
+    "n02128385": {
+      "imagenet_index": 288,
+      "things_index": 917
+    },
+    "n02129165": {
+      "imagenet_index": 291,
+      "things_index": 933
+    },
+    "n02129604": {
+      "imagenet_index": 292,
+      "things_index": 1659
+    },
+    "n02130308": {
+      "imagenet_index": 293,
+      "things_index": 315
+    },
+    "n02134084": {
+      "imagenet_index": 296,
+      "things_index": 1211
+    },
+    "n02137549": {
+      "imagenet_index": 298,
+      "things_index": 1016
+    },
+    "n02138441": {
+      "imagenet_index": 299,
+      "things_index": 992
+    },
+    "n02165456": {
+      "imagenet_index": 301,
+      "things_index": 888
+    },
+    "n02190166": {
+      "imagenet_index": 308,
+      "things_index": 621
+    },
+    "n02206856": {
+      "imagenet_index": 309,
+      "things_index": 111
+    },
+    "n02219486": {
+      "imagenet_index": 310,
+      "things_index": 24
+    },
+    "n02226429": {
+      "imagenet_index": 311,
+      "things_index": 706
+    },
+    "n02233338": {
+      "imagenet_index": 314,
+      "things_index": 373
+    },
+    "n02268443": {
+      "imagenet_index": 319,
+      "things_index": 514
+    },
+    "n02317335": {
+      "imagenet_index": 327,
+      "things_index": 1541
+    },
+    "n02319095": {
+      "imagenet_index": 328,
+      "things_index": 1393
+    },
+    "n02342885": {
+      "imagenet_index": 333,
+      "things_index": 743
+    },
+    "n02346627": {
+      "imagenet_index": 334,
+      "things_index": 1226
+    },
+    "n02363005": {
+      "imagenet_index": 337,
+      "things_index": 107
+    },
+    "n02364673": {
+      "imagenet_index": 338,
+      "things_index": 722
+    },
+    "n02391049": {
+      "imagenet_index": 340,
+      "things_index": 1851
+    },
+    "n02395406": {
+      "imagenet_index": 341,
+      "things_index": 1170
+    },
+    "n02396427": {
+      "imagenet_index": 342,
+      "things_index": 151
+    },
+    "n02397096": {
+      "imagenet_index": 343,
+      "things_index": 1781
+    },
+    "n02398521": {
+      "imagenet_index": 344,
+      "things_index": 781
+    },
+    "n02410509": {
+      "imagenet_index": 347,
+      "things_index": 134
+    },
+    "n02412080": {
+      "imagenet_index": 348,
+      "things_index": 1282
+    },
+    "n02423022": {
+      "imagenet_index": 353,
+      "things_index": 666
+    },
+    "n02437616": {
+      "imagenet_index": 355,
+      "things_index": 938
+    },
+    "n02441942": {
+      "imagenet_index": 356,
+      "things_index": 1797
+    },
+    "n02444819": {
+      "imagenet_index": 360,
+      "things_index": 1085
+    },
+    "n02445715": {
+      "imagenet_index": 361,
+      "things_index": 1459
+    },
+    "n02447366": {
+      "imagenet_index": 362,
+      "things_index": 53
+    },
+    "n02480495": {
+      "imagenet_index": 365,
+      "things_index": 1080
+    },
+    "n02480855": {
+      "imagenet_index": 366,
+      "things_index": 695
+    },
+    "n02510455": {
+      "imagenet_index": 388,
+      "things_index": 1105
+    },
+    "n02526121": {
+      "imagenet_index": 390,
+      "things_index": 545
+    },
+    "n02655020": {
+      "imagenet_index": 397,
+      "things_index": 146
+    },
+    "n02666196": {
+      "imagenet_index": 398,
+      "things_index": 1
+    },
+    "n02672831": {
+      "imagenet_index": 401,
+      "things_index": 2
+    },
+    "n02687172": {
+      "imagenet_index": 403,
+      "things_index": 9
+    },
+    "n02699494": {
+      "imagenet_index": 406,
+      "things_index": 16
+    },
+    "n02701002": {
+      "imagenet_index": 407,
+      "things_index": 19
+    },
+    "n02730930": {
+      "imagenet_index": 411,
+      "things_index": 33
+    },
+    "n02747177": {
+      "imagenet_index": 412,
+      "things_index": 1704
+    },
+    "n02769748": {
+      "imagenet_index": 414,
+      "things_index": 49
+    },
+    "n02777292": {
+      "imagenet_index": 416,
+      "things_index": 58
+    },
+    "n02787622": {
+      "imagenet_index": 420,
+      "things_index": 68
+    },
+    "n02790996": {
+      "imagenet_index": 422,
+      "things_index": 72
+    },
+    "n02797295": {
+      "imagenet_index": 428,
+      "things_index": 1807
+    },
+    "n02799071": {
+      "imagenet_index": 429,
+      "things_index": 78
+    },
+    "n02802426": {
+      "imagenet_index": 430,
+      "things_index": 83
+    },
+    "n02804414": {
+      "imagenet_index": 431,
+      "things_index": 85
+    },
+    "n02804610": {
+      "imagenet_index": 432,
+      "things_index": 86
+    },
+    "n02808440": {
+      "imagenet_index": 435,
+      "things_index": 91
+    },
+    "n02814533": {
+      "imagenet_index": 436,
+      "things_index": 1542
+    },
+    "n02815834": {
+      "imagenet_index": 438,
+      "things_index": 101
+    },
+    "n02837789": {
+      "imagenet_index": 445,
+      "things_index": 124
+    },
+    "n02840245": {
+      "imagenet_index": 446,
+      "things_index": 126
+    },
+    "n02841315": {
+      "imagenet_index": 447,
+      "things_index": 127
+    },
+    "n02843684": {
+      "imagenet_index": 448,
+      "things_index": 131
+    },
+    "n02860847": {
+      "imagenet_index": 450,
+      "things_index": 155
+    },
+    "n02865351": {
+      "imagenet_index": 451,
+      "things_index": 157
+    },
+    "n02869837": {
+      "imagenet_index": 452,
+      "things_index": 163
+    },
+    "n02879718": {
+      "imagenet_index": 456,
+      "things_index": 175
+    },
+    "n02883205": {
+      "imagenet_index": 457,
+      "things_index": 180
+    },
+    "n02892767": {
+      "imagenet_index": 459,
+      "things_index": 185
+    },
+    "n02906734": {
+      "imagenet_index": 462,
+      "things_index": 203
+    },
+    "n02909870": {
+      "imagenet_index": 463,
+      "things_index": 209
+    },
+    "n02910353": {
+      "imagenet_index": 464,
+      "things_index": 210
+    },
+    "n02916936": {
+      "imagenet_index": 465,
+      "things_index": 218
+    },
+    "n02930766": {
+      "imagenet_index": 468,
+      "things_index": 1630
+    },
+    "n02948072": {
+      "imagenet_index": 470,
+      "things_index": 253
+    },
+    "n02951358": {
+      "imagenet_index": 472,
+      "things_index": 262
+    },
+    "n02951585": {
+      "imagenet_index": 473,
+      "things_index": 251
+    },
+    "n02963159": {
+      "imagenet_index": 474,
+      "things_index": 273
+    },
+    "n02966193": {
+      "imagenet_index": 476,
+      "things_index": 275
+    },
+    "n02977058": {
+      "imagenet_index": 480,
+      "things_index": 279
+    },
+    "n02978881": {
+      "imagenet_index": 481,
+      "things_index": 283
+    },
+    "n02988304": {
+      "imagenet_index": 485,
+      "things_index": 290
+    },
+    "n02992211": {
+      "imagenet_index": 486,
+      "things_index": 292
+    },
+    "n02992529": {
+      "imagenet_index": 487,
+      "things_index": 293
+    },
+    "n02999410": {
+      "imagenet_index": 488,
+      "things_index": 298
+    },
+    "n03000684": {
+      "imagenet_index": 491,
+      "things_index": 299
+    },
+    "n03014705": {
+      "imagenet_index": 492,
+      "things_index": 320
+    },
+    "n03017168": {
+      "imagenet_index": 494,
+      "things_index": 328
+    },
+    "n03041632": {
+      "imagenet_index": 499,
+      "things_index": 354
+    },
+    "n03063689": {
+      "imagenet_index": 505,
+      "things_index": 380
+    },
+    "n03075370": {
+      "imagenet_index": 507,
+      "things_index": 390
+    },
+    "n03109150": {
+      "imagenet_index": 512,
+      "things_index": 411
+    },
+    "n03110669": {
+      "imagenet_index": 513,
+      "things_index": 1721
+    },
+    "n03126707": {
+      "imagenet_index": 517,
+      "things_index": 431
+    },
+    "n03127925": {
+      "imagenet_index": 519,
+      "things_index": 433
+    },
+    "n03131574": {
+      "imagenet_index": 520,
+      "things_index": 441
+    },
+    "n03141823": {
+      "imagenet_index": 523,
+      "things_index": 452
+    },
+    "n03179701": {
+      "imagenet_index": 526,
+      "things_index": 480
+    },
+    "n03188531": {
+      "imagenet_index": 529,
+      "things_index": 485
+    },
+    "n03207743": {
+      "imagenet_index": 533,
+      "things_index": 490
+    },
+    "n03207941": {
+      "imagenet_index": 534,
+      "things_index": 491
+    },
+    "n03223299": {
+      "imagenet_index": 539,
+      "things_index": 511
+    },
+    "n03249569": {
+      "imagenet_index": 541,
+      "things_index": 522
+    },
+    "n03250847": {
+      "imagenet_index": 542,
+      "things_index": 523
+    },
+    "n03255030": {
+      "imagenet_index": 543,
+      "things_index": 530
+    },
+    "n03291819": {
+      "imagenet_index": 549,
+      "things_index": 558
+    },
+    "n03325584": {
+      "imagenet_index": 552,
+      "things_index": 150
+    },
+    "n03337140": {
+      "imagenet_index": 553,
+      "things_index": 585
+    },
+    "n03345487": {
+      "imagenet_index": 555,
+      "things_index": 596
+    },
+    "n03355925": {
+      "imagenet_index": 557,
+      "things_index": 606
+    },
+    "n03372029": {
+      "imagenet_index": 558,
+      "things_index": 620
+    },
+    "n03379051": {
+      "imagenet_index": 560,
+      "things_index": 630
+    },
+    "n03384352": {
+      "imagenet_index": 561,
+      "things_index": 635
+    },
+    "n03388183": {
+      "imagenet_index": 563,
+      "things_index": 637
+    },
+    "n03394916": {
+      "imagenet_index": 566,
+      "things_index": 642
+    },
+    "n03404251": {
+      "imagenet_index": 568,
+      "things_index": 650
+    },
+    "n03417042": {
+      "imagenet_index": 569,
+      "things_index": 656
+    },
+    "n03424325": {
+      "imagenet_index": 570,
+      "things_index": 660
+    },
+    "n03443371": {
+      "imagenet_index": 572,
+      "things_index": 685
+    },
+    "n03444034": {
+      "imagenet_index": 573,
+      "things_index": 682
+    },
+    "n03445924": {
+      "imagenet_index": 575,
+      "things_index": 689
+    },
+    "n03447447": {
+      "imagenet_index": 576,
+      "things_index": 691
+    },
+    "n03447721": {
+      "imagenet_index": 577,
+      "things_index": 692
+    },
+    "n03459775": {
+      "imagenet_index": 581,
+      "things_index": 715
+    },
+    "n03467068": {
+      "imagenet_index": 583,
+      "things_index": 721
+    },
+    "n03476991": {
+      "imagenet_index": 585,
+      "things_index": 738
+    },
+    "n03481172": {
+      "imagenet_index": 587,
+      "things_index": 741
+    },
+    "n03483316": {
+      "imagenet_index": 589,
+      "things_index": 735
+    },
+    "n03485794": {
+      "imagenet_index": 591,
+      "things_index": 747
+    },
+    "n03492542": {
+      "imagenet_index": 592,
+      "things_index": 752
+    },
+    "n03494278": {
+      "imagenet_index": 593,
+      "things_index": 753
+    },
+    "n03495258": {
+      "imagenet_index": 594,
+      "things_index": 755
+    },
+    "n03498962": {
+      "imagenet_index": 596,
+      "things_index": 759
+    },
+    "n03527444": {
+      "imagenet_index": 597,
+      "things_index": 786
+    },
+    "n03544143": {
+      "imagenet_index": 604,
+      "things_index": 807
+    },
+    "n03584829": {
+      "imagenet_index": 606,
+      "things_index": 832
+    },
+    "n03594734": {
+      "imagenet_index": 608,
+      "things_index": 842
+    },
+    "n03594945": {
+      "imagenet_index": 609,
+      "things_index": 843
+    },
+    "n03595614": {
+      "imagenet_index": 610,
+      "things_index": 1606
+    },
+    "n03598930": {
+      "imagenet_index": 611,
+      "things_index": 851
+    },
+    "n03599486": {
+      "imagenet_index": 612,
+      "things_index": 1310
+    },
+    "n03602883": {
+      "imagenet_index": 613,
+      "things_index": 852
+    },
+    "n03617480": {
+      "imagenet_index": 614,
+      "things_index": 873
+    },
+    "n03623198": {
+      "imagenet_index": 615,
+      "things_index": 878
+    },
+    "n03627232": {
+      "imagenet_index": 616,
+      "things_index": 883
+    },
+    "n03630383": {
+      "imagenet_index": 617,
+      "things_index": 885
+    },
+    "n03633091": {
+      "imagenet_index": 618,
+      "things_index": 887
+    },
+    "n03637318": {
+      "imagenet_index": 619,
+      "things_index": 893
+    },
+    "n03642806": {
+      "imagenet_index": 620,
+      "things_index": 897
+    },
+    "n03649909": {
+      "imagenet_index": 621,
+      "things_index": 905
+    },
+    "n03658185": {
+      "imagenet_index": 623,
+      "things_index": 919
+    },
+    "n03666591": {
+      "imagenet_index": 626,
+      "things_index": 928
+    },
+    "n03670208": {
+      "imagenet_index": 627,
+      "things_index": 931
+    },
+    "n03676483": {
+      "imagenet_index": 629,
+      "things_index": 936
+    },
+    "n03691459": {
+      "imagenet_index": 632,
+      "things_index": 1509
+    },
+    "n03710193": {
+      "imagenet_index": 637,
+      "things_index": 960
+    },
+    "n03721384": {
+      "imagenet_index": 642,
+      "things_index": 1843
+    },
+    "n03724870": {
+      "imagenet_index": 643,
+      "things_index": 980
+    },
+    "n03733805": {
+      "imagenet_index": 647,
+      "things_index": 986
+    },
+    "n03759954": {
+      "imagenet_index": 650,
+      "things_index": 998
+    },
+    "n03761084": {
+      "imagenet_index": 651,
+      "things_index": 1000
+    },
+    "n03770679": {
+      "imagenet_index": 656,
+      "things_index": 1003
+    },
+    "n03773504": {
+      "imagenet_index": 657,
+      "things_index": 1006
+    },
+    "n03775071": {
+      "imagenet_index": 658,
+      "things_index": 1008
+    },
+    "n03777754": {
+      "imagenet_index": 662,
+      "things_index": 1011
+    },
+    "n03788365": {
+      "imagenet_index": 669,
+      "things_index": 1021
+    },
+    "n03793489": {
+      "imagenet_index": 673,
+      "things_index": 1027
+    },
+    "n03794056": {
+      "imagenet_index": 674,
+      "things_index": 1029
+    },
+    "n03804744": {
+      "imagenet_index": 677,
+      "things_index": 1046
+    },
+    "n03814906": {
+      "imagenet_index": 679,
+      "things_index": 1054
+    },
+    "n03841143": {
+      "imagenet_index": 685,
+      "things_index": 1071
+    },
+    "n03854065": {
+      "imagenet_index": 687,
+      "things_index": 1082
+    },
+    "n03873416": {
+      "imagenet_index": 693,
+      "things_index": 1094
+    },
+    "n03874599": {
+      "imagenet_index": 695,
+      "things_index": 1095
+    },
+    "n03876231": {
+      "imagenet_index": 696,
+      "things_index": 1097
+    },
+    "n03877472": {
+      "imagenet_index": 697,
+      "things_index": 1099
+    },
+    "n03887697": {
+      "imagenet_index": 700,
+      "things_index": 1115
+    },
+    "n03888257": {
+      "imagenet_index": 701,
+      "things_index": 1118
+    },
+    "n03891332": {
+      "imagenet_index": 704,
+      "things_index": 1120
+    },
+    "n03908714": {
+      "imagenet_index": 710,
+      "things_index": 1143
+    },
+    "n03916031": {
+      "imagenet_index": 711,
+      "things_index": 1154
+    },
+    "n03920288": {
+      "imagenet_index": 712,
+      "things_index": 1159
+    },
+    "n03935335": {
+      "imagenet_index": 719,
+      "things_index": 1172
+    },
+    "n03938244": {
+      "imagenet_index": 721,
+      "things_index": 1176
+    },
+    "n03950228": {
+      "imagenet_index": 725,
+      "things_index": 1190
+    },
+    "n03970156": {
+      "imagenet_index": 731,
+      "things_index": 1204
+    },
+    "n03976657": {
+      "imagenet_index": 733,
+      "things_index": 1213
+    },
+    "n03982430": {
+      "imagenet_index": 736,
+      "things_index": 1222
+    },
+    "n04009552": {
+      "imagenet_index": 745,
+      "things_index": 1242
+    },
+    "n04019541": {
+      "imagenet_index": 746,
+      "things_index": 1245
+    },
+    "n04023962": {
+      "imagenet_index": 747,
+      "things_index": 1256
+    },
+    "n04026417": {
+      "imagenet_index": 748,
+      "things_index": 1259
+    },
+    "n04033901": {
+      "imagenet_index": 749,
+      "things_index": 1263
+    },
+    "n04033995": {
+      "imagenet_index": 750,
+      "things_index": 1264
+    },
+    "n04039381": {
+      "imagenet_index": 752,
+      "things_index": 1270
+    },
+    "n04070727": {
+      "imagenet_index": 760,
+      "things_index": 1300
+    },
+    "n04074963": {
+      "imagenet_index": 761,
+      "things_index": 1302
+    },
+    "n04086273": {
+      "imagenet_index": 763,
+      "things_index": 1304
+    },
+    "n04090263": {
+      "imagenet_index": 764,
+      "things_index": 1311
+    },
+    "n04099969": {
+      "imagenet_index": 765,
+      "things_index": 1321
+    },
+    "n04118776": {
+      "imagenet_index": 769,
+      "things_index": 1341
+    },
+    "n04127249": {
+      "imagenet_index": 772,
+      "things_index": 1344
+    },
+    "n04131690": {
+      "imagenet_index": 773,
+      "things_index": 1350
+    },
+    "n04133789": {
+      "imagenet_index": 774,
+      "things_index": 1352
+    },
+    "n04141076": {
+      "imagenet_index": 776,
+      "things_index": 1368
+    },
+    "n04141975": {
+      "imagenet_index": 778,
+      "things_index": 1371
+    },
+    "n04146614": {
+      "imagenet_index": 779,
+      "things_index": 1378
+    },
+    "n04149813": {
+      "imagenet_index": 781,
+      "things_index": 1383
+    },
+    "n04153751": {
+      "imagenet_index": 783,
+      "things_index": 1390
+    },
+    "n04154565": {
+      "imagenet_index": 784,
+      "things_index": 1391
+    },
+    "n04162706": {
+      "imagenet_index": 785,
+      "things_index": 1399
+    },
+    "n04179913": {
+      "imagenet_index": 786,
+      "things_index": 1407
+    },
+    "n04192698": {
+      "imagenet_index": 787,
+      "things_index": 1420
+    },
+    "n04204238": {
+      "imagenet_index": 790,
+      "things_index": 1427
+    },
+    "n04204347": {
+      "imagenet_index": 791,
+      "things_index": 1428
+    },
+    "n04208210": {
+      "imagenet_index": 792,
+      "things_index": 1432
+    },
+    "n04209133": {
+      "imagenet_index": 793,
+      "things_index": 1434
+    },
+    "n04209239": {
+      "imagenet_index": 794,
+      "things_index": 1435
+    },
+    "n04228054": {
+      "imagenet_index": 795,
+      "things_index": 1452
+    },
+    "n04235860": {
+      "imagenet_index": 797,
+      "things_index": 1462
+    },
+    "n04251144": {
+      "imagenet_index": 801,
+      "things_index": 1478
+    },
+    "n04252077": {
+      "imagenet_index": 802,
+      "things_index": 1483
+    },
+    "n04252225": {
+      "imagenet_index": 803,
+      "things_index": 1484
+    },
+    "n04254680": {
+      "imagenet_index": 805,
+      "things_index": 1488
+    },
+    "n04254777": {
+      "imagenet_index": 806,
+      "things_index": 1489
+    },
+    "n04259630": {
+      "imagenet_index": 808,
+      "things_index": 1495
+    },
+    "n04266014": {
+      "imagenet_index": 812,
+      "things_index": 1501
+    },
+    "n04270147": {
+      "imagenet_index": 813,
+      "things_index": 1508
+    },
+    "n04273569": {
+      "imagenet_index": 814,
+      "things_index": 1511
+    },
+    "n04317175": {
+      "imagenet_index": 823,
+      "things_index": 1550
+    },
+    "n04328186": {
+      "imagenet_index": 826,
+      "things_index": 1562
+    },
+    "n04330267": {
+      "imagenet_index": 827,
+      "things_index": 1564
+    },
+    "n04332243": {
+      "imagenet_index": 828,
+      "things_index": 1566
+    },
+    "n04335435": {
+      "imagenet_index": 829,
+      "things_index": 1715
+    },
+    "n04336792": {
+      "imagenet_index": 830,
+      "things_index": 1572
+    },
+    "n04347754": {
+      "imagenet_index": 833,
+      "things_index": 1577
+    },
+    "n04350905": {
+      "imagenet_index": 834,
+      "things_index": 1580
+    },
+    "n04355338": {
+      "imagenet_index": 835,
+      "things_index": 1583
+    },
+    "n04356056": {
+      "imagenet_index": 837,
+      "things_index": 1585
+    },
+    "n04367480": {
+      "imagenet_index": 840,
+      "things_index": 1019
+    },
+    "n04371774": {
+      "imagenet_index": 843,
+      "things_index": 1598
+    },
+    "n04372370": {
+      "imagenet_index": 844,
+      "things_index": 1600
+    },
+    "n04376876": {
+      "imagenet_index": 845,
+      "things_index": 1604
+    },
+    "n04389033": {
+      "imagenet_index": 847,
+      "things_index": 1620
+    },
+    "n04398044": {
+      "imagenet_index": 849,
+      "things_index": 1634
+    },
+    "n04399382": {
+      "imagenet_index": 850,
+      "things_index": 1635
+    },
+    "n04409515": {
+      "imagenet_index": 852,
+      "things_index": 1642
+    },
+    "n04423845": {
+      "imagenet_index": 855,
+      "things_index": 1649
+    },
+    "n04429376": {
+      "imagenet_index": 857,
+      "things_index": 1652
+    },
+    "n04442312": {
+      "imagenet_index": 859,
+      "things_index": 1666
+    },
+    "n04456115": {
+      "imagenet_index": 862,
+      "things_index": 1683
+    },
+    "n04458633": {
+      "imagenet_index": 863,
+      "things_index": 1689
+    },
+    "n04465501": {
+      "imagenet_index": 866,
+      "things_index": 1695
+    },
+    "n04476259": {
+      "imagenet_index": 868,
+      "things_index": 1705
+    },
+    "n04482393": {
+      "imagenet_index": 870,
+      "things_index": 1711
+    },
+    "n04485082": {
+      "imagenet_index": 872,
+      "things_index": 1714
+    },
+    "n04487394": {
+      "imagenet_index": 875,
+      "things_index": 1716
+    },
+    "n04501370": {
+      "imagenet_index": 877,
+      "things_index": 1734
+    },
+    "n04507155": {
+      "imagenet_index": 879,
+      "things_index": 1743
+    },
+    "n04509417": {
+      "imagenet_index": 880,
+      "things_index": 1746
+    },
+    "n04517823": {
+      "imagenet_index": 882,
+      "things_index": 1750
+    },
+    "n04522168": {
+      "imagenet_index": 883,
+      "things_index": 1753
+    },
+    "n04525305": {
+      "imagenet_index": 886,
+      "things_index": 1757
+    },
+    "n04536866": {
+      "imagenet_index": 889,
+      "things_index": 1764
+    },
+    "n04540053": {
+      "imagenet_index": 890,
+      "things_index": 1767
+    },
+    "n04542943": {
+      "imagenet_index": 891,
+      "things_index": 1771
+    },
+    "n04548362": {
+      "imagenet_index": 893,
+      "things_index": 1776
+    },
+    "n04550184": {
+      "imagenet_index": 894,
+      "things_index": 360
+    },
+    "n04554684": {
+      "imagenet_index": 897,
+      "things_index": 1784
+    },
+    "n04557648": {
+      "imagenet_index": 898,
+      "things_index": 1787
+    },
+    "n04584207": {
+      "imagenet_index": 903,
+      "things_index": 1816
+    },
+    "n04591713": {
+      "imagenet_index": 907,
+      "things_index": 1824
+    },
+    "n04592741": {
+      "imagenet_index": 908,
+      "things_index": 1827
+    },
+    "n04596742": {
+      "imagenet_index": 909,
+      "things_index": 1830
+    },
+    "n04606251": {
+      "imagenet_index": 913,
+      "things_index": 1840
+    },
+    "n06596364": {
+      "imagenet_index": 917,
+      "things_index": 391
+    },
+    "n06794110": {
+      "imagenet_index": 919,
+      "things_index": 1315
+    },
+    "n06874185": {
+      "imagenet_index": 920,
+      "things_index": 1696
+    },
+    "n07583066": {
+      "imagenet_index": 924,
+      "things_index": 719
+    },
+    "n07614500": {
+      "imagenet_index": 928,
+      "things_index": 817
+    },
+    "n07615774": {
+      "imagenet_index": 929,
+      "things_index": 1225
+    },
+    "n07693725": {
+      "imagenet_index": 931,
+      "things_index": 55
+    },
+    "n07695742": {
+      "imagenet_index": 932,
+      "things_index": 1239
+    },
+    "n07697313": {
+      "imagenet_index": 933,
+      "things_index": 313
+    },
+    "n07697537": {
+      "imagenet_index": 934,
+      "things_index": 805
+    },
+    "n07711569": {
+      "imagenet_index": 935,
+      "things_index": 979
+    },
+    "n07715103": {
+      "imagenet_index": 938,
+      "things_index": 288
+    },
+    "n07716358": {
+      "imagenet_index": 939,
+      "things_index": 1853
+    },
+    "n07718472": {
+      "imagenet_index": 943,
+      "things_index": 457
+    },
+    "n07718747": {
+      "imagenet_index": 944,
+      "things_index": 39
+    },
+    "n07720875": {
+      "imagenet_index": 945,
+      "things_index": 117
+    },
+    "n07745940": {
+      "imagenet_index": 949,
+      "things_index": 1570
+    },
+    "n07747607": {
+      "imagenet_index": 950,
+      "things_index": 1078
+    },
+    "n07749582": {
+      "imagenet_index": 951,
+      "things_index": 914
+    },
+    "n07753113": {
+      "imagenet_index": 952,
+      "things_index": 581
+    },
+    "n07753275": {
+      "imagenet_index": 953,
+      "things_index": 1182
+    },
+    "n07753592": {
+      "imagenet_index": 954,
+      "things_index": 63
+    },
+    "n07768694": {
+      "imagenet_index": 957,
+      "things_index": 1219
+    },
+    "n07802026": {
+      "imagenet_index": 958,
+      "things_index": 761
+    },
+    "n07860988": {
+      "imagenet_index": 961,
+      "things_index": 513
+    },
+    "n07871810": {
+      "imagenet_index": 962,
+      "things_index": 990
+    },
+    "n07873807": {
+      "imagenet_index": 963,
+      "things_index": 1192
+    },
+    "n07875152": {
+      "imagenet_index": 964,
+      "things_index": 1234
+    },
+    "n07880968": {
+      "imagenet_index": 965,
+      "things_index": 225
+    },
+    "n07920052": {
+      "imagenet_index": 967,
+      "things_index": 560
+    },
+    "n07932039": {
+      "imagenet_index": 969,
+      "things_index": 549
+    },
+    "n09229709": {
+      "imagenet_index": 971,
+      "things_index": 207
+    },
+    "n11939491": {
+      "imagenet_index": 985,
+      "things_index": 470
+    },
+    "n12267677": {
+      "imagenet_index": 988,
+      "things_index": 3
+    },
+    "n15075141": {
+      "imagenet_index": 999,
+      "things_index": 1671
+    }
+  }
+}

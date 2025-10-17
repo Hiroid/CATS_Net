@@ -1,6 +1,17 @@
 # add the path of custom functions
 import sys
-sys.path.append("../../Deps/CustomFuctions")
+from pathlib import Path
+import os
+script_dir = Path(__file__).parent
+project_root = script_dir
+while not (project_root / 'Deps').exists() and project_root.parent != project_root:
+    project_root = project_root.parent
+
+# Add project root to the Python path if it's not already there
+if str(project_root) not in sys.path:
+    sys.path.append(str(project_root))
+
+sys.path.append(os.path.join(project_root, "Deps", "CustomFuctions"))
 
 import torch
 import torch.nn as nn
@@ -20,7 +31,7 @@ import scipy.io as io
 from models import *
 import scipy.stats as stats
 
-import Translators, AccracyTest, SEAnet,  Utiliz
+import Translators, AccracyTest, CATSnet,  Utiliz
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
@@ -70,10 +81,14 @@ if not os.path.isdir(path):
 save_path_cp = path + '/checkpoint'
 save_path_ct = path + '/contexts'
 
-# load the pretrained models. pretrained_cdp_cnn was not used in the task.
-pretrained_classifier_cnn = models.resnet18(pretrained=True)
+# load the pretrained models.
+pretrained_classifier_cnn = models.resnet18(weights=None)
+pretrained_classifier_cnn.load_state_dict(
+    torch.load(
+        os.path.join(project_root, "Deps", "pretrained_fe", "resnet18-f37072fd.pth")
+    )
+)
 pretrained_classifier_cnn.fc = nn.Identity()
-pretrained_cdp_cnn = VGG('VGG11')
 
 
 print("\n" + "="*80)
@@ -108,11 +123,13 @@ for test_id in args.class_id_unaligned:
     saved_state = torch.load(model_path, map_location=args.device)
     TInet_test.load_state_dict(saved_state['net'])
     
-    # Load corresponding SEAnet model
-    sea_net_test = SEAnet.Net2(my_pretrained_classifier=pretrained_classifier_cnn,
-                             my_pretrained_cdp=pretrained_cdp_cnn, context_dim=args.context_dim).to(args.device)
+    # Load corresponding CATSnet model
+    cats_net_test = CATSnet.Net2(
+        my_pretrained_classifier=pretrained_classifier_cnn,
+        context_dim=args.context_dim
+    ).to(args.device)
     model_ckpt = torch.load(args.listener_model_path + '/ckpt_dim_%d_id_%d.pth' % (args.context_dim, test_id))
-    sea_net_test.load_state_dict(model_ckpt['net'])
+    cats_net_test.load_state_dict(model_ckpt['net'])
     
     # Load listener symbols
     D99_id_test = Utiliz.generate_train_id(args.num_class, [test_id])
@@ -126,7 +143,7 @@ for test_id in args.class_id_unaligned:
     for round, output in enumerate(outputs):
         symbol_listener_test = torch.from_numpy(listener_symbols_test['context_%d_%d' % (test_id, args.listener_symbols_saveTimePoint)]).to(args.device)
         symbol_listener_test[test_id, :] = output
-        results_pos, results_neg = AccracyTest.Acc2([symbol_listener_test], sea_net_test, test_id, [test_id], D99_id_test, 50)
+        results_pos, results_neg = AccracyTest.Acc2([symbol_listener_test], cats_net_test, test_id, [test_id], D99_id_test, 50)
         
         for i, idx in enumerate([test_id]):
             acc_pos = results_pos[1][i] / results_pos[2][i] if results_pos[2][i] > 0 else 0

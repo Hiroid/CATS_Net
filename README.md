@@ -31,7 +31,7 @@ The framework addresses the challenge of learning meaningful concept representat
 * **A01_ImageNet/**: ImageNet-1K training and evaluation with ResNet50/ResNet18/ViT backbones
 * **A02_Semantic_Analysis/**: Comprehensive analysis tools for semantic understanding and model interpretability
 * **A03_Communications/**: Multi-agent communication experiments on CIFAR-100
-  * **B01_SEA_Net/**: CATS-Net implementation and training on CIFAR-100
+  * **B01_CATS_Net/**: CATS-Net implementation and training on CIFAR-100
   * **B02_Communication_Game/**: Translation-Interpretation module for Speaker-Listener communication
   * **B03_Internal_Structure/**: Internal representational structure analysis and network visualization
 * **A04_Word2Vec/**: Word2Vec-based context learning experiments on CIFAR-100
@@ -95,13 +95,29 @@ cd CATS-Net
 ### 2. Set Up Python Environment
 
 ```bash
-# Create virtual environment
-python -m venv cats_env
-source cats_env/bin/activate  # On Windows: cats_env\Scripts\activate
+# 1. Install UV if not already installed
+# macOS and Linux
+curl -LsSf https://astral.sh/uv/0.8.5/install.sh | sh
+# Windows
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/0.8.5/install.ps1 | iex"
 
-# Install core dependencies
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
-pip install numpy scipy matplotlib seaborn pandas tqdm nltk pillow
+# testing uv installation, version should be 0.8.5
+uv --version
+
+# 2. Install the python 3.9
+uv python install 3.9.16
+
+# 3. Create a virtual environment
+uv venv -p 3.9.16
+
+# 4. Activate the virtual environment
+# macOS and Linux
+source .venv/bin/activate
+# Windows
+.venv\Scripts\activate
+
+# 5. Install dependencies (using locked versions)
+uv sync
 ```
 
 ### 3. Download Required Assets
@@ -141,14 +157,14 @@ To help connect paper concepts with code implementation:
 
 | Paper Term | Code Implementation | Location |
 |:-----------|:-------------------|:---------|
-| CATS-Net | `sea_net` | A01_ImageNet/model.py |
-| CATS-Net | `Net2` | A03_Communications/Deps/CustomFunctions/SEAnet.py |
-| CA (Concept Abstraction) Module | Layers with `cdp_` prefix | Multiple locations |
+| CATS-Net | `cats_net` | A01_ImageNet/model.py |
+| CATS-Net | `Net2` | Deps/CustomFunctions/CATSnet.py |
+| CA (Concept Abstraction) Module | Layers with `cdp_` prefix | Deps/CustomFunctions/CATSnet.py |
 | TS (Task-Solving) Module | Layers with `ts_` prefix | A01_ImageNet/model.py |
-| TS (Task-Solving) Module | Layers with `clf_` prefix | A03_Communications |
+| TS (Task-Solving) Module | Layers with `clf_` prefix | Deps/CustomFunctions/CATSnet.py |
 | Concept Vectors | `symbol_set` | A01_ImageNet/model.py |
-| Concept Vectors | `contexts` | A03_Communications |
-| Feature Extractor | `fe` attribute | Multiple locations |
+| Concept Vectors | `contexts` | A03_Communications, A04_Word2Vec |
+| Feature Extractor | `fe` attribute | A01_ImageNet/model.py |
 | Translation-Interpretation Module | `TImodule` | A03_Communications/B02_Communication_Game |
 
 ## Component Descriptions
@@ -191,7 +207,7 @@ python B02_Get_acc_list.py
 
 **Purpose**: Study emergent communication between neural agents through concept-based symbolic exchange.
 
-#### B01_SEA_Net - CIFAR-100 Training
+#### B01_CATS_Net - CIFAR-100 Training
 - CATS-Net implementation on CIFAR-100
 - Binary classification with concept-context pairing
 - Noise injection for robust learning
@@ -208,7 +224,7 @@ python B02_Get_acc_list.py
 
 **Quick Start**:
 ```bash
-cd A03_Communications/B01_SEA_Net
+cd A03_Communications/B01_CATS_Net
 python C01_CATSNet_CIFAR100_main.py --mode train
 ```
 
@@ -293,7 +309,7 @@ jupyter notebook B05_functional_entropy.ipynb
 
 ```bash
 # Step 1: Train CATS-Net agents on CIFAR-100
-cd A03_Communications/B01_SEA_Net
+cd A03_Communications/B01_CATS_Net
 python C01_CATSNet_CIFAR100_main.py --mode train --end_epoch 2000
 
 # Step 2: Train Translation-Interpretation module

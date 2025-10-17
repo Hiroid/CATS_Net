@@ -1,16 +1,16 @@
 # CATS-Net on ImageNet
-This directory contains the code for training and evaluating CATS-Net models (named as `sea_net` in the code) on the ImageNet dataset.
+This directory contains the code for training and evaluating CATS-Net models (named as `cats_net` in the code) on the ImageNet dataset.
 ## Terminology Mapping
 
 To help readers connect the concepts from the paper to the code implementation, here is a brief mapping:
 
 | Paper Term          | Code Implementation                                      |
 | :------------------ | :------------------------------------------------------- |
-| CATS-Net            | `sea_net` in `model.py`             |
+| CATS-Net            | `cats_net` in `model.py`             |
 | CA (Concept Abstraction) Module | Layers prefixed with `cdp_` (e.g., `cdp_fc1`, `cdp_bn1`) in `model.py` |
 | TS (Task-Solving) Module | Layers prefixed with `ts_` (e.g., `ts_fc1`, `ts_bn1`) in `model.py`   |
-| Concept Vectors     | `symbol_set` (learnable parameter in `sea_net`)      |
-| Feature Extractor   | `fe` (attribute within `sea_net`)        |
+| Concept Vectors     | `symbol_set` (learnable parameter in `cats_net`)      |
+| Feature Extractor   | `fe` (attribute within `cats_net`)        |
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ To help readers connect the concepts from the paper to the code implementation, 
 ## Directory Structure
 
 -   `main.py`: Main script for training.
--   `model.py`: Contains the model definitions (`sea_net`).
+-   `model.py`: Contains the model definitions (`cats_net`).
 -   `data.py`: Handles data loading and preprocessing for ImageNet.
 -   `utils.py`: Contains utility functions for training, optimization, etc.
 -   `argument.py`: Defines command-line arguments.

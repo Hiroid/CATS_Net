@@ -9,10 +9,21 @@
 #SBATCH --array=0%1
 
 cmdlines=(
-    "python main.py -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain"
+    "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain"
 
-    # "python main.py -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --bidir"
-    # "python main.py -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name vit_b_16 --fix_fe --use_pretrain"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name vit_b_16 --fix_fe --use_pretrain"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 100 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 10 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --mlp_layers 1"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --mlp_layers 5"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --fix_symbol_set --symbol_init_type random"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --fix_symbol_set --symbol_init_type one_hot"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --fix_ts_ca"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --fix_ts"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --joint_training"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --custom_symbol_path ./Results/word2vec/ImageNet1k_FirstEmbeddings_Tensor.pt --fix_symbol_set"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 20 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --fix_symbol_set --symbol_init_type random --mlp_layers 1"
+    # "python -m A01_ImageNet.main -ne 5 -bs 512 -lr 0.001 -nc 1000 -ss 10 --dataset imagenet1k --model_name resnet50 --fix_fe --use_pretrain --fix_symbol_set --symbol_init_type random --mlp_layers 1"
 )
 cmd=${cmdlines[SLURM_ARRAY_TASK_ID]}
 $cmd
