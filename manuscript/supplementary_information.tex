@@ -1,0 +1,356 @@
+%Version 3 December 2023
+% See section 11 of the User Manual for version history
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%======================================================%%
+%% to compile with pdflatex/xelatex use pdflatex option %%
+%%======================================================%%
+
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+
+%%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove Numbered in the optional parenthesis. 
+%%The option is available for: sn-basic.bst, sn-vancouver.bst, sn-chicago.bst%  
+ 
+%%\documentclass[pdflatex,sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+%%\documentclass[pdflatex,sn-mathphys-num,lineno]{sn-jnl}% Math and Physical Sciences Numbered Reference Style 
+%%\documentclass[pdflatex,sn-mathphys-ay]{sn-jnl}% Math and Physical Sciences Author Year Reference Style
+%%\documentclass[pdflatex,sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[pdflatex,sn-vancouver,Numbered]{sn-jnl}% Vancouver Reference Style
+%%\documentclass[pdflatex,sn-apa]{sn-jnl}% APA Reference Style 
+%%\documentclass[pdflatex,sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+
+\documentclass[pdflatex,sn-mathphys-num,lineno]{sn-jnl}% Math and Physical Sciences Numbered Reference Style 
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+\usepackage{lipsum}
+\usepackage{color}
+\usepackage{CJKutf8}
+\setlength{\marginparwidth}{2cm}
+\usepackage{todonotes}
+
+
+\newcounter{suppfigure}
+\setcounter{suppfigure}{0}
+
+\makeatletter
+\newcommand{\suppcaption}[1]{
+  \refstepcounter{suppfigure}
+  \begin{flushleft}
+  {
+    \small
+    % \raggedright
+    \addcontentsline{lof}{figure}{Figure S\thesuppfigure: #1}%
+    \par
+    \medskip
+    \noindent\textbf{Figure S\thesuppfigure.} #1
+    \par
+  }
+  \end{flushleft}
+}
+\makeatother
+
+\DeclareMathOperator{\atanh}{atanh}
+
+%%%%
+
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published 
+%%%%  by Springer Nature. The guidance has been prepared in partnership with 
+%%%%  production teams to conform to Springer Nature technical requirements. 
+%%%%  Editorial and presentation requirements differ among journal portfolios and 
+%%%%  research disciplines. You may find sections in this template are irrelevant 
+%%%%  to your work and are empowered to omit any such section if allowed by the 
+%%%%  journal you intend to submit to. The submission guidelines and policies 
+%%%%  of the journal take precedence. A detailed User Manual is available in the 
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+
+%% as per the requirement new theorem styles can be included as shown below
+% \theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}% 
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+% \theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+% \theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+%%\unnumbered% uncomment this for unnumbered level heads
+
+\begin{document}
+\begin{CJK}{UTF8}{gbsn} 
+
+\title[Article Title]{\textbf{Supplementary information:} A neural network for modeling human concept formation, understanding and communication}
+
+%%=============================================================%%
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% \author*[1,2]{\fnm{Joergen W.} \spfx{van der} \sur{Ploeg} 
+%%  \sfx{IV}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+\author[1,2]{\fnm{Liangxuan} \sur{Guo}}
+\equalcont{These authors contributed equally to this work.}
+
+\author[3]{\fnm{Haoyang} \sur{Chen}}
+\equalcont{These authors contributed equally to this work.}
+
+\author*[1]{\fnm{Yang} \sur{Chen}}\email{yang.chen@ia.ac.cn}
+\equalcont{These authors contributed equally to this work.}
+
+\author*[3,4,5,6]{\fnm{Yanchao} \sur{Bi}}\email{ybi@pku.edu.cn}
+
+\author*[1,2,7]{\fnm{Shan} \sur{Yu}}\email{shan.yu@nlpr.ia.ac.cn}
+
+\affil[1]{\orgdiv{Laboratory of Brain Atlas and Brain-inspired Intelligence}, \orgname{Institute of Automation, Chinese Academy of Sciences}, \orgaddress{\state{Beijing 100190}, \country{China}}}
+
+\affil[2]{\orgdiv{School of Future Technology}, \orgname{University of Chinese Academy of Sciences}, \orgaddress{\state{Beijing 100049}, \country{China}}}
+
+
+\affil[3]{\orgdiv{School of Psychological and Cognitive Sciences \& Beijing Key Laboratory of Behavior and Mental Health}, \orgname{Peking University}, \orgaddress{\state{Beijing 100871}, \country{China}}}
+
+\affil[4]{\orgdiv{IDG/McGovern Institute for Brain Research}, \orgname{Peking University}, \orgaddress{\state{Beijing 100871}, \country{China}}}
+
+\affil[5]{\orgdiv{Institute for Artificial Intelligence}, \orgname{Peking University}, \orgaddress{\state{Beijing 100871}, \country{China}}}
+
+\affil[6]{\orgdiv{Key Laboratory of Machine Perception (Ministry of Education)}, \orgname{Peking University}, \orgaddress{\state{Beijing 100871}, \country{China}}}
+
+\affil[7]{\orgdiv{School of Artificial Intelligence}, \orgname{University of Chinese Academy of Sciences}, \orgaddress{\state{Beijing 100049}, \country{China}}}
+
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+
+\section{Ablation studies on CATS Net architecture}
+
+\subsection{Backbone Architecture}
+We tested our framework with different visual backbones beyond ResNet50, including Vision Transformer (ViT-B/16). The results demonstrate that CATS Net maintains consistent performance across different feature extractors, achieving similar accuracy (0.966, the third bar from the left in Fig. S1a) regardless of the backbone choice. This indicates that our hierarchical gating mechanism is robust and not dependent on specific CNN architectures.
+
+\subsection{Concept Space Dimensionality}
+First, our selection of a 20-dim concept space is grounded in established neuroscientific literature on human conceptual representations. As we described in our manuscript, \textit{First is concept formation: The higher-dimensional sensory-motor experience is compressed into lower-dimensional representational spaces [2–5], whose dimensionality typically ranges from 20 to several hundreds [6–10]}. This neurobiological evidence suggests that human concept formation involves compressing higher-dimensional sensory-motor experience into lower-dimensional representations, with 20 dimensions falling well within the empirically observed range for effective conceptual encoding in biological systems. Our choice thus aligns with the natural dimensionality constraints observed in human conceptual processing.
+
+Second, we empirically validated this architectural choice through systematic ablation studies. We conducted experiments across different concept space dimensions (10, 20, and 100 dimensions) and found that performance remained remarkably consistent, with 20-dimension providing an optimal balance between representational efficiency and compression capability (the second, fourth and fifth bar from the left in Fig. S1a). The convergence between neurobiological evidence and our empirical findings strengthens the theoretical foundation of our approach.
+
+\subsection{Network Depth}
+We tested CA/TS modules with 1, 3, and 5 layers. The results demonstrate that our framework is remarkably robust to depth variations, with all configurations achieving comparable performance (the sixth and seventh bar from the left in Fig. S1a). 
+
+\subsection{Training Strategy}
+We compared our alternating two-phase training with end-to-end joint training. Interestingly, both approaches yielded nearly identical results, suggesting that the concept formation process is robust to training methodology (the last bar from the left in Reply Fig.1). The learning of concept space can be independent from the learning of network parameters. We believe this approach aids readers in understanding that once CA/TS has been trained, new functional and meaningful network configurations can be directly obtained by acquiring concept vectors solely in the concept space. As demonstrated in our leave-one-out experiments and communication experiments, this process does not involve modifications to network parameters, but only involves operations in the concept space.
+
+These comprehensive ablation studies demonstrate that CATS Net's robustness, which indicates that our framework captures a general computational principle for concept formation that is broadly applicable across different implementation details.
+
+\section{Ablation studies on concept space construction}
+
+We compared the performance of different types of concept spaces on the ImageNet-1k binary judgment task. The results are as follows:
+
+\subsection{Comparison with one-hot vectors}
+First, increasing dimensions through one-hot is not optimal from a computational performance perspective. The results in Fig. S1b demonstrated that a learnable 100-dim concept (the second bar from the left) can achieve better results (mean difference = 0.0043, 95\% bootstrap CI [0.0021, 0.0056], 5000 resamples, two-sided permutation test with 10,000 permutations, p = 0.0079) than a 1000-dim one-hot (the third bar from the left). Second, one-hot has poor scalability. One-hot vectors are orthogonal, which means its dimension scales linearly with the number of classes. This is inefficient and biologically implausible for a large number of concepts. Therefore, in summary, whether from the perspective of overall performance or scalability, one-hot vectors are not a better choice.
+
+\subsection{Learnability of the concept space and CA/TS capacity are both crucial}
+Trainable 20-dim concept space outperforms the frozen 20-dim random vectors (mean difference = 0.0192, 95\% bootstrap CI [0.0185, 0.0200] with 5000 resamples, two-sided permutation test with 10,000 permutations, p < 0.001) and the frozen 20-dim Word2Vec vectors (mean difference = 0.0279, 95\% bootstrap CI [0.0256, 0.0313] with 5000 resamples, two-sided permutation test with 10,000 permutations, p < 0.001). Indeed, given the frozen 20-dim random vectors, the CA/TS modules are re-organizing its weights to accommodate a fixed arbitrary space. When we reduced the number of CA/TS layers from 3 to 1, we can clearly see that the accuracy drops from 0.944 (the fourth bar from the left in Fig. S1b) to 0.793 (the fifth bar from the left in Fig. S1b), indicating that the current CA/TS with limited capacity is not sufficient to accurately complete the task in the fixed random concept space. However, if we permit concept vector learning in this setting (i.e., with one layer of the CA/TS module), the accuracy rises back to 0.954 (the last bar from the left in Fig. S1b), which is close to the case of using 3 layers of CA/TS for 20-dim concept vectors (the first bar from the left in Fig. S1b). This shows that in essence, the CATS Net requires the learnability of the concept space and the capacity of CA/TS to support it. When the CA/TS capacity is limited, the learnability of the concept space becomes crucial.
+
+\section{Robustness analysis of model-brain correlations}
+\subsection{Model initialization}
+We independently trained 30 models and obtained highly consistent correlation results at the group level using Fisher-\textit{z} transformed, ceiling-corrected correlations: concept–VOTC, $t(29) = 9.27$, $p < 0.001$, Cohen’s 
+$d = 1.70$; CA1–Semantic Control, $t(29) = 6.44$, $p < 0.001$, Cohen’s $d = 1.18$).
+
+\subsection{Datasets splits}
+Additionally, we computed the instance-average model-brain correspondence per participant (averaging across the 30 independently initialized models). In VOTC, correlation values between the concept layer of all 30 models and each subject were greater than zero, with an overall average of mean $\rho \pm$ SE $= 0.095 \pm 0.009$. At the group statistical level, this effect was significant ($t(25) = 10.90$, $p < 0.001$, Cohen’s $d = 2.14$), indicating that the model's semantic representations can stably correspond to human VOTC representations across subjects.
+
+In the semantic control network, we similarly observed consistent positive correlations between the CA1 layer of 30 models and subjects' neural representations ($t(25) = 3.51$, $p < 0.001$, Cohen’s $d = 0.69$). This further supports the correspondence between the control module in the CATS framework and the semantic control network. In addition, the CA1 layer of all thirty models also demonstrated significant fitting advantages for the Semantic Control Network in each subject, relative to the Multiple Demand Network ($t(25) = 2.23$, $p = 0.035$, Cohen’s $d = 0.43$).
+
+\subsection{Semantic ontologies}
+Since WT95 contains three classic human semantic categories (animals, large non-manipulable objects, and small manipulable objects), we divided it into three subsets and conducted analyses within each subset following the same RSA-searchlight analysis procedure. Specifically, we generated neural RDMs based on stimuli within each subset and compared them with feature RDMs from the model's concept layer. Given that previous whole-brain analyses already demonstrated high correspondence between the concept layer and human VOTC, this analysis was confined within a predefined VOTC mask. Results showed that in each semantic category, CATS models captured significant neural effects within VOTC and demonstrated unique advantages relative to sensory input layer representations (ResNet-50 output) (voxel-level $p < 0.001$, one-tailed; cluster-level FWE-corrected $p < 0.05$; see Fig. S8). 
+
+Specifically, for the animal category, our analysis identified significant clusters in bilateral fusiform gyrus (FG), extending to the lateral occipital complex (LOC). For large non-manipulable objects, we detected three spatially relatively independent significant clusters: one located in the left occipital pole (OP), another in the right occipital pole extending anteriorly to the lingual gyrus (LING) and medial FG, and a third in the left medial FG. Finally, for small manipulable objects, we identified a significant cluster located in the left FG. The weak effect may come from dataset composition—few representative tool exemplars and marked within-category heterogeneity (spanning small, rounded objects, e.g., buttons, to elongated objects, e.g., fishing rods).
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig/fig_s1@300x.png}
+\suppcaption{\textbf{$\vert$ Ablation study on CATS Net. a,} Ablation studies and hyperparameter explorations on backbone, concept size, number layers of CA/TS module and training strategy. The left most 2 bars was adopted from main text Fig 2a, while the others represents the average of mean accuracy across 5 independently initialized models after training, and each point represents the corresponding mean accuracy cross all categories (from the $3^{rd}$ bar to the right most one: using ViT as backbone, setting concept size to 10, setting concept size to 100, setting the layer number of CA/TS module to 1, setting the layer number of CA/TS module to 5, end-to-end training of concept vectors together with CA/TS module). \textbf{b,} Ablation studies on concept space construction. The left most one bar was adopted from Fig 2a, while the others represents the average of mean accuracy across 5 independently initialized models after training, and each point represents the corresponding mean accuracy cross all categories (from the $2^{nd}$ bar to the right most one: setting concept size to 100, setting concept size to 1000 using fixed one-hot vectors, setting concept to fixed Word2Vec vectors projected to 20 dimensions, setting concept to fixed 20-dim random vectors, setting concept to fixed 20-dim random vectors with 1 CA/TS layer, setting 20-dim concept vectors to be learnable with 1 CA/TS layer).}
+\label{figS1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig/fig_s2@300x.png}
+\suppcaption{\textbf{$\vert$ Representational similarity between CATS concept layer and Binder65 subdomains on ImageNet dataset.} This figure illustrates the RSA results between our CATS model's concept layer and the 11 subdomains of the Binder65 model. RDMs were generated for both the CATS concept layer and each Binder65 subdomain using WT95 stimulus dataset. The y-axis displays Fisher's \textit{z}-transformed Spearman’s rank correlation coefficients ($\rho$) between the respective RDMs. Violin plots show the distribution of these correlation values across 30 independently initialized CATS models, with embedded box plots indicating median and interquartile ranges. Individual data points represent correlation values from each independently trained model. Asterisks ($***$) above each subdomain indicate statistical significance ($p < 0.001$) from one-sample \textit{t}-tests conducted at the group level. The "ns" above casual domain indicates not significance. The analysis reveals significant representational similarity between our CATS concept layer and all Binder65 subdomains, with particularly notable correlations observed in non-visual domains such as social and emotional processing domains.}
+\label{figS2}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig/fig_s3@300x.png}
+\suppcaption{\textbf{$\vert$ Maximum correlations between CATS instances and all SPOSE49 dimensions. } Each bar represents the maximum Pearson correlation between the 20 concept dimensions of a given CATS instance and each SPOSE49 dimension (dimension labels shown around the perimeter; dimension names from Hebart et al. \cite{hebart_revealing_2020}). The red circle indicates the significance threshold ($r = 0.107$, two-tailed $p < 0.05$, df = 330).}
+\label{figS3}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig/fig_s4@300x.png}
+\suppcaption{\textbf{$\vert$ Translation Module Analyses. a,} For this translation module ("apple" category was withheld from the student Net's training), given all 100 teacher concept vectors as input, we recorded the layer-wise activation and conducted layer-wise RDM (Pearson's correlation). \textbf{b,} The layer-wise RDM Spearman's correlation similarity matrix based on (a). \textbf{c,} The average layer-wise RDM Spearman's correlation similarity across all 100 translation modules. \textbf{d,} One-sample t-test of each value at translation module group level.}
+\label{figS4}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig/fig_s5.png}
+\suppcaption{\textbf{$\vert$ Performance on unseen concepts under the leave-one-out paradigm using THINGS and 49-dim human-generated embedding vectors.} We randomly chose 100 categories from 1,854 object categories from THINGS as 100 runs of leave-one-out experiment. Each point in the figure represents one category chosen for leave-one-out experiment.}
+\label{figS5}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig/fig_s6@300x.png}
+\suppcaption{\textbf{$\vert$ RSA model-group analysis results for the three layers of CA module of the 30 models and their correspondence with human brain fMRI responses.} The top panel presents the results of ROI analysis, with semantic control network \cite{jackson_neural_2021} and domain-general multi-demand (domain-general control) network \cite{fedorenko_broad_2013} used as ROIs. The bar charts show the model's performance in relation to these networks, with $p < 0.01$ indicated by two asterisks and $p < 0.05$ indicated by one asterisk for group differences. The bottom panel displays the whole-brain searchlight RSA results, at the threshold of voxel-level $p < 0.001$, one-tailed, cluster-level family-wise error (FWE)-corrected $p < 0.05$, highlighting the spatial patterns of model-brain correspondence across the whole brain. Each of the three subplots corresponds to one layer (CA1, CA2, and CA3) of the model. The whole-brain searchlight results indicate that the spatial distribution of the model-brain correspondence for the CA module shows a high resemblance to that of the semantic control network.}
+\label{figS6}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig/fig_s7@300x.png}
+\suppcaption{\textbf{$\vert$ CATS Net-Binder65 correspondence using RSA.} Box plots showing the Spearman’s correlation coefficients (Fisher-\textit{z} transformed) between our developed model and the Binder65 model based on RSA analysis, controlling for the sensory input layer. The left panel displays the group-level results for all 30 models, with each point representing an independently trained model instance. The right panel presents the results of a cluster analysis dividing the models into high-consensus and low-consensus groups, with subsequent group-level analysis and between-group comparison. Each point in this panel also represents a model instance within the respective group. Statistically significant differences between the high-consensus and low-consensus groups are indicated by asterisks (one-sided $p < 0.001$).}
+\label{figS7}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig/fig_s8.png}
+\suppcaption{\textbf{$\vert$ Searchlight RSA results within the VOTC mask for three common semantic categories (animals, large non-manipulable objects, small manipulable objects).} The maps show t-values reflecting the correspondence between concept layer representations and brain activity. Results are thresholded at voxel-level $p < 0.001$ (one-tailed) and cluster-level family-wise error (FWE) corrected $p < 0.05$.}
+\label{figS8}
+\end{figure}
+
+% If your article has accompanying supplementary file/s please state so here. 
+
+% Authors reporting data from electrophoretic gels and blots should supply the full unprocessed scans for key as part of their Supplementary information. This may be requested by the editorial team/s if it is missing.
+
+% Please refer to Journal-level guidance for any specific requirements.
+
+% \bmhead{Acknowledgements}
+
+% Acknowledgements are not compulsory. Where included they should be brief. Grant or contribution numbers may be acknowledged.
+
+% Please refer to Journal-level guidance for any specific requirements.
+
+% \section*{Declarations}
+
+% Some journals require declarations to be submitted in a standardised format. Please check the Instructions for Authors of the journal to which you are submitting to see if you need to complete this section. If yes, your manuscript must contain the following sections under the heading `Declarations':
+
+% \begin{itemize}
+% \item Funding
+% \item Conflict of interest/Competing interests (check journal-specific guidelines for which heading to use)
+% \item Ethics approval and consent to participate
+% \item Consent for publication
+% \item Data availability 
+% \item Materials availability
+% \item Code availability 
+% \item Author contribution
+% \end{itemize}
+
+% \noindent
+% If any of the sections are not relevant to your manuscript, please include the heading and write `Not applicable' for that section. 
+
+% %%===================================================%%
+% %% For presentation purpose, we have included        %%
+% %% \bigskip command. Please ignore this.             %%
+% %%===================================================%%
+% \bigskip
+% \begin{flushleft}%
+% Editorial Policies for:
+
+% \bigskip\noindent
+% Springer journals and proceedings: \url{https://www.springer.com/gp/editorial-policies}
+
+% \bigskip\noindent
+% Nature Portfolio journals: \url{https://www.nature.com/nature-research/editorial-policies}
+
+% \bigskip\noindent
+% \textit{Scientific Reports}: \url{https://www.nature.com/srep/journal-policies/editorial-policies}
+
+% \bigskip\noindent
+% BMC journals: \url{https://www.biomedcentral.com/getpublished/editorial-policies}
+% \end{flushleft}
+
+% \begin{appendices}
+% \section{Section title of first appendix}\label{secA1}
+
+
+% An appendix contains supplementary information that is not an essential part of the text itself but which may be helpful in providing a more comprehensive understanding of the research problem or it is information that is too cumbersome to be included in the body of the paper.
+
+% %%=============================================%%
+% %% For submissions to Nature Portfolio Journals %%
+% %% please use the heading ``Extended Data''.   %%
+% %%=============================================%%
+
+% %%=============================================================%%
+% %% Sample for another appendix section			       %%
+% %%=============================================================%%
+
+% %% \section{Example of another appendix section}\label{secA2}%
+% %% Appendices may be used for helpful, supporting or essential material that would otherwise 
+% %% clutter, break up or be distracting to the text. Appendices can consist of sections, figures, 
+% %% tables and equations etc.
+
+% \end{appendices}
+
+%%===========================================================================================%%
+%% If you are submitting to one of the Nature Portfolio journals, using the eJP submission   %%
+%% system, please include the references within the manuscript file itself. You may do this  %%
+%% by copying the reference list from your .bbl file, paste it into the main manuscript .tex %%
+%% file, and delete the associated \verb+\bibliography+ commands.                            %%
+%%===========================================================================================%%
+
+\clearpage
+
+\bibliography{CA_TS_Net}% common bib file
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input sn-article.bbl
+
+\end{CJK}
+\end{document}

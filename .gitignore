@@ -30,3 +30,4 @@ manuscript/*
 !manuscript/fig/
 !manuscript/sn-article.tex
 !manuscript/CA_TS_Net.bib
+!manuscript/supplementary_information.tex
