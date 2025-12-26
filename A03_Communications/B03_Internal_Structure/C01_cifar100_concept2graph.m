@@ -3,7 +3,7 @@ clc;
 
 method_linkage = 'average';
 link_crit = 'min';
-listener_idx = 0; % from 1 to 100, 0 indicate the speaker
+listener_idx = 1; % from 1 to 100, 0 indicate the speaker
 
 class_label = load("meta.mat");
 
@@ -47,14 +47,20 @@ else
     cluster_info = cluster(ct_link,'cutoff', 0.31,'Criterion','distance'); % get the label info of cluster
 end
 
-fileID_n = fopen('Nods_information.csv','w');
+if listener_idx == 0
+    file_suffix = '_speaker';
+else
+    file_suffix = sprintf('_listener%d', listener_idx);
+end
+
+fileID_n = fopen(['Nods_information', file_suffix, '.csv'],'w');
 fprintf(fileID_n, 'Id, Label, Modularity Class\n');
 for i=1:size(amat, 1)
     fprintf(fileID_n,['%d, ', fine_label_names{i}, ', ', num2str(cluster_info(i)),'\n'], i);
 end
 fclose(fileID_n);
 
-fileID_e = fopen('Edge_information.csv','w');
+fileID_e = fopen(['Edge_information', file_suffix, '.csv'],'w');
 fprintf(fileID_e,'Source, Target, Type, Id, Label, Weight\n');
 edge_id = 1;
 for i=1:size(amat,1)
