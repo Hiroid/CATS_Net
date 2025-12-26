@@ -63,6 +63,10 @@ percentile_transform = @(matrix) tiedrank(matrix(:)) / numel(matrix);
 ConceptRDM_reordered_pct = reshape(percentile_transform(ConceptRDM_reordered), size(ConceptRDM_reordered));
 WordvecRDM_reordered_pct = reshape(percentile_transform(WordvecRDM_reordered), size(WordvecRDM_reordered));
 
+% Save the percentile transformed matrices to CSV files
+writematrix(ConceptRDM_reordered_pct, 'ConceptRDM_reordered_pct.csv');
+writematrix(WordvecRDM_reordered_pct, 'WordvecRDM_reordered_pct.csv');
+
 % ========== Word2Vec-based Clustering ==========
 % Perform hierarchical clustering on word2vec data to get alternative reordering
 wv_link = linkage(wv_data, method_linkage, 'cosine');
