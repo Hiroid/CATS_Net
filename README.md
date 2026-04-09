@@ -1,5 +1,5 @@
 # CATS-Net
-Official Code for Article “A neural network model for concept formation, understanding and communication”
+Official Code for Article “A neural network for modeling human concept formation, understanding and communication”
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)
@@ -78,11 +78,6 @@ The package has been tested on:
 * Bioinformatics Toolbox
 * SPM12 (Statistical Parametric Mapping)
 
-**Additional Python Packages:**
-```bash
-pip install numpy scipy matplotlib seaborn pandas tqdm nltk pillow
-```
-
 ## Installation Guide
 
 ### 1. Clone Repository
@@ -128,7 +123,7 @@ uv sync
 mkdir -p Deps/pretrained_fe
 
 # Download pretrained weights
-wget https://download.pytorch.org/models/resnet50-0676ba61.pth -O Deps/resnet50-0676ba61.pth
+wget https://download.pytorch.org/models/resnet50-0676ba61.pth -O Deps/pretrained_fe/resnet50-0676ba61.pth
 wget https://download.pytorch.org/models/resnet18-f37072fd.pth -O Deps/pretrained_fe/resnet18-f37072fd.pth
 ```
 
@@ -391,12 +386,12 @@ CATS-Net demonstrates superior performance across multiple benchmarks:
 If you use CATS-Net in your research, please cite:
 
 ```bibtex
-@article{catsnet_2025,
-  title={A neural network model for concept formation, understanding and communication},
+@article{catsnet_2026,
+  title={A neural network for modeling human concept formation, understanding and communication},
   author={Liangxuan Guo, Haoyang Chen, Yang Chen, Yanchao Bi and Shan Yu},
-  journal={Under review at Nature Computational Science},
-  year={2025},
-  doi={[DOI]}
+  journal={Nature Computational Science},
+  year={2026},
+  doi={https://doi.org/10.1038/s43588-026-00956-4}
 }
 ```
 
