@@ -1,0 +1,1043 @@
+{
+  "summary": {
+    "mean": 65.72580867726356,
+    "std": 11.520406539763849,
+    "median": 68.18181872367859,
+    "ci95": [
+      63.43991008281647,
+      68.01170727171065
+    ],
+    "t": 13.6503938667306,
+    "d": 1.3650393866730604,
+    "p": 8.63514850999822e-25,
+    "wilcoxon_p": 5.21832390770433e-16
+  },
+  "summary_1draw": {
+    "mean": 65.7599986018613,
+    "std": 11.326753780978793,
+    "median": 67.74999797344208,
+    "ci95": [
+      63.51252491608298,
+      68.00747228763962
+    ],
+    "t": 13.913958850529028,
+    "d": 1.3913958850529027,
+    "p": 2.471726102021903e-25,
+    "wilcoxon_p": 2.9659658978269194e-16
+  },
+  "summary_last_epoch": {
+    "mean": 61.565354553982615,
+    "std": 11.58754450544418,
+    "median": 60.189395397901535,
+    "ci95": [
+      59.26613433057625,
+      63.86457477738898
+    ],
+    "t": 9.980850169377009,
+    "d": 0.9980850169377007,
+    "p": 6.022144103805291e-17,
+    "wilcoxon_p": 1.0890352549899169e-13
+  },
+  "per_class": [
+    {
+      "class_id": 0,
+      "best_val_epoch": 10,
+      "best_val_acc": 70.9419983625412,
+      "heldout_acc": 81.14646673202515,
+      "heldout_pos_acc": 75.99999904632568,
+      "heldout_neg_acc": 86.29293441772461,
+      "heldout_acc_1draw": 77.99999713897705,
+      "last_epoch_heldout_acc": 80.77272772789001
+    },
+    {
+      "class_id": 1,
+      "best_val_epoch": 8,
+      "best_val_acc": 65.59399962425232,
+      "heldout_acc": 49.62626397609711,
+      "heldout_pos_acc": 26.999998092651367,
+      "heldout_neg_acc": 72.25252985954285,
+      "heldout_acc_1draw": 51.499998569488525,
+      "last_epoch_heldout_acc": 43.46969723701477
+    },
+    {
+      "class_id": 2,
+      "best_val_epoch": 10,
+      "best_val_acc": 66.76199734210968,
+      "heldout_acc": 73.70202243328094,
+      "heldout_pos_acc": 68.00000071525574,
+      "heldout_neg_acc": 79.40404415130615,
+      "heldout_acc_1draw": 71.99999988079071,
+      "last_epoch_heldout_acc": 65.14141410589218
+    },
+    {
+      "class_id": 3,
+      "best_val_epoch": 6,
+      "best_val_acc": 66.59599900245667,
+      "heldout_acc": 45.51515132188797,
+      "heldout_pos_acc": 21.99999988079071,
+      "heldout_neg_acc": 69.03030276298523,
+      "heldout_acc_1draw": 45.499999821186066,
+      "last_epoch_heldout_acc": 49.52525459229946
+    },
+    {
+      "class_id": 4,
+      "best_val_epoch": 2,
+      "best_val_acc": 67.50999689102173,
+      "heldout_acc": 73.25757443904877,
+      "heldout_pos_acc": 90.99999666213989,
+      "heldout_neg_acc": 55.51515221595764,
+      "heldout_acc_1draw": 71.49999737739563,
+      "last_epoch_heldout_acc": 72.64646589756012
+    },
+    {
+      "class_id": 5,
+      "best_val_epoch": 46,
+      "best_val_acc": 67.34399914741516,
+      "heldout_acc": 76.87878906726837,
+      "heldout_pos_acc": 74.00000095367432,
+      "heldout_neg_acc": 79.75757718086243,
+      "heldout_acc_1draw": 75.99999904632568,
+      "last_epoch_heldout_acc": 66.99495166540146
+    },
+    {
+      "class_id": 6,
+      "best_val_epoch": 2,
+      "best_val_acc": 53.57999920845032,
+      "heldout_acc": 54.22222316265106,
+      "heldout_pos_acc": 31.999999284744263,
+      "heldout_neg_acc": 76.44444704055786,
+      "heldout_acc_1draw": 50.999999046325684,
+      "last_epoch_heldout_acc": 49.08585846424103
+    },
+    {
+      "class_id": 7,
+      "best_val_epoch": 10,
+      "best_val_acc": 66.61399841308594,
+      "heldout_acc": 68.98485124111176,
+      "heldout_pos_acc": 61.000001430511475,
+      "heldout_neg_acc": 76.96970105171204,
+      "heldout_acc_1draw": 70.49999833106995,
+      "last_epoch_heldout_acc": 67.92424470186234
+    },
+    {
+      "class_id": 8,
+      "best_val_epoch": 12,
+      "best_val_acc": 63.53599786758423,
+      "heldout_acc": 40.7878790050745,
+      "heldout_pos_acc": 7.000000029802322,
+      "heldout_neg_acc": 74.57575798034668,
+      "heldout_acc_1draw": 41.00000001490116,
+      "last_epoch_heldout_acc": 48.75757768750191
+    },
+    {
+      "class_id": 9,
+      "best_val_epoch": 10,
+      "best_val_acc": 72.41199672222137,
+      "heldout_acc": 61.646464467048645,
+      "heldout_pos_acc": 44.999998807907104,
+      "heldout_neg_acc": 78.29293012619019,
+      "heldout_acc_1draw": 61.49999797344208,
+      "last_epoch_heldout_acc": 54.565657675266266
+    },
+    {
+      "class_id": 10,
+      "best_val_epoch": 10,
+      "best_val_acc": 71.34599924087524,
+      "heldout_acc": 73.44444394111633,
+      "heldout_pos_acc": 64.99999761581421,
+      "heldout_neg_acc": 81.88889026641846,
+      "heldout_acc_1draw": 72.49999642372131,
+      "last_epoch_heldout_acc": 63.12626451253891
+    },
+    {
+      "class_id": 11,
+      "best_val_epoch": 12,
+      "best_val_acc": 63.073998391628265,
+      "heldout_acc": 77.3484855890274,
+      "heldout_pos_acc": 74.00000095367432,
+      "heldout_neg_acc": 80.6969702243805,
+      "heldout_acc_1draw": 75.49999952316284,
+      "last_epoch_heldout_acc": 78.25252711772919
+    },
+    {
+      "class_id": 12,
+      "best_val_epoch": 46,
+      "best_val_acc": 64.46199864149094,
+      "heldout_acc": 66.5252536535263,
+      "heldout_pos_acc": 50.0,
+      "heldout_neg_acc": 83.05050730705261,
+      "heldout_acc_1draw": 66.49999916553497,
+      "last_epoch_heldout_acc": 56.46464824676514
+    },
+    {
+      "class_id": 13,
+      "best_val_epoch": 4,
+      "best_val_acc": 71.04399740695953,
+      "heldout_acc": 84.34848487377167,
+      "heldout_pos_acc": 93.99999976158142,
+      "heldout_neg_acc": 74.69696998596191,
+      "heldout_acc_1draw": 86.99999749660492,
+      "last_epoch_heldout_acc": 90.73232412338257
+    },
+    {
+      "class_id": 14,
+      "best_val_epoch": 2,
+      "best_val_acc": 68.10399770736694,
+      "heldout_acc": 61.91413998603821,
+      "heldout_pos_acc": 72.99999594688416,
+      "heldout_neg_acc": 50.82828402519226,
+      "heldout_acc_1draw": 60.99999696016312,
+      "last_epoch_heldout_acc": 47.57575951516628
+    },
+    {
+      "class_id": 15,
+      "best_val_epoch": 16,
+      "best_val_acc": 74.24599945545197,
+      "heldout_acc": 56.96464776992798,
+      "heldout_pos_acc": 43.99999976158142,
+      "heldout_neg_acc": 69.92929577827454,
+      "heldout_acc_1draw": 60.499998927116394,
+      "last_epoch_heldout_acc": 59.75757837295532
+    },
+    {
+      "class_id": 16,
+      "best_val_epoch": 6,
+      "best_val_acc": 67.9259979724884,
+      "heldout_acc": 52.91919410228729,
+      "heldout_pos_acc": 31.999999284744263,
+      "heldout_neg_acc": 73.83838891983032,
+      "heldout_acc_1draw": 53.99999916553497,
+      "last_epoch_heldout_acc": 46.63131516426802
+    },
+    {
+      "class_id": 17,
+      "best_val_epoch": 4,
+      "best_val_acc": 69.475998878479,
+      "heldout_acc": 79.09595966339111,
+      "heldout_pos_acc": 82.99999833106995,
+      "heldout_neg_acc": 75.19192099571228,
+      "heldout_acc_1draw": 72.9999989271164,
+      "last_epoch_heldout_acc": 75.72222352027893
+    },
+    {
+      "class_id": 18,
+      "best_val_epoch": 4,
+      "best_val_acc": 65.08599936962128,
+      "heldout_acc": 70.82828283309937,
+      "heldout_pos_acc": 75.0,
+      "heldout_neg_acc": 66.65656566619873,
+      "heldout_acc_1draw": 69.49999928474426,
+      "last_epoch_heldout_acc": 74.16161894798279
+    },
+    {
+      "class_id": 19,
+      "best_val_epoch": 28,
+      "best_val_acc": 64.8799991607666,
+      "heldout_acc": 74.97979700565338,
+      "heldout_pos_acc": 76.99999809265137,
+      "heldout_neg_acc": 72.9595959186554,
+      "heldout_acc_1draw": 75.99999904632568,
+      "last_epoch_heldout_acc": 72.80302941799164
+    },
+    {
+      "class_id": 20,
+      "best_val_epoch": 12,
+      "best_val_acc": 64.91399645805359,
+      "heldout_acc": 73.297980427742,
+      "heldout_pos_acc": 68.99999976158142,
+      "heldout_neg_acc": 77.59596109390259,
+      "heldout_acc_1draw": 75.0,
+      "last_epoch_heldout_acc": 79.08080816268921
+    },
+    {
+      "class_id": 21,
+      "best_val_epoch": 6,
+      "best_val_acc": 74.53999698162079,
+      "heldout_acc": 71.35353684425354,
+      "heldout_pos_acc": 75.99999904632568,
+      "heldout_neg_acc": 66.7070746421814,
+      "heldout_acc_1draw": 76.49999856948853,
+      "last_epoch_heldout_acc": 75.34343600273132
+    },
+    {
+      "class_id": 22,
+      "best_val_epoch": 4,
+      "best_val_acc": 66.52999818325043,
+      "heldout_acc": 57.247474789619446,
+      "heldout_pos_acc": 37.00000047683716,
+      "heldout_neg_acc": 77.49494910240173,
+      "heldout_acc_1draw": 61.49999797344208,
+      "last_epoch_heldout_acc": 53.21717411279678
+    },
+    {
+      "class_id": 23,
+      "best_val_epoch": 8,
+      "best_val_acc": 66.82799816131592,
+      "heldout_acc": 68.60101222991943,
+      "heldout_pos_acc": 55.000001192092896,
+      "heldout_neg_acc": 82.20202326774597,
+      "heldout_acc_1draw": 67.49999821186066,
+      "last_epoch_heldout_acc": 60.63636541366577
+    },
+    {
+      "class_id": 24,
+      "best_val_epoch": 2,
+      "best_val_acc": 72.54599750041962,
+      "heldout_acc": 52.550505846738815,
+      "heldout_pos_acc": 23.999999463558197,
+      "heldout_neg_acc": 81.10101222991943,
+      "heldout_acc_1draw": 52.49999985098839,
+      "last_epoch_heldout_acc": 51.74747481942177
+    },
+    {
+      "class_id": 25,
+      "best_val_epoch": 8,
+      "best_val_acc": 63.70199918746948,
+      "heldout_acc": 66.39393866062164,
+      "heldout_pos_acc": 58.99999737739563,
+      "heldout_neg_acc": 73.78787994384766,
+      "heldout_acc_1draw": 65.99999666213989,
+      "last_epoch_heldout_acc": 66.9343426823616
+    },
+    {
+      "class_id": 26,
+      "best_val_epoch": 6,
+      "best_val_acc": 64.07599627971649,
+      "heldout_acc": 64.33333456516266,
+      "heldout_pos_acc": 63.999998569488525,
+      "heldout_neg_acc": 64.66667056083679,
+      "heldout_acc_1draw": 62.5,
+      "last_epoch_heldout_acc": 61.34848594665527
+    },
+    {
+      "class_id": 27,
+      "best_val_epoch": 84,
+      "best_val_acc": 62.083998024463654,
+      "heldout_acc": 61.29797846078873,
+      "heldout_pos_acc": 42.9999977350235,
+      "heldout_neg_acc": 79.59595918655396,
+      "heldout_acc_1draw": 58.49999934434891,
+      "last_epoch_heldout_acc": 62.56060749292374
+    },
+    {
+      "class_id": 28,
+      "best_val_epoch": 12,
+      "best_val_acc": 63.04199755191803,
+      "heldout_acc": 64.46464657783508,
+      "heldout_pos_acc": 52.99999713897705,
+      "heldout_neg_acc": 75.92929601669312,
+      "heldout_acc_1draw": 62.49999701976776,
+      "last_epoch_heldout_acc": 71.19697034358978
+    },
+    {
+      "class_id": 29,
+      "best_val_epoch": 4,
+      "best_val_acc": 70.71799755096436,
+      "heldout_acc": 62.42424249649048,
+      "heldout_pos_acc": 68.00000071525574,
+      "heldout_neg_acc": 56.84848427772522,
+      "heldout_acc_1draw": 62.99999952316284,
+      "last_epoch_heldout_acc": 50.005052983760834
+    },
+    {
+      "class_id": 30,
+      "best_val_epoch": 4,
+      "best_val_acc": 74.76599752902985,
+      "heldout_acc": 74.86363649368286,
+      "heldout_pos_acc": 81.99999928474426,
+      "heldout_neg_acc": 67.72727370262146,
+      "heldout_acc_1draw": 78.00000011920929,
+      "last_epoch_heldout_acc": 48.33838455379009
+    },
+    {
+      "class_id": 31,
+      "best_val_epoch": 20,
+      "best_val_acc": 67.53199696540833,
+      "heldout_acc": 73.52525293827057,
+      "heldout_pos_acc": 69.9999988079071,
+      "heldout_neg_acc": 77.05050706863403,
+      "heldout_acc_1draw": 75.99999904632568,
+      "last_epoch_heldout_acc": 79.57575619220734
+    },
+    {
+      "class_id": 32,
+      "best_val_epoch": 6,
+      "best_val_acc": 64.46799874305725,
+      "heldout_acc": 59.30808186531067,
+      "heldout_pos_acc": 43.99999976158142,
+      "heldout_neg_acc": 74.61616396903992,
+      "heldout_acc_1draw": 60.999998450279236,
+      "last_epoch_heldout_acc": 60.62121242284775
+    },
+    {
+      "class_id": 33,
+      "best_val_epoch": 6,
+      "best_val_acc": 68.0299973487854,
+      "heldout_acc": 72.69696891307831,
+      "heldout_pos_acc": 71.99999690055847,
+      "heldout_neg_acc": 73.39394092559814,
+      "heldout_acc_1draw": 68.99999678134918,
+      "last_epoch_heldout_acc": 48.500001057982445
+    },
+    {
+      "class_id": 34,
+      "best_val_epoch": 4,
+      "best_val_acc": 58.94599884748459,
+      "heldout_acc": 56.06060475111008,
+      "heldout_pos_acc": 48.99999797344208,
+      "heldout_neg_acc": 63.121211528778076,
+      "heldout_acc_1draw": 55.49999922513962,
+      "last_epoch_heldout_acc": 63.08080852031708
+    },
+    {
+      "class_id": 35,
+      "best_val_epoch": 8,
+      "best_val_acc": 67.13399767875671,
+      "heldout_acc": 77.31313109397888,
+      "heldout_pos_acc": 75.99999904632568,
+      "heldout_neg_acc": 78.62626314163208,
+      "heldout_acc_1draw": 75.99999904632568,
+      "last_epoch_heldout_acc": 75.76262652873993
+    },
+    {
+      "class_id": 36,
+      "best_val_epoch": 6,
+      "best_val_acc": 65.66199898719788,
+      "heldout_acc": 69.38383877277374,
+      "heldout_pos_acc": 68.99999976158142,
+      "heldout_neg_acc": 69.76767778396606,
+      "heldout_acc_1draw": 67.9999977350235,
+      "last_epoch_heldout_acc": 66.24242514371872
+    },
+    {
+      "class_id": 37,
+      "best_val_epoch": 38,
+      "best_val_acc": 61.34199798107147,
+      "heldout_acc": 58.45959782600403,
+      "heldout_pos_acc": 31.999999284744263,
+      "heldout_neg_acc": 84.9191963672638,
+      "heldout_acc_1draw": 56.99999928474426,
+      "last_epoch_heldout_acc": 53.61616313457489
+    },
+    {
+      "class_id": 38,
+      "best_val_epoch": 4,
+      "best_val_acc": 63.745999336242676,
+      "heldout_acc": 68.12121272087097,
+      "heldout_pos_acc": 65.99999666213989,
+      "heldout_neg_acc": 70.24242877960205,
+      "heldout_acc_1draw": 70.49999833106995,
+      "last_epoch_heldout_acc": 53.86868715286255
+    },
+    {
+      "class_id": 39,
+      "best_val_epoch": 36,
+      "best_val_acc": 63.01599830389023,
+      "heldout_acc": 64.8333340883255,
+      "heldout_pos_acc": 43.99999976158142,
+      "heldout_neg_acc": 85.66666841506958,
+      "heldout_acc_1draw": 64.99999761581421,
+      "last_epoch_heldout_acc": 61.04545593261719
+    },
+    {
+      "class_id": 40,
+      "best_val_epoch": 2,
+      "best_val_acc": 64.61399734020233,
+      "heldout_acc": 42.03030467033386,
+      "heldout_pos_acc": 12.999999523162842,
+      "heldout_neg_acc": 71.06060981750488,
+      "heldout_acc_1draw": 41.999998688697815,
+      "last_epoch_heldout_acc": 55.126263201236725
+    },
+    {
+      "class_id": 41,
+      "best_val_epoch": 64,
+      "best_val_acc": 63.211998641490936,
+      "heldout_acc": 45.055557414889336,
+      "heldout_pos_acc": 8.999999612569809,
+      "heldout_neg_acc": 81.11111521720886,
+      "heldout_acc_1draw": 45.99999897181988,
+      "last_epoch_heldout_acc": 49.050506204366684
+    },
+    {
+      "class_id": 42,
+      "best_val_epoch": 4,
+      "best_val_acc": 67.62199878692627,
+      "heldout_acc": 37.46464625000954,
+      "heldout_pos_acc": 14.999999105930328,
+      "heldout_neg_acc": 59.929293394088745,
+      "heldout_acc_1draw": 41.49999991059303,
+      "last_epoch_heldout_acc": 41.60101255401969
+    },
+    {
+      "class_id": 43,
+      "best_val_epoch": 2,
+      "best_val_acc": 68.42599749565125,
+      "heldout_acc": 70.94444334506989,
+      "heldout_pos_acc": 84.99999642372131,
+      "heldout_neg_acc": 56.88889026641846,
+      "heldout_acc_1draw": 72.49999642372131,
+      "last_epoch_heldout_acc": 80.45959770679474
+    },
+    {
+      "class_id": 44,
+      "best_val_epoch": 10,
+      "best_val_acc": 69.16199922561646,
+      "heldout_acc": 71.76767885684967,
+      "heldout_pos_acc": 81.00000023841858,
+      "heldout_neg_acc": 62.53535747528076,
+      "heldout_acc_1draw": 72.49999940395355,
+      "last_epoch_heldout_acc": 70.46464681625366
+    },
+    {
+      "class_id": 45,
+      "best_val_epoch": 8,
+      "best_val_acc": 62.73199796676636,
+      "heldout_acc": 43.75757798552513,
+      "heldout_pos_acc": 17.000000178813934,
+      "heldout_neg_acc": 70.51515579223633,
+      "heldout_acc_1draw": 41.999997943639755,
+      "last_epoch_heldout_acc": 51.32323205471039
+    },
+    {
+      "class_id": 46,
+      "best_val_epoch": 16,
+      "best_val_acc": 65.77999889850616,
+      "heldout_acc": 73.08585941791534,
+      "heldout_pos_acc": 65.99999666213989,
+      "heldout_neg_acc": 80.1717221736908,
+      "heldout_acc_1draw": 72.49999642372131,
+      "last_epoch_heldout_acc": 77.90909111499786
+    },
+    {
+      "class_id": 47,
+      "best_val_epoch": 6,
+      "best_val_acc": 70.06599724292755,
+      "heldout_acc": 82.3888897895813,
+      "heldout_pos_acc": 84.99999642372131,
+      "heldout_neg_acc": 79.77778315544128,
+      "heldout_acc_1draw": 84.49999690055847,
+      "last_epoch_heldout_acc": 80.38384020328522
+    },
+    {
+      "class_id": 48,
+      "best_val_epoch": 4,
+      "best_val_acc": 72.6179975271225,
+      "heldout_acc": 58.38384032249451,
+      "heldout_pos_acc": 62.00000047683716,
+      "heldout_neg_acc": 54.767680168151855,
+      "heldout_acc_1draw": 59.00000035762787,
+      "last_epoch_heldout_acc": 48.52525517344475
+    },
+    {
+      "class_id": 49,
+      "best_val_epoch": 4,
+      "best_val_acc": 69.47199940681458,
+      "heldout_acc": 76.21717154979706,
+      "heldout_pos_acc": 82.99999833106995,
+      "heldout_neg_acc": 69.43434476852417,
+      "heldout_acc_1draw": 74.49999749660492,
+      "last_epoch_heldout_acc": 62.63636499643326
+    },
+    {
+      "class_id": 50,
+      "best_val_epoch": 12,
+      "best_val_acc": 62.841998636722565,
+      "heldout_acc": 78.50505113601685,
+      "heldout_pos_acc": 84.99999642372131,
+      "heldout_neg_acc": 72.01010584831238,
+      "heldout_acc_1draw": 77.49999761581421,
+      "last_epoch_heldout_acc": 56.84848427772522
+    },
+    {
+      "class_id": 51,
+      "best_val_epoch": 2,
+      "best_val_acc": 65.15799820423126,
+      "heldout_acc": 56.76262527704239,
+      "heldout_pos_acc": 47.999998927116394,
+      "heldout_neg_acc": 65.52525162696838,
+      "heldout_acc_1draw": 55.99999874830246,
+      "last_epoch_heldout_acc": 47.949495539069176
+    },
+    {
+      "class_id": 52,
+      "best_val_epoch": 10,
+      "best_val_acc": 61.73199951648712,
+      "heldout_acc": 83.55050683021545,
+      "heldout_pos_acc": 87.00000047683716,
+      "heldout_neg_acc": 80.10101318359375,
+      "heldout_acc_1draw": 83.49999785423279,
+      "last_epoch_heldout_acc": 47.44949731975794
+    },
+    {
+      "class_id": 53,
+      "best_val_epoch": 52,
+      "best_val_acc": 74.30999755859375,
+      "heldout_acc": 71.28787934780121,
+      "heldout_pos_acc": 50.0,
+      "heldout_neg_acc": 92.57575869560242,
+      "heldout_acc_1draw": 71.50000035762787,
+      "last_epoch_heldout_acc": 68.48484873771667
+    },
+    {
+      "class_id": 54,
+      "best_val_epoch": 6,
+      "best_val_acc": 61.3619989156723,
+      "heldout_acc": 83.29293131828308,
+      "heldout_pos_acc": 87.99999952316284,
+      "heldout_neg_acc": 78.58586311340332,
+      "heldout_acc_1draw": 84.49999988079071,
+      "last_epoch_heldout_acc": 79.27777767181396
+    },
+    {
+      "class_id": 55,
+      "best_val_epoch": 6,
+      "best_val_acc": 64.74399864673615,
+      "heldout_acc": 68.94444227218628,
+      "heldout_pos_acc": 66.99999570846558,
+      "heldout_neg_acc": 70.88888883590698,
+      "heldout_acc_1draw": 68.99999678134918,
+      "last_epoch_heldout_acc": 53.66161689162254
+    },
+    {
+      "class_id": 56,
+      "best_val_epoch": 2,
+      "best_val_acc": 71.06399714946747,
+      "heldout_acc": 67.82828271389008,
+      "heldout_pos_acc": 64.99999761581421,
+      "heldout_neg_acc": 70.65656781196594,
+      "heldout_acc_1draw": 69.9999988079071,
+      "last_epoch_heldout_acc": 46.06060869991779
+    },
+    {
+      "class_id": 57,
+      "best_val_epoch": 104,
+      "best_val_acc": 75.32399773597717,
+      "heldout_acc": 67.06565767526627,
+      "heldout_pos_acc": 46.99999988079071,
+      "heldout_neg_acc": 87.13131546974182,
+      "heldout_acc_1draw": 62.99999803304672,
+      "last_epoch_heldout_acc": 60.76262593269348
+    },
+    {
+      "class_id": 58,
+      "best_val_epoch": 16,
+      "best_val_acc": 72.63999819755554,
+      "heldout_acc": 73.98989796638489,
+      "heldout_pos_acc": 71.99999690055847,
+      "heldout_neg_acc": 75.9797990322113,
+      "heldout_acc_1draw": 71.49999737739563,
+      "last_epoch_heldout_acc": 79.3838381767273
+    },
+    {
+      "class_id": 59,
+      "best_val_epoch": 4,
+      "best_val_acc": 72.55399942398071,
+      "heldout_acc": 75.61111152172089,
+      "heldout_pos_acc": 90.99999666213989,
+      "heldout_neg_acc": 60.22222638130188,
+      "heldout_acc_1draw": 75.99999904632568,
+      "last_epoch_heldout_acc": 89.36868607997894
+    },
+    {
+      "class_id": 60,
+      "best_val_epoch": 10,
+      "best_val_acc": 68.72599840164185,
+      "heldout_acc": 63.449494540691376,
+      "heldout_pos_acc": 41.999998688697815,
+      "heldout_neg_acc": 84.89899039268494,
+      "heldout_acc_1draw": 63.499997556209564,
+      "last_epoch_heldout_acc": 50.34343600273132
+    },
+    {
+      "class_id": 61,
+      "best_val_epoch": 10,
+      "best_val_acc": 65.11999666690826,
+      "heldout_acc": 89.87878859043121,
+      "heldout_pos_acc": 93.00000071525574,
+      "heldout_neg_acc": 86.75757646560669,
+      "heldout_acc_1draw": 90.50000011920929,
+      "last_epoch_heldout_acc": 59.71212387084961
+    },
+    {
+      "class_id": 62,
+      "best_val_epoch": 10,
+      "best_val_acc": 62.705997824668884,
+      "heldout_acc": 47.94444441795349,
+      "heldout_pos_acc": 12.999999523162842,
+      "heldout_neg_acc": 82.88888931274414,
+      "heldout_acc_1draw": 46.99999988079071,
+      "last_epoch_heldout_acc": 49.41919222474098
+    },
+    {
+      "class_id": 63,
+      "best_val_epoch": 14,
+      "best_val_acc": 65.93999743461609,
+      "heldout_acc": 73.60101044178009,
+      "heldout_pos_acc": 74.00000095367432,
+      "heldout_neg_acc": 73.20201992988586,
+      "heldout_acc_1draw": 74.00000095367432,
+      "last_epoch_heldout_acc": 67.96969771385193
+    },
+    {
+      "class_id": 64,
+      "best_val_epoch": 22,
+      "best_val_acc": 67.26199984550476,
+      "heldout_acc": 78.38889062404633,
+      "heldout_pos_acc": 87.00000047683716,
+      "heldout_neg_acc": 69.7777807712555,
+      "heldout_acc_1draw": 75.0,
+      "last_epoch_heldout_acc": 72.74747490882874
+    },
+    {
+      "class_id": 65,
+      "best_val_epoch": 4,
+      "best_val_acc": 65.28399884700775,
+      "heldout_acc": 76.20707154273987,
+      "heldout_pos_acc": 89.99999761581421,
+      "heldout_neg_acc": 62.41414546966553,
+      "heldout_acc_1draw": 76.99999809265137,
+      "last_epoch_heldout_acc": 73.98989796638489
+    },
+    {
+      "class_id": 66,
+      "best_val_epoch": 4,
+      "best_val_acc": 67.46599793434143,
+      "heldout_acc": 73.78282845020294,
+      "heldout_pos_acc": 81.00000023841858,
+      "heldout_neg_acc": 66.5656566619873,
+      "heldout_acc_1draw": 72.49999940395355,
+      "last_epoch_heldout_acc": 76.04040503501892
+    },
+    {
+      "class_id": 67,
+      "best_val_epoch": 60,
+      "best_val_acc": 66.75399959087372,
+      "heldout_acc": 79.0656566619873,
+      "heldout_pos_acc": 75.99999904632568,
+      "heldout_neg_acc": 82.13131427764893,
+      "heldout_acc_1draw": 81.49999976158142,
+      "last_epoch_heldout_acc": 54.52020317316055
+    },
+    {
+      "class_id": 68,
+      "best_val_epoch": 8,
+      "best_val_acc": 65.00599682331085,
+      "heldout_acc": 72.05050587654114,
+      "heldout_pos_acc": 65.99999666213989,
+      "heldout_neg_acc": 78.10101509094238,
+      "heldout_acc_1draw": 70.49999833106995,
+      "last_epoch_heldout_acc": 80.29293119907379
+    },
+    {
+      "class_id": 69,
+      "best_val_epoch": 122,
+      "best_val_acc": 56.891998052597046,
+      "heldout_acc": 56.207072734832764,
+      "heldout_pos_acc": 25.0,
+      "heldout_neg_acc": 87.41414546966553,
+      "heldout_acc_1draw": 54.99999821186066,
+      "last_epoch_heldout_acc": 56.54040575027466
+    },
+    {
+      "class_id": 70,
+      "best_val_epoch": 6,
+      "best_val_acc": 70.23199796676636,
+      "heldout_acc": 41.247475147247314,
+      "heldout_pos_acc": 0.0,
+      "heldout_neg_acc": 82.49495029449463,
+      "heldout_acc_1draw": 38.499999046325684,
+      "last_epoch_heldout_acc": 46.16161631420255
+    },
+    {
+      "class_id": 71,
+      "best_val_epoch": 10,
+      "best_val_acc": 64.30799901485443,
+      "heldout_acc": 62.398989498615265,
+      "heldout_pos_acc": 42.9999977350235,
+      "heldout_neg_acc": 81.79798126220703,
+      "heldout_acc_1draw": 62.49999850988388,
+      "last_epoch_heldout_acc": 59.186871349811554
+    },
+    {
+      "class_id": 72,
+      "best_val_epoch": 8,
+      "best_val_acc": 67.51599907875061,
+      "heldout_acc": 46.30808085203171,
+      "heldout_pos_acc": 29.999998211860657,
+      "heldout_neg_acc": 62.61616349220276,
+      "heldout_acc_1draw": 50.49999803304672,
+      "last_epoch_heldout_acc": 59.55555737018585
+    },
+    {
+      "class_id": 73,
+      "best_val_epoch": 4,
+      "best_val_acc": 67.50799775123596,
+      "heldout_acc": 61.01515144109726,
+      "heldout_pos_acc": 42.9999977350235,
+      "heldout_neg_acc": 79.03030514717102,
+      "heldout_acc_1draw": 63.499997556209564,
+      "last_epoch_heldout_acc": 68.47474724054337
+    },
+    {
+      "class_id": 74,
+      "best_val_epoch": 8,
+      "best_val_acc": 70.05999863147736,
+      "heldout_acc": 72.2929298877716,
+      "heldout_pos_acc": 75.0,
+      "heldout_neg_acc": 69.58585977554321,
+      "heldout_acc_1draw": 72.49999940395355,
+      "last_epoch_heldout_acc": 70.92929482460022
+    },
+    {
+      "class_id": 75,
+      "best_val_epoch": 8,
+      "best_val_acc": 61.22399926185608,
+      "heldout_acc": 71.14141583442688,
+      "heldout_pos_acc": 75.0,
+      "heldout_neg_acc": 67.28283166885376,
+      "heldout_acc_1draw": 71.99999988079071,
+      "last_epoch_heldout_acc": 72.01515138149261
+    },
+    {
+      "class_id": 76,
+      "best_val_epoch": 4,
+      "best_val_acc": 67.0579993724823,
+      "heldout_acc": 65.30303061008453,
+      "heldout_pos_acc": 51.99999809265137,
+      "heldout_neg_acc": 78.6060631275177,
+      "heldout_acc_1draw": 64.99999761581421,
+      "last_epoch_heldout_acc": 54.98485118150711
+    },
+    {
+      "class_id": 77,
+      "best_val_epoch": 4,
+      "best_val_acc": 64.92999911308289,
+      "heldout_acc": 51.91919356584549,
+      "heldout_pos_acc": 35.999998450279236,
+      "heldout_neg_acc": 67.83838868141174,
+      "heldout_acc_1draw": 52.99999862909317,
+      "last_epoch_heldout_acc": 47.17171937227249
+    },
+    {
+      "class_id": 78,
+      "best_val_epoch": 6,
+      "best_val_acc": 69.88399744033813,
+      "heldout_acc": 63.84848654270172,
+      "heldout_pos_acc": 56.99999928474426,
+      "heldout_neg_acc": 70.69697380065918,
+      "heldout_acc_1draw": 62.99999952316284,
+      "last_epoch_heldout_acc": 54.141416400671005
+    },
+    {
+      "class_id": 79,
+      "best_val_epoch": 88,
+      "best_val_acc": 60.35999894142151,
+      "heldout_acc": 75.16161799430847,
+      "heldout_pos_acc": 69.9999988079071,
+      "heldout_neg_acc": 80.32323718070984,
+      "heldout_acc_1draw": 75.49999952316284,
+      "last_epoch_heldout_acc": 72.39899039268494
+    },
+    {
+      "class_id": 80,
+      "best_val_epoch": 4,
+      "best_val_acc": 68.18399846553802,
+      "heldout_acc": 72.19191789627075,
+      "heldout_pos_acc": 84.99999642372131,
+      "heldout_neg_acc": 59.38383936882019,
+      "heldout_acc_1draw": 71.49999737739563,
+      "last_epoch_heldout_acc": 66.38889014720917
+    },
+    {
+      "class_id": 81,
+      "best_val_epoch": 12,
+      "best_val_acc": 61.995999217033386,
+      "heldout_acc": 55.04040569067001,
+      "heldout_pos_acc": 35.999998450279236,
+      "heldout_neg_acc": 74.08081293106079,
+      "heldout_acc_1draw": 57.99999684095383,
+      "last_epoch_heldout_acc": 47.323234006762505
+    },
+    {
+      "class_id": 82,
+      "best_val_epoch": 12,
+      "best_val_acc": 69.87599730491638,
+      "heldout_acc": 82.28787779808044,
+      "heldout_pos_acc": 83.99999737739563,
+      "heldout_neg_acc": 80.57575821876526,
+      "heldout_acc_1draw": 81.49999678134918,
+      "last_epoch_heldout_acc": 50.93434415757656
+    },
+    {
+      "class_id": 83,
+      "best_val_epoch": 60,
+      "best_val_acc": 69.93599832057953,
+      "heldout_acc": 45.338383782655,
+      "heldout_pos_acc": 0.9999999776482582,
+      "heldout_neg_acc": 89.67676758766174,
+      "heldout_acc_1draw": 46.49999784305692,
+      "last_epoch_heldout_acc": 46.156567335128784
+    },
+    {
+      "class_id": 84,
+      "best_val_epoch": 2,
+      "best_val_acc": 66.57799780368805,
+      "heldout_acc": 40.23232460021973,
+      "heldout_pos_acc": 12.999999523162842,
+      "heldout_neg_acc": 67.46464967727661,
+      "heldout_acc_1draw": 41.999998688697815,
+      "last_epoch_heldout_acc": 43.72222404927015
+    },
+    {
+      "class_id": 85,
+      "best_val_epoch": 18,
+      "best_val_acc": 68.90199780464172,
+      "heldout_acc": 62.939395010471344,
+      "heldout_pos_acc": 47.999998927116394,
+      "heldout_neg_acc": 77.8787910938263,
+      "heldout_acc_1draw": 63.499997556209564,
+      "last_epoch_heldout_acc": 49.09090958535671
+    },
+    {
+      "class_id": 86,
+      "best_val_epoch": 114,
+      "best_val_acc": 71.62599861621857,
+      "heldout_acc": 72.38889038562775,
+      "heldout_pos_acc": 61.000001430511475,
+      "heldout_neg_acc": 83.77777934074402,
+      "heldout_acc_1draw": 69.9999988079071,
+      "last_epoch_heldout_acc": 67.04545468091965
+    },
+    {
+      "class_id": 87,
+      "best_val_epoch": 114,
+      "best_val_acc": 64.05399858951569,
+      "heldout_acc": 52.36868858337402,
+      "heldout_pos_acc": 19.999998807907104,
+      "heldout_neg_acc": 84.73737835884094,
+      "heldout_acc_1draw": 51.99999809265137,
+      "last_epoch_heldout_acc": 53.398991376161575
+    },
+    {
+      "class_id": 88,
+      "best_val_epoch": 10,
+      "best_val_acc": 72.00999855995178,
+      "heldout_acc": 68.70202124118805,
+      "heldout_pos_acc": 68.99999976158142,
+      "heldout_neg_acc": 68.40404272079468,
+      "heldout_acc_1draw": 67.49999821186066,
+      "last_epoch_heldout_acc": 57.489900290966034
+    },
+    {
+      "class_id": 89,
+      "best_val_epoch": 22,
+      "best_val_acc": 59.81599807739258,
+      "heldout_acc": 63.21212202310562,
+      "heldout_pos_acc": 48.99999797344208,
+      "heldout_neg_acc": 77.42424607276917,
+      "heldout_acc_1draw": 66.49999767541885,
+      "last_epoch_heldout_acc": 56.47979974746704
+    },
+    {
+      "class_id": 90,
+      "best_val_epoch": 4,
+      "best_val_acc": 60.621998608112335,
+      "heldout_acc": 57.93434530496597,
+      "heldout_pos_acc": 40.99999964237213,
+      "heldout_neg_acc": 74.86869096755981,
+      "heldout_acc_1draw": 60.999999940395355,
+      "last_epoch_heldout_acc": 56.04545474052429
+    },
+    {
+      "class_id": 91,
+      "best_val_epoch": 14,
+      "best_val_acc": 71.30599856376648,
+      "heldout_acc": 61.085858941078186,
+      "heldout_pos_acc": 44.999998807907104,
+      "heldout_neg_acc": 77.17171907424927,
+      "heldout_acc_1draw": 62.99999952316284,
+      "last_epoch_heldout_acc": 51.24747455120087
+    },
+    {
+      "class_id": 92,
+      "best_val_epoch": 10,
+      "best_val_acc": 67.75599777698517,
+      "heldout_acc": 78.05555760860443,
+      "heldout_pos_acc": 75.0,
+      "heldout_neg_acc": 81.11111521720886,
+      "heldout_acc_1draw": 78.00000011920929,
+      "last_epoch_heldout_acc": 65.73232412338257
+    },
+    {
+      "class_id": 93,
+      "best_val_epoch": 26,
+      "best_val_acc": 61.569997668266296,
+      "heldout_acc": 68.2424247264862,
+      "heldout_pos_acc": 57.999998331069946,
+      "heldout_neg_acc": 78.48485112190247,
+      "heldout_acc_1draw": 67.9999977350235,
+      "last_epoch_heldout_acc": 59.373739361763
+    },
+    {
+      "class_id": 94,
+      "best_val_epoch": 26,
+      "best_val_acc": 63.40799868106842,
+      "heldout_acc": 68.30808222293854,
+      "heldout_pos_acc": 50.0,
+      "heldout_neg_acc": 86.61616444587708,
+      "heldout_acc_1draw": 68.50000023841858,
+      "last_epoch_heldout_acc": 53.929293155670166
+    },
+    {
+      "class_id": 95,
+      "best_val_epoch": 2,
+      "best_val_acc": 62.75999814271927,
+      "heldout_acc": 54.08080965280533,
+      "heldout_pos_acc": 21.99999988079071,
+      "heldout_neg_acc": 86.16161942481995,
+      "heldout_acc_1draw": 53.49999815225601,
+      "last_epoch_heldout_acc": 58.16161781549454
+    },
+    {
+      "class_id": 96,
+      "best_val_epoch": 10,
+      "best_val_acc": 71.02599799633026,
+      "heldout_acc": 79.23737466335297,
+      "heldout_pos_acc": 77.99999713897705,
+      "heldout_neg_acc": 80.47475218772888,
+      "heldout_acc_1draw": 78.49999666213989,
+      "last_epoch_heldout_acc": 71.88383936882019
+    },
+    {
+      "class_id": 97,
+      "best_val_epoch": 6,
+      "best_val_acc": 69.46999788284302,
+      "heldout_acc": 65.38383662700653,
+      "heldout_pos_acc": 66.99999570846558,
+      "heldout_neg_acc": 63.767677545547485,
+      "heldout_acc_1draw": 64.49999809265137,
+      "last_epoch_heldout_acc": 66.75757467746735
+    },
+    {
+      "class_id": 98,
+      "best_val_epoch": 4,
+      "best_val_acc": 69.77999866008759,
+      "heldout_acc": 66.67676866054535,
+      "heldout_pos_acc": 56.00000023841858,
+      "heldout_neg_acc": 77.35353708267212,
+      "heldout_acc_1draw": 65.50000011920929,
+      "last_epoch_heldout_acc": 65.59596061706543
+    },
+    {
+      "class_id": 99,
+      "best_val_epoch": 10,
+      "best_val_acc": 63.667998909950256,
+      "heldout_acc": 69.06060576438904,
+      "heldout_pos_acc": 62.99999952316284,
+      "heldout_neg_acc": 75.12121200561523,
+      "heldout_acc_1draw": 68.99999976158142,
+      "last_epoch_heldout_acc": 69.6212112903595
+    }
+  ]
+}
